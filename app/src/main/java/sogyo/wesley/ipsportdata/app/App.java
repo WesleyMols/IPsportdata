@@ -1,7 +1,5 @@
 package sogyo.wesley.ipsportdata.app;
 
-import java.lang.ModuleLayer.Controller;
-
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -12,8 +10,8 @@ import sogyo.wesley.ipsportdata.app.controllers.IPController;
 import sogyo.wesley.ipsportdata.domain.AnalysisFactory;
 import sogyo.wesley.ipsportdata.domain.App2;
 import sogyo.wesley.ipsportdata.domain.IFactory;
-
-
+import sogyo.wesley.ipsportdata.persistence.IRepository;
+import sogyo.wesley.ipsportdata.persistence.Repository;
 
 
 public class App {
@@ -51,8 +49,8 @@ public class App {
 
      private static ResourceConfig createResources() {
         IFactory factory = new AnalysisFactory();
-        //IRepository repository = new Repository();
-        App IPcontroller = new App();
-        return new ResourceConfig().register(IPcontroller);
+        IRepository repository = new Repository();
+        IPController ipController = new IPController(factory, repository);
+        return new ResourceConfig().register(ipController);
     }
 } 
