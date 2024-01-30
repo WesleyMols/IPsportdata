@@ -37,7 +37,7 @@ dependencies {
     
     // Reference the domain and persistence subprojects.
     implementation project(':domain')
-    //implementation project(':persistence')
+    implementation project(':persistence')
 
     // Use JUnit Jupiter API for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'

@@ -1,15 +1,20 @@
 package sogyo.wesley.ipsportdata.app;
 
+import java.lang.ModuleLayer.Controller;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
-import sogyo.wesley.ipsportdata.App2;
-import sogyo.wesley.ipsportdata.persistence.IRepository;
 import sogyo.wesley.ipsportdata.app.controllers.IPController;
-import sogy
+import sogyo.wesley.ipsportdata.domain.AnalysisFactory;
+import sogyo.wesley.ipsportdata.domain.App2;
+import sogyo.wesley.ipsportdata.domain.IFactory;
+
+
+
 
 public class App {
     private static final int PORT = 8080;
@@ -44,10 +49,10 @@ public class App {
         context.addServlet(new ServletHolder(new ServletContainer(createResources())), "/*");
     }
 
-    private static ResourceConfig createResources() {
-        IFacory factory;
-        IRepository repository;
-        Controller IPcontroller;
+     private static ResourceConfig createResources() {
+        IFactory factory = new AnalysisFactory();
+        //IRepository repository = new Repository();
+        App IPcontroller = new App();
         return new ResourceConfig().register(IPcontroller);
     }
-}
+} 

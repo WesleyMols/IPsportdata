@@ -5,7 +5,7 @@ package sogyo.wesley.ipsportdata.app;
 
 import org.junit.jupiter.api.Test;
 
-import sogyo.wesley.ipsportdata.App2;
+import sogyo.wesley.ipsportdata.domain.App2;
 
 import static org.junit.jupiter.api.Assertions.*;
 
