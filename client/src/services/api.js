@@ -1,6 +1,8 @@
+
+
 export async function start(username) {
     const response = await fetch("sogyo/wesley/ipsportdata/start", {
-        method: POST,
+        method: "POST",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",

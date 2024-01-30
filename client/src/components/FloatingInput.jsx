@@ -6,7 +6,7 @@ import { ChangeEventHandler } from "react";
 
 export const FloatingInput = (props) => {
     const { id, label, value, onChange, hasError } = props;
-
+    
     return <div>
         <div className="relative">
             <input type="text" id={id} className={classNames(

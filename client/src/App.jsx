@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import { FloatingInput } from "sogyo/wesley/ipsportdata/client/components/FloatingInput";
-import classNames from "classnames";
+import { start } from "./services/api"
+//import { FloatingInput } from "../components/FloatingInput.jsx"
+//import classNames from "classnames";
 import './App.css'
 
 
@@ -11,6 +12,7 @@ function App() {
   const [username, setUsername] = useState("");
   const onsubmit = async () => {
     const result = await start(username);
+    setGameState(result);
 
   }
   return (
@@ -34,21 +36,21 @@ function App() {
         </div>
         <div>
 
-        <form><ol>
-          <li>
-            <FloatingInput
+        <form>          
+            <input
+              type = "text"
               id="username"
-              label="enter your name"
+              placeholder="enter your name"
+              name="name"
               value={username}
-              onChange={e => setUsername(e.target.value)}
-              />
-          </li>
-          <li>
+              onChange={e => setUsername(e.target.value)} 
+              />         
+          
         <button onClick={() => onsubmit()}  >
           Analyse
           {console.log("clicked")}
         </button>
-        </li></ol></form>
+        </form>
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
