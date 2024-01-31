@@ -9,12 +9,14 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0);
+
+  const {setState} = useMyState();
   const [username, setUsername] = useState("");
   const onsubmit = async () => {
     const result = await start(username);
-    setGameState(result);
-
+    setState(result);
   }
+
   return (
     <>
       <div>
