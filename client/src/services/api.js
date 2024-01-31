@@ -1,7 +1,7 @@
 
 
 export async function start(username) {
-    const response = await fetch("sogyo/wesley/ipsportdata/start", {
+    const response = await fetch("sogyo/wesley/ipsportdata/app/start", {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -24,7 +24,7 @@ export async function start(username) {
 }
 
 export async function analyse() {
-    const response = await fetch("sogyo/wesley/ipsportdata/analyse", {
+    const response = await fetch("sogyo/wesley/ipsportdata/app/analyse", {
         method: "POST",
         headers: {
             Accept: "application/json",

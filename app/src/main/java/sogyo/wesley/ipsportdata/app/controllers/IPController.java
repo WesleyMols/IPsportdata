@@ -11,8 +11,6 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import sogyo.wesley.ipsportdata.app.DTO.AnalysorDTO;
-import sogyo.wesley.ipsportdata.app.DTO.StartInputDTO;
 import sogyo.wesley.ipsportdata.domain.Analysor;
 import sogyo.wesley.ipsportdata.domain.IAnalysor;
 import sogyo.wesley.ipsportdata.domain.IFactory;
@@ -32,15 +30,15 @@ public class IPController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response start(@Context HttpServletRequest request, StartInputDTO body) {
+    public Response start(@Context HttpServletRequest request) {
         HttpSession session = request.getSession(true);
 
         IAnalysor analysor = factory.createNewAnalysis();
         String gameId = UUID.randomUUID().toString();
         session.setAttribute("gameId", gameId);
         repository.save(gameId, analysor);
-        var output = new AnalysorDTO(analysor);
-        return Response.status(200).entity(output).build();
+       
+        return Response.status(200).build();
     }
 
     @Path("/analyse")
@@ -52,7 +50,7 @@ public class IPController {
         String Id = (String) session.getAttribute("id");
         IAnalysor analysor = repository.get(Id);
         repository.save(Id, analysor);
-        AnalysorDTO output = new AnalysorDTO(analysor);
-        return Response.status(200).entity(output).build();
+       
+        return Response.status(200).build();
     }
 }
