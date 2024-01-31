@@ -29,17 +29,6 @@ public class IPController {
         this.repository = repository;
     }
 
-    /* @Path("/log")
-    @GET
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response log(@Context HttpServletRequest request, String body) {
-        System.out.println("Received call on /log");
-        return Response.status(200).entity("Hi").build();
-    } */
-
-
-
     @Path("/start")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
