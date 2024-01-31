@@ -5,16 +5,16 @@ import { start } from "./services/api"
 //import { FloatingInput } from "../components/FloatingInput.jsx"
 //import classNames from "classnames";
 import './App.css'
-
+//initiate branch commit
 
 function App() {
   const [count, setCount] = useState(0);
 
-  const {setState} = useMyState();
+  //const {setState} = useMyState();
   const [username, setUsername] = useState("");
   const onsubmit = async () => {
     const result = await start(username);
-    setState(result);
+    setState(result); // doet nog niks
   }
 
   return (
