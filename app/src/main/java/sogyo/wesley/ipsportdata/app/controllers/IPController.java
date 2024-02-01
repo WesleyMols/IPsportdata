@@ -36,14 +36,15 @@ public class IPController {
     public Response start(@Context HttpServletRequest request, InputDTO input) {
         HttpSession session = request.getSession(true);
         System.out.println(input.getUsername());
-        IAnalysor analysor = factory.createNewAnalysis();
+        IAnalysor analysor = factory.createNewAnalysis(input.getUsername());
         String gameId = UUID.randomUUID().toString();
         session.setAttribute("gameId", gameId);
-        repository.save(gameId, analysor);
+        repository.save(gameId, analysor); //hash
+        
         System.out.println(repository.get(gameId));
         CountDTO count = new CountDTO();
         count.setCount(5);
-        repository.MysqlCon();
+        repository.MysqlCon(analysor);
         return Response.status(200).entity(count).build();
     }
 

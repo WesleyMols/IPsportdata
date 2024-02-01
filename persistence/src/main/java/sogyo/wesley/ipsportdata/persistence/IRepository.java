@@ -15,6 +15,6 @@ public interface IRepository {
      */
     IAnalysor get(String key);
 
-    void MysqlCon(); 
+    void MysqlCon(IAnalysor game); 
 
 }

@@ -1,13 +1,13 @@
 package sogyo.wesley.ipsportdata.domain;
 
 public class Analysor implements IAnalysor {
-    public Analysor() {
-        
+    String name = "";
+    public Analysor(String name) {
+        this.name = name;
     }
 
     @Override
     public String getUsername() {
-        String name =  "Stringfound";
         return name;
     }
 }

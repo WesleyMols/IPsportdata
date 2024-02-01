@@ -21,7 +21,7 @@ public class Repository implements IRepository{
     }
 
     @Override
-    public void MysqlCon() {
+    public void MysqlCon(IAnalysor game) {
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -36,13 +36,13 @@ public class Repository implements IRepository{
                                     +resultSet.getString(5)+"  "
                                     +resultSet.getString(6)+"  "
                                     +resultSet.getString(7)+"  ");
-            IAnalysor game = new Analysor();
+        
+        
             String insert = game.getUsername().toString();
             String query = "INSERT INTO user (username) " + "VALUES (?)";
             PreparedStatement runquery = con.prepareStatement(query);
             runquery.setString(1, insert);
             runquery.execute();
-            //ResultSet saveSet = statement.executeUpdate("INSERT INTO user (username) VALUES (" + (insert) +")");
             //System.out.println(insert);
             System.out.println("end");
                 //con.close();  // this leads to exception nested exception
