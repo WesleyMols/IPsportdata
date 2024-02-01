@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "classnames": "^2.5.1"
+  },
+  "devDependencies": {
+    "react-router-dom": "^6.21.3"
+  }
+}
