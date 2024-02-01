@@ -40,8 +40,10 @@ public class IPController {
         String gameId = UUID.randomUUID().toString();
         session.setAttribute("gameId", gameId);
         repository.save(gameId, analysor);
+        System.out.println(repository.get(gameId));
         CountDTO count = new CountDTO();
         count.setCount(5);
+        repository.MysqlCon();
         return Response.status(200).entity(count).build();
     }
 

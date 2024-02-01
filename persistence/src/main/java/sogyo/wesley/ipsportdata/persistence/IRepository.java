@@ -15,4 +15,6 @@ public interface IRepository {
      */
     IAnalysor get(String key);
 
+    void MysqlCon(); 
+
 }
