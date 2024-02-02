@@ -4,7 +4,7 @@ workflow:
   name: 'pipeline branch: $CI_COMMIT_BRANCH  commit hash: $CI_COMMIT_SHA'
 
 variables:
-  JACOCO_CSV_LOCATION: "domain/build/customJacocoReportDir/test"
+  JACOCO_CSV_LOCATION: "domain/build/customJacocoReportDir/test/jacocoTestReport.csv"
 
 stages:          # List of stages for jobs, and their order of execution
   - build
