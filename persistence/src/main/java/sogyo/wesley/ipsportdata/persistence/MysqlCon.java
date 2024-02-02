@@ -1,5 +1,7 @@
 package sogyo.wesley.ipsportdata.persistence;
 import java.sql.*;
+
+// can this file be deleted?
 public class MysqlCon {
     public static void main(String args[]){
         try{
