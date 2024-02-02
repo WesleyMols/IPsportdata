@@ -31,7 +31,7 @@ jacocoTest:
     - cat build_result.txt
     - gradle test jacocoTestReport
     - cp build_result.txt unittest_reslut.txt
-    - #echo "unit testing..." >> ./unittest_result.txt
+    - echo "unit testing..." >> ./unittest_result.txt
   artifacts:
       paths: 
         - "unittest_result.txt"
