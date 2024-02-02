@@ -14,9 +14,9 @@ build-job:       # This job runs in the build stage, which runs first.
   script:
     - gradle build
     - echo "Compile complete."
-  artifacts:
-    paths:
-        - "build_result.txt"
+  #artifacts:
+   # paths:
+    #    - "build_result.txt"
 
 unit-test-job:   # This job runs in the test stage.
   stage: test
@@ -28,29 +28,18 @@ jacocoTest:
   stage: test
   image: gradle
   script: 
-    - cat build_result.txt
+   # - cat build_result.txt
     - gradle test jacocoTestReport
-    - cp build_result.txt unittest_reslut.txt
-    - echo "unit testing..." >> ./unittest_result.txt
+    #- cp build_result.txt unittest_reslut.txt
+    #- echo "unit testing..." >> ./unittest_result.txt
   artifacts:
       paths: 
-        - "unittest_result.txt"
+       # - "unittest_result.txt"
         - "domain/build/reports/tests/test/packages"
 
-deploy-job:      # This job runs in the deploy stage.
-  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
-  #environment: production
-  script:
-     - cat build_result.txt
-     - cat unittest_result.txt
+#deploy-job:      # This job runs in the deploy stage.
+#  stage: deploy  
+#  script:
+#     - cat build_result.txt
+#     - cat unittest_result.txt
 
-
-save-job:
-  stage: .post
-  image: gradle
-  script:
-    - gradle jar
-  artifacts:
-    paths:
-      - "domain/build/libs/"
-  
