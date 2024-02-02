@@ -3,9 +3,9 @@ import java.util.UUID;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.constraints.Positive;
+
 import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
+
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -14,7 +14,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import sogyo.wesley.ipsportdata.app.CountDTO;
 import sogyo.wesley.ipsportdata.app.InputDTO;
-import sogyo.wesley.ipsportdata.domain.Analysor;
+
 import sogyo.wesley.ipsportdata.domain.IAnalysor;
 import sogyo.wesley.ipsportdata.domain.IFactory;
 import sogyo.wesley.ipsportdata.persistence.IRepository;

@@ -1,5 +1,5 @@
 package sogyo.wesley.ipsportdata.persistence;
-import sogyo.wesley.ipsportdata.domain.Analysor;
+
 import sogyo.wesley.ipsportdata.domain.IAnalysor;
 
 import java.sql.*;
