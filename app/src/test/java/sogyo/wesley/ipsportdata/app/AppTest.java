@@ -10,8 +10,10 @@ import sogyo.wesley.ipsportdata.domain.App2;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
+
     @Test void appHasAGreeting() {
         App2 classUnderTest = new App2();
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
+
 }

@@ -19,7 +19,7 @@ public class App {
 
 
     public String getGreeting() {
-        return "Hello World!";
+        return " World!";
     }
 
     public static void main(String[] args) throws Exception {

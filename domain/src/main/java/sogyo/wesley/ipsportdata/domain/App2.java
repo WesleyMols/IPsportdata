@@ -3,12 +3,25 @@
  */
 package sogyo.wesley.ipsportdata.domain;
 
+import java.sql.*;
+
 public class App2 {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App2().getGreeting());
+  
+         try{
+            Class.forName("com.mysql.jdbc.Driver");
+            System.out.println("null");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ip_wesley", "root", "11BHL>WAX:tv");
+            Statement statement = con.createStatement();
+            ResultSet resultSet = statement.executeQuery("select * from datamlss");
+            while (resultSet.next()) 
+                System.out.println("in while");
+                System.out.println(resultSet.getInt(1)+"  "+resultSet.getString(2)+"  ");  
+                con.close();  
+            }catch(Exception e){ System.out.println(e);} 
     }
 }

@@ -1,5 +1,5 @@
 package sogyo.wesley.ipsportdata.domain;
 
 public interface IFactory {
-    IAnalysor createNewAnalysis();
+    IAnalysor createNewAnalysis(String name);
 }

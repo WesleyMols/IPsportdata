@@ -3,17 +3,18 @@ import java.util.UUID;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.constraints.Positive;
+
 import jakarta.ws.rs.Consumes;
+
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import sogyo.wesley.ipsportdata.app.DTO.AnalysorDTO;
-import sogyo.wesley.ipsportdata.app.DTO.StartInputDTO;
-import sogyo.wesley.ipsportdata.domain.Analysor;
+import sogyo.wesley.ipsportdata.app.CountDTO;
+import sogyo.wesley.ipsportdata.app.InputDTO;
+
 import sogyo.wesley.ipsportdata.domain.IAnalysor;
 import sogyo.wesley.ipsportdata.domain.IFactory;
 import sogyo.wesley.ipsportdata.persistence.IRepository;
@@ -32,18 +33,22 @@ public class IPController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response start(@Context HttpServletRequest request, StartInputDTO body) {
+    public Response start(@Context HttpServletRequest request, InputDTO input) {
         HttpSession session = request.getSession(true);
-
-        IAnalysor analysor = factory.createNewAnalysis();
+        System.out.println(input.getUsername());
+        IAnalysor analysor = factory.createNewAnalysis(input.getUsername());
         String gameId = UUID.randomUUID().toString();
         session.setAttribute("gameId", gameId);
-        repository.save(gameId, analysor);
-        var output = new AnalysorDTO(analysor);
-        return Response.status(200).entity(output).build();
+        repository.save(gameId, analysor); //hash
+        
+        System.out.println(repository.get(gameId));
+        CountDTO count = new CountDTO();
+        count.setCount(5);
+        repository.MysqlCon(analysor);
+        return Response.status(200).entity(count).build();
     }
 
-    @Path("/analyse")
+   /*  @Path("/analyse")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -52,7 +57,7 @@ public class IPController {
         String Id = (String) session.getAttribute("id");
         IAnalysor analysor = repository.get(Id);
         repository.save(Id, analysor);
-        AnalysorDTO output = new AnalysorDTO(analysor);
-        return Response.status(200).entity(output).build();
-    }
+       
+        return Response.status(200).build();
+    } */
 }
