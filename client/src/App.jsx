@@ -8,6 +8,9 @@ function App() {
   
   var result;
   const [username, setUsername] = useState("");
+  const [power, setPower] = useState();
+  const [lactate, setLactate] = useState();
+  const [lactateTwo, setLactateTwo] = useState();
   const onsubmit = async () =>{
     console.log("clicked")
     result = await start(username);
@@ -25,6 +28,7 @@ function App() {
           <img src={lacatelogo} className='lactate logo' alt='Lactate logo'/>
       </div>
       <h1>MLSS data analysis</h1>
+      
         <div>                 
             <input
               type = "text"
@@ -36,9 +40,80 @@ function App() {
         <button onClick={() => onsubmit()}  >
           Analyse 
         </button>
+       
         
         <ShowUsername
        />
+       <br />
+       <div className="grid grid-cols-4 gap-4">
+       <input
+        type='text'
+        id='power'
+        placeholder='power'
+        value={power}
+        onChange={e => setPower(e.target.value)}
+        />
+        <input
+        type='text'
+        id='lactate'
+        placeholder='lactate at 3min'
+        value={lactate}
+        onChange={e => setLactate(e.target.value)}
+        />
+        <input 
+        type='text'
+        id='lactate'
+        placeholder='lactate at 9min'
+        value={lactateTwo}
+        onChange={e => setLactateTwo(e.target.value)}
+        />
+        <br />
+        <input
+        type='text'
+        id='power'
+        placeholder='power'
+        value={power}
+        onChange={e => setPower(e.target.value)}
+        />
+        <input
+        type='text'
+        id='lactate'
+        placeholder='lactate at 3min'
+        value={lactate}
+        onChange={e => setLactate(e.target.value)}
+        />
+        <input 
+        type='text'
+        id='lactate'
+        placeholder='lactate at 9min'
+        value={lactateTwo}
+        onChange={e => setLactateTwo(e.target.value)}
+        />
+         <br />
+        <input
+        type='text'
+        id='power'
+        placeholder='power'
+        value={power}
+        onChange={e => setPower(e.target.value)}
+        />
+        <input
+        type='text'
+        id='lactate'
+        placeholder='lactate at 3min'
+        value={lactate}
+        onChange={e => setLactate(e.target.value)}
+        />
+        <input 
+        type='text'
+        id='lactate'
+        placeholder='lactate at 9min'
+        value={lactateTwo}
+        onChange={e => setLactateTwo(e.target.value)}
+        />
+      </div>
+      
+      
       </div>
     </>
   )
