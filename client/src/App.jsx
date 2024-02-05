@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import lacatelogo from '/lactatelogo.png'
-import { start } from "./services/api"
+import { analyse, start } from "./services/api"
 //import classNames from "classnames";
 import './App.css'
 
@@ -18,6 +18,10 @@ function App() {
     setResult(result.username)
   }
 
+  const onsubmitData = async () => {
+    const data = await analyse(power, lactate, lactateTwo)
+    
+  }
   function ShowUsername() {
    return <div>username: {result}</div>}
 
@@ -110,7 +114,9 @@ function App() {
         onChange={e => setLactateTwo(e.target.value)}
         />
       </div>
-      
+      <button onClick={() => onsubmitData()}>
+        analyse
+      </button>
       
       </div>
     </>

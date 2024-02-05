@@ -31,7 +31,9 @@ export async function analyse() {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            
+            power: power,
+            lactate: lactate,
+            lactatetwo: lactatetwo
         })
     });
 
