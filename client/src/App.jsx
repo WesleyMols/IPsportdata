@@ -1,20 +1,19 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import lacatelogo from '/lactatelogo.png'
 import { start } from "./services/api"
-//import { FloatingInput } from "../components/FloatingInput.jsx"
 //import classNames from "classnames";
 import './App.css'
-//initiate branch commit
 
 function App() {
-  const [count, setCount] = useState(0);
-  var div;
+  
+  var result;
   const [username, setUsername] = useState("");
-  const onsubmit = async () => {
+  const onsubmit = async () =>{
     console.log("clicked")
-    const result = await start(username);
+    result = await start(username);
     console.log(result)
+    return <div>{result}</div>;
+    
   }
 
   function ShowUsername() {
@@ -23,15 +22,9 @@ function App() {
   return (
     <>
       <div>
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-          <img src={reactLogo} className="logo react" alt="React logo" />
+          <img src={lacatelogo} className='lactate logo' alt='Lactate logo'/>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        </div>
+      <h1>MLSS data analysis</h1>
         <div>                 
             <input
               type = "text"
@@ -41,9 +34,10 @@ function App() {
               onChange={e => setUsername(e.target.value)}
               />   
         <button onClick={() => onsubmit()}  >
-          Analyse
+          Analyse 
         </button>
-       <ShowUsername
+        
+        <ShowUsername
        />
       </div>
     </>

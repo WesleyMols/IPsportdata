@@ -12,6 +12,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import sogyo.wesley.ipsportdata.app.AnalysorDTO;
 import sogyo.wesley.ipsportdata.app.CountDTO;
 import sogyo.wesley.ipsportdata.app.InputDTO;
 
@@ -45,7 +46,8 @@ public class IPController {
         CountDTO count = new CountDTO();
         count.setCount(5);
         repository.MysqlCon(analysor);
-        return Response.status(200).entity(count).build();
+        var output = new AnalysorDTO(analysor);
+        return Response.status(200).entity(output).build();
     }
 
    /*  @Path("/analyse")
