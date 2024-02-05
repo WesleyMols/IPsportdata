@@ -6,21 +6,20 @@ import './App.css'
 
 function App() {
   
-  var result;
+  const [result, setResult] = useState();
   const [username, setUsername] = useState("");
   const [power, setPower] = useState();
   const [lactate, setLactate] = useState();
   const [lactateTwo, setLactateTwo] = useState();
   const onsubmit = async () =>{
     console.log("clicked")
-    result = await start(username);
+    const result = await start(username)
     console.log(result)
-    return <div>{result}</div>;
-    
+    setResult(result.username)
   }
 
   function ShowUsername() {
-   return <div>username: {username}</div>}
+   return <div>username: {result}</div>}
 
   return (
     <>
@@ -40,7 +39,6 @@ function App() {
         <button onClick={() => onsubmit()}  >
           Analyse 
         </button>
-       
         
         <ShowUsername
        />

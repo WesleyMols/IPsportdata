@@ -46,8 +46,8 @@ public class IPController {
         CountDTO count = new CountDTO();
         count.setCount(5);
         repository.MysqlCon(analysor);
-        var output = new AnalysorDTO(analysor);
-        return Response.status(200).entity(output).build();
+        //var output = new AnalysorDTO(analysor);
+        return Response.status(200).entity(analysor).build();
     }
 
    /*  @Path("/analyse")
