@@ -9,13 +9,16 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0);
-  
+  var div;
   const [username, setUsername] = useState("");
   const onsubmit = async () => {
     console.log("clicked")
     const result = await start(username);
-    console.log(result)  
+    console.log(result)
   }
+
+  function ShowUsername() {
+   return <div>username: {username}</div>}
 
   return (
     <>
@@ -39,9 +42,9 @@ function App() {
               />   
         <button onClick={() => onsubmit()}  >
           Analyse
-         
         </button>
-       
+       <ShowUsername
+       />
       </div>
     </>
   )
