@@ -8,7 +8,6 @@ import org.glassfish.jersey.servlet.ServletContainer;
 
 import sogyo.wesley.ipsportdata.app.controllers.IPController;
 import sogyo.wesley.ipsportdata.domain.AnalysisFactory;
-import sogyo.wesley.ipsportdata.domain.App2;
 import sogyo.wesley.ipsportdata.domain.IFactory;
 import sogyo.wesley.ipsportdata.persistence.IRepository;
 import sogyo.wesley.ipsportdata.persistence.Repository;
@@ -17,13 +16,12 @@ import sogyo.wesley.ipsportdata.persistence.Repository;
 public class App {
     private static final int PORT = 8080;
 
-
     public String getGreeting() {
         return " World!";
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println(new App2().getGreeting());
+   
         Server server = createServer(PORT);
         server.start();
         server.join();
