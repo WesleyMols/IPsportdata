@@ -40,9 +40,6 @@ public class IPController {
         IAnalysor analysor = factory.createNewAnalysis(input.getUsername());
         String gameId = UUID.randomUUID().toString();
         session.setAttribute("gameId", gameId);
-        repository.save(gameId, analysor); //hash
-        
-        System.out.println(repository.get(gameId));
         CountDTO count = new CountDTO();
         count.setCount(5);
         repository.MysqlCon(analysor);
