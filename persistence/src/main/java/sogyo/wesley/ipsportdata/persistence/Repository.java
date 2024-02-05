@@ -25,15 +25,25 @@ public class Repository implements IRepository{
                                     +resultSet.getString(5)+"  "
                                     +resultSet.getString(6)+"  "
                                     +resultSet.getString(7)+"  ");
-        
+            
         
             String insert = game.getUsername().toString();
             String query = "INSERT INTO user (username) " + "VALUES (?)";
             PreparedStatement runquery = con.prepareStatement(query);
             runquery.setString(1, insert);
             runquery.execute();
-            //System.out.println(insert);
-            System.out.println("end");
+            System.out.println("endUserStorage");
+
+            String insertDataP = game.getPower().toString();
+            String insertDataLT1 = game.getLT1().toString();
+            String insertDataLT2 = game.getLT2().toString();
+            String queryData = "INSERT INTO datamlss (power, lactate_one, lactate_two) " + "VALUES (?,?,?)";
+            ResultSet resultsetData = statement.executeQuery(queryData);
+            PreparedStatement runqueryData = con.prepareStatement(queryData);
+            runqueryData.setString(1, insertDataP);
+            runqueryData.setString(2, insertDataLT1);
+            runqueryData.setString(3, insertDataLT2);
+            runqueryData.execute();
                 //con.close();  // this leads to exception nested exception
             }catch(Exception e){ System.out.println(e);} 
     }
