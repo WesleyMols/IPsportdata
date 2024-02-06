@@ -3,19 +3,13 @@ package sogyo.wesley.ipsportdata.domain;
 public class AnalysisFactory implements IFactory {
 
     @Override
-    public IAnalysor createNewAnalysis(String name) {
-        return new Analysor(name);    
+    public IAnalysor createNewAnalysis(int power, float lactate_one, float lactate_two) {
+        return new Analysor(power, lactate_one, lactate_two);
     }
 
-   /*  @Override
-    public int hashCode() {
-        int result = 17;
-        String name = "Julia";
-        if (createNewAnalysis(name) != null) {
-            result = 31 * result + createNewAnalysis(name).hashCode();
-        }
-        return result;
+    @Override
+    public IAnalysor createNewAnalysis(String name){
+        return new Analysor(name);
     }
 
-     */
-}
+  }
