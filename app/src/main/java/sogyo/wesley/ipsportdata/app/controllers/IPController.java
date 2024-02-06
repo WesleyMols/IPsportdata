@@ -3,9 +3,9 @@ import java.util.UUID;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.constraints.Positive;
+
 import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
+
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -14,7 +14,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import sogyo.wesley.ipsportdata.app.CountDTO;
 import sogyo.wesley.ipsportdata.app.InputDTO;
-import sogyo.wesley.ipsportdata.domain.Analysor;
+
 import sogyo.wesley.ipsportdata.domain.IAnalysor;
 import sogyo.wesley.ipsportdata.domain.IFactory;
 import sogyo.wesley.ipsportdata.persistence.IRepository;
@@ -36,12 +36,15 @@ public class IPController {
     public Response start(@Context HttpServletRequest request, InputDTO input) {
         HttpSession session = request.getSession(true);
         System.out.println(input.getUsername());
-        IAnalysor analysor = factory.createNewAnalysis();
+        IAnalysor analysor = factory.createNewAnalysis(input.getUsername());
         String gameId = UUID.randomUUID().toString();
         session.setAttribute("gameId", gameId);
-        repository.save(gameId, analysor);
+        repository.save(gameId, analysor); //hash
+        
+        System.out.println(repository.get(gameId));
         CountDTO count = new CountDTO();
         count.setCount(5);
+        repository.MysqlCon(analysor);
         return Response.status(200).entity(count).build();
     }
 

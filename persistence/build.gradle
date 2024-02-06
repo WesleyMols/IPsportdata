@@ -22,6 +22,9 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
     testRuntimeOnly "org.junit.platform:junit-platform-commons:1.8.2"
     implementation project(':domain')
+      // this is for mysql java connector
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
+    //runtime "mysql:mysql-connector-java:8.0.15"
 }
 
 
