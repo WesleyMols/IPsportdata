@@ -1,58 +1,84 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { FloatingInput } from "sogyo/wesley/ipsportdata/client/components/FloatingInput";
-import classNames from "classnames";
+import lacatelogo from '/lactatelogo.png'
+import { analyse, start } from "./services/api"
+//import classNames from "classnames";
 import './App.css'
 
-
 function App() {
-  const [count, setCount] = useState(0);
+  
+  const [result, setResult] = useState();
   const [username, setUsername] = useState("");
+  const [power, setPower] = useState("");
+  const [lactate, setLactate] = useState("");
+  const [lactate_two, setLactateTwo] = useState("");
   const onsubmit = async () => {
-    const result = await start(username);
-
+    console.log("clicked")
+    const result = await start(username)
+    console.log(result)
+    setResult(result.username)
   }
+
+  const onsubmitData = async () => {
+    console.log("clicked2")
+    const data = await analyse(power, lactate, lactate_two)
+    
+  }
+
+  function ShowUsername() {
+   return <div>username: {result}</div>}
+
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+          <img src={lacatelogo} className='lactate logo' alt='Lactate logo'/>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-        </div>
-        <div>
-
-        <form><ol>
-          <li>
-            <FloatingInput
+      <h1>MLSS data analysis</h1>
+      
+        <div>                 
+            <input
+              type = "text"
               id="username"
-              label="enter your name"
+              placeholder="enter your name"
               value={username}
               onChange={e => setUsername(e.target.value)}
-              />
-          </li>
-          <li>
+              />   
         <button onClick={() => onsubmit()}  >
-          Analyse
-          {console.log("clicked")}
+          submit 
         </button>
-        </li></ol></form>
+        
+        <ShowUsername
+       />
+       <br />
+       <div className="grid grid-cols-4 gap-4">
+       <input
+        type="text"
+        id="power"
+        placeholder="power"
+        value={power}
+        onChange={e => setPower(e.target.value)}
+        />
+        <input
+        type="text"
+        id="lactate"
+        placeholder="lactate at 3min"
+        value={lactate}
+        onChange={e => setLactate(e.target.value)}
+        />
+        <input 
+        type="text"
+        id="lactate2"
+        placeholder="lactate at 9min"
+        value={lactate_two}
+        onChange={e => setLactateTwo(e.target.value)}
+        />
+        <br />
+             
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <button onClick={() => onsubmitData()}>
+        analyse
+      </button>
+      
+      </div>
     </>
   )
 }
