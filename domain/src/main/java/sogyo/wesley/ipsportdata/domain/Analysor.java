@@ -2,7 +2,7 @@ package sogyo.wesley.ipsportdata.domain;
 
 public class Analysor implements IAnalysor {
     String name = "";
-    String power = "";
+    int power;
     float lactate_one;
     float lactate_two;
 
@@ -10,10 +10,10 @@ public class Analysor implements IAnalysor {
         this.name = name;
     }
 
-    public Analysor(String power, float lactate_one, float lactate_two) {
-        this.power = power;
-        this.lactate_one = lactate_one;
-        this.lactate_two = lactate_two;
+    public Analysor(int power2, float lactate_one2, float lactate_two2) {
+        this.power = power2;
+        this.lactate_one = lactate_one2;
+        this.lactate_two = lactate_two2;
     }
 
     @Override
@@ -22,17 +22,17 @@ public class Analysor implements IAnalysor {
     }
 
     @Override
-    public Object getPower() {
+    public int getPower() {
         return power;
     }
 
     @Override
-    public Object getLT2() {
+    public float getLactate_two() {
         return lactate_two;
     }
 
     @Override
-    public Object getLT1() {
+    public float getLactate_one() {
         return lactate_one;
     }
 }

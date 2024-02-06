@@ -2,15 +2,15 @@ package sogyo.wesley.ipsportdata.app;
 
 public class InputDTO {
     private String username;
-    private String power = "";
+    private int power;
     private float lactate_one;
     private float lactate_two;
 
-    public String getPower() {
+    public int getPower() {
         return power;
     }
 
-    public void setPower(String power) {
+    public void setPower(int power) {
         this.power = power;
     }
 
@@ -18,7 +18,7 @@ public class InputDTO {
         return lactate_one;
     }
 
-    public void setLactate_one(float lactate_one) {
+    public void setLactate(float lactate_one) {
         this.lactate_one = lactate_one;
     }
 
@@ -26,7 +26,7 @@ public class InputDTO {
         return lactate_two;
     }
 
-    public void setLactate_two(float lactate_two) {
+    public void setLactateTwo(float lactate_two) {
         this.lactate_two = lactate_two;
     }
 

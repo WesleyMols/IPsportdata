@@ -23,7 +23,7 @@ export async function start(username) {
     }
 }
 
-export async function analyse() {
+export async function analyse(power, lactate, lactate_two) {
     const response = await fetch("sogyo/wesley/ipsportdata/app/analyse", {
         method: "POST",
         headers: {
@@ -33,7 +33,7 @@ export async function analyse() {
         body: JSON.stringify({
             power: power,
             lactate: lactate,
-            lactatetwo: lactatetwo
+            lactate_two: lactate_two
         })
     });
 

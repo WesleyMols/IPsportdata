@@ -8,10 +8,10 @@ function App() {
   
   const [result, setResult] = useState();
   const [username, setUsername] = useState("");
-  const [power, setPower] = useState();
-  const [lactate, setLactate] = useState();
-  const [lactateTwo, setLactateTwo] = useState();
-  const onsubmit = async () =>{
+  const [power, setPower] = useState("");
+  const [lactate, setLactate] = useState("");
+  const [lactate_two, setLactateTwo] = useState("");
+  const onsubmit = async () => {
     console.log("clicked")
     const result = await start(username)
     console.log(result)
@@ -19,9 +19,11 @@ function App() {
   }
 
   const onsubmitData = async () => {
-    const data = await analyse(power, lactate, lactateTwo)
+    console.log("clicked2")
+    const data = await analyse(power, lactate, lactate_two)
     
   }
+
   function ShowUsername() {
    return <div>username: {result}</div>}
 
@@ -41,7 +43,7 @@ function App() {
               onChange={e => setUsername(e.target.value)}
               />   
         <button onClick={() => onsubmit()}  >
-          Analyse 
+          submit 
         </button>
         
         <ShowUsername
@@ -49,70 +51,27 @@ function App() {
        <br />
        <div className="grid grid-cols-4 gap-4">
        <input
-        type='text'
-        id='power'
-        placeholder='power'
+        type="text"
+        id="power"
+        placeholder="power"
         value={power}
         onChange={e => setPower(e.target.value)}
         />
         <input
-        type='text'
-        id='lactate'
-        placeholder='lactate at 3min'
+        type="text"
+        id="lactate"
+        placeholder="lactate at 3min"
         value={lactate}
         onChange={e => setLactate(e.target.value)}
         />
         <input 
-        type='text'
-        id='lactate'
-        placeholder='lactate at 9min'
-        value={lactateTwo}
+        type="text"
+        id="lactate2"
+        placeholder="lactate at 9min"
+        value={lactate_two}
         onChange={e => setLactateTwo(e.target.value)}
         />
-        <br />
-        <input
-        type='text'
-        id='power'
-        placeholder='power'
-        value={power}
-        onChange={e => setPower(e.target.value)}
-        />
-        <input
-        type='text'
-        id='lactate'
-        placeholder='lactate at 3min'
-        value={lactate}
-        onChange={e => setLactate(e.target.value)}
-        />
-        <input 
-        type='text'
-        id='lactate'
-        placeholder='lactate at 9min'
-        value={lactateTwo}
-        onChange={e => setLactateTwo(e.target.value)}
-        />
-         <br />
-        <input
-        type='text'
-        id='power'
-        placeholder='power'
-        value={power}
-        onChange={e => setPower(e.target.value)}
-        />
-        <input
-        type='text'
-        id='lactate'
-        placeholder='lactate at 3min'
-        value={lactate}
-        onChange={e => setLactate(e.target.value)}
-        />
-        <input 
-        type='text'
-        id='lactate'
-        placeholder='lactate at 9min'
-        value={lactateTwo}
-        onChange={e => setLactateTwo(e.target.value)}
-        />
+       
       </div>
       <button onClick={() => onsubmitData()}>
         analyse

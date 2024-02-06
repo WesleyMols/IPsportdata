@@ -3,9 +3,9 @@ package sogyo.wesley.ipsportdata.domain;
 public interface IAnalysor {
     String getUsername();
 
-    Object getPower();
+    int getPower();
 
-    Object getLT2();
+    float getLactate_two();
 
-    Object getLT1();
+    float getLactate_one();
 }

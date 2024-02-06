@@ -12,10 +12,10 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import sogyo.wesley.ipsportdata.app.AnalysorDTO;
+
 import sogyo.wesley.ipsportdata.app.CountDTO;
 import sogyo.wesley.ipsportdata.app.InputDTO;
-import sogyo.wesley.ipsportdata.domain.Analysor;
+
 import sogyo.wesley.ipsportdata.domain.IAnalysor;
 import sogyo.wesley.ipsportdata.domain.IFactory;
 import sogyo.wesley.ipsportdata.persistence.IRepository;
@@ -48,13 +48,13 @@ public class IPController {
         return Response.status(200).entity(inputname).build();
     }
 
-     @Path("/analyse")
+    @Path("/analyse")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response analyse(@Context HttpServletRequest request, InputDTO input) {
         HttpSession session = request.getSession(false);
-        String Id = (String) session.getAttribute("id");
+        String Id = (String) session.getAttribute("gameId");
         IAnalysor analysor = factory.createNewAnalysis(input.getPower(), input.getLactate_one(), input.getLactate_two());
         repository.MysqlCon(analysor);
        
