@@ -1,6 +1,14 @@
 This is the final project of the Sogyo academy for software engineers.
 My project is titled IPsportdata. The goal is to analyse test results and give a race peace advice based on input of test results.
 
+Installation guide
+1. to run this application one would need to install Node and gradle
+2. more?
+3. the backend server is started with the command: gradle run
+4. the frontend server is started from the client folder with the command: npm run dev
+5. localhost can then be found at port 5173 (default)
+
+
 
 Must:
 * some form of data input, starting with user input on webpage
@@ -12,7 +20,6 @@ Must:
 Should:
 * calculate aerobe threshold
 * allow more data types: heart rate, power
-* provide training zones
 * store results with timestamp per user
 
 
@@ -20,7 +27,7 @@ Could:
 * allow multiple test formats, all on different pages
 * plot graph of the input data and calculated values
 * analyse previous results with each other
-
+* provide training zones
 
 
 
@@ -42,7 +49,7 @@ It is intended to gain experience in the following technical aspects:
 Furthermore, the following personal goals are formulated to improve upon:
 * growth mindset
 * ask to understand the problem instead of to find one solution
-*
+
 
 
 Details of software stack:
