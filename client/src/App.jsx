@@ -71,7 +71,8 @@ function App() {
         value={lactate_two}
         onChange={e => setLactateTwo(e.target.value)}
         />
-       
+        <br />
+             
       </div>
       <button onClick={() => onsubmitData()}>
         analyse
