@@ -58,7 +58,7 @@ Details of software stack:
 * domain layer contains the businesslogic
 * persistence is used to store
 
-![alt text](architectureDraw.drawio "architecture")
+![alt text](architectureDraw.svg "architecture")
 
 
 First restriction to use this application:
