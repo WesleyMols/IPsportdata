@@ -58,6 +58,8 @@ Details of software stack:
 * domain layer contains the businesslogic
 * persistence is used to store
 
+![alt text](architectureDraw.drawio "architecture")
+
 
 First restriction to use this application:
 A protocol to find MLSS must be followed similar to the described protocol on: https://www.highnorth.co.uk/articles/blood-lactate-testing-protocols-for-cyclists
