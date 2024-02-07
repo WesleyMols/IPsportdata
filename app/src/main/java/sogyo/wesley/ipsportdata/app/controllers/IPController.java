@@ -56,7 +56,7 @@ public class IPController {
         HttpSession session = request.getSession(false);
         String Id = (String) session.getAttribute("gameId");
         IAnalysor analysor = factory.createNewAnalysis(input.getPower(), input.getLactate_one(), input.getLactate_two());
-        repository.MysqlCon(analysor);
+        repository.MysqlCon(analysor, Id);
        
         return Response.status(200).entity(analysor).build();
     }
