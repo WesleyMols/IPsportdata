@@ -9,7 +9,9 @@ import org.glassfish.jersey.servlet.ServletContainer;
 import sogyo.wesley.ipsportdata.app.controllers.IPController;
 import sogyo.wesley.ipsportdata.domain.AnalysisFactory;
 import sogyo.wesley.ipsportdata.domain.IFactory;
+import sogyo.wesley.ipsportdata.persistence.IMock;
 import sogyo.wesley.ipsportdata.persistence.IRepository;
+import sogyo.wesley.ipsportdata.persistence.Mock;
 import sogyo.wesley.ipsportdata.persistence.Repository;
 
 
@@ -47,7 +49,7 @@ public class App {
 
      private static ResourceConfig createResources() {
         IFactory factory = new AnalysisFactory();
-        IRepository repository = new Repository();
+        IMock repository = new Mock();
         IPController ipController = new IPController(factory, repository);
         return new ResourceConfig().register(ipController);
     }
