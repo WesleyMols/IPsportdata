@@ -22,8 +22,8 @@ function App() {
   const onsubmitData = async () => {
     console.log("clicked2")
     const data = await analyse(power, lactate, lactate_two)
-    console.log(data)
-    setData(data.lt_diff)
+    console.log(data) // alle getters uit analysor.java
+    setData(data.calcLactateDiff)
   }
 
   function ShowUsername() {
@@ -79,12 +79,12 @@ function App() {
         onChange={e => setLactateTwo(e.target.value)}
         />
         <br />
-        <ShowData/>
+       
       </div>
       <button onClick={() => onsubmitData()}>
         analyse
       </button>
-      
+      <ShowData/>
       </div>
     </>
   )

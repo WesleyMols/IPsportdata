@@ -17,7 +17,7 @@ public class Analysor implements IAnalysor {
         this.power = power2;
         this.lactate_one = lactate_one2;
         this.lactate_two = lactate_two2;
-        calcLactateDiff();
+        getCalcLactateDiff();
     }
 
     @Override
@@ -40,7 +40,7 @@ public class Analysor implements IAnalysor {
         return lactate_one;
     }
 
-    public double calcLactateDiff() {
+    public double getCalcLactateDiff() {
         lt_diff = lactate_two - lactate_one;
         return lt_diff;
     }
@@ -54,7 +54,7 @@ public class Analysor implements IAnalysor {
         return isEnd;
     }
 
-    public String outputAnalysis() {
+    public String getOutputAnalysis() {
         if(isEnd) {outputMessage= outputMessage + power;}
         return outputMessage;
     }

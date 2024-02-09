@@ -15,7 +15,7 @@ public class AnalysorTest {
     private double lactate_one = 3.3;
     private double lactate_two = 5.2;
     private double lt_diffTest = lactate_two - lactate_one;
-    private Analysor result = new Analysor(100, lactate_one, lactate_two);
+     Analysor result = new Analysor(100, lactate_one, lactate_two);
     private boolean isEnd;
     private String outputMessage;
     //test
@@ -31,6 +31,11 @@ public class AnalysorTest {
     }
 
     @Test
+    void getCalcLactateDiffTest() {
+        assertEquals(lt_diffTest, result.lt_diff);
+    }
+
+    @Test
     void isAnalysisEndTest() {
         isEnd = result.isAnalysisEnd();
         assertTrue(isEnd);
@@ -38,15 +43,15 @@ public class AnalysorTest {
 
     @Test
     void outputAnalysisConcatTest() {
-        isAnalysisEndTest();
+        isEnd = result.isAnalysisEnd();
         if(isEnd) {outputMessage = "Your MLSS power: " + result.power;}
         assertEquals(outputMessage, "Your MLSS power: 100");
     }
 
     @Test
     void outputAnalysisTest() {
-        isAnalysisEndTest();
-        result.outputAnalysis();
+        result.isAnalysisEnd();
+        result.getOutputAnalysis();
         outputMessage = "Your MLSS power: " + result.power;
         assertEquals(outputMessage, result.outputMessage);
     }
