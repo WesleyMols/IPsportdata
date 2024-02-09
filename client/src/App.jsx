@@ -8,9 +8,10 @@ function App() {
   
   const [result, setResult] = useState();
   const [username, setUsername] = useState("");
-  const [power, setPower] = useState("");
-  const [lactate, setLactate] = useState("");
-  const [lactate_two, setLactateTwo] = useState("");
+  const [power, setPower] = useState(0);
+  const [lactate, setLactate] = useState(0);
+  const [lactate_two, setLactateTwo] = useState(0);
+  const [data, setData] = useState();
   const onsubmit = async () => {
     console.log("clicked")
     const result = await start(username)
@@ -21,11 +22,17 @@ function App() {
   const onsubmitData = async () => {
     console.log("clicked2")
     const data = await analyse(power, lactate, lactate_two)
-    
+    console.log(data)
+    setData(data.lt_diff)
   }
 
   function ShowUsername() {
    return <div>username: {result}</div>}
+
+
+  function ShowData() {
+    return <div>lactate: {data}</div>
+  }
 
   return (
     <>
@@ -72,7 +79,7 @@ function App() {
         onChange={e => setLactateTwo(e.target.value)}
         />
         <br />
-             
+        <ShowData/>
       </div>
       <button onClick={() => onsubmitData()}>
         analyse

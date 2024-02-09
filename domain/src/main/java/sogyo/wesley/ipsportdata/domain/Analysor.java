@@ -5,6 +5,7 @@ public class Analysor implements IAnalysor {
     int power;
     float lactate_one;
     float lactate_two;
+    float lt_diff;
 
     public Analysor(String name) {
         this.name = name;
@@ -14,6 +15,7 @@ public class Analysor implements IAnalysor {
         this.power = power2;
         this.lactate_one = lactate_one2;
         this.lactate_two = lactate_two2;
+        lt_diff = lactate_one2 - lactate_two2;
     }
 
     @Override
@@ -34,5 +36,10 @@ public class Analysor implements IAnalysor {
     @Override
     public float getLactate_one() {
         return lactate_one;
+    }
+
+    public float calcLactateDiff() {
+        lt_diff = lactate_one - lactate_two;
+        return lt_diff;
     }
 }
