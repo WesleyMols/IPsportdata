@@ -5,7 +5,7 @@ public interface IAnalysor {
 
     int getPower();
 
-    float getLactate_two();
+    double getLactate_two();
 
-    float getLactate_one();
+    double getLactate_one();
 }

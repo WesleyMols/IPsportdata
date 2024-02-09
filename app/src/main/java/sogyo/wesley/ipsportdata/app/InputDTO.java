@@ -5,6 +5,7 @@ public class InputDTO {
     private int power;
     private float lactate_one;
     private float lactate_two;
+    private float lt_diff = 100;
 
     public int getPower() {
         return power;
@@ -38,5 +39,12 @@ public class InputDTO {
         this.username = username;
     }
 
+    public float getLt_diff() {
+        return lt_diff;
+    }
+
+    public void setLt_diff(float lt_diff){
+        this.lt_diff = lt_diff;
+    }
     
 }
