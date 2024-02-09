@@ -36,16 +36,16 @@ public class Repository implements IRepository{
             System.out.println("endUserStorage");
              
             int insertDataP = game.getPower();
-            float insertDataLT1 = game.getLactate_one();
-            float insertDataLT2 = game.getLactate_two();
+            double insertDataLT1 = game.getLactate_one();
+            double insertDataLT2 = game.getLactate_two();
             resultSet = statement.getGeneratedKeys();
             int insertNameId = 2;
             query = "INSERT INTO datamlss (power, lactate_one, lactate_two) " + "VALUES (?,?,?)";
             //ResultSet resultsetData = statement.executeQuery(query);
             PreparedStatement runqueryData = con.prepareStatement(query);
             runqueryData.setInt(1, insertDataP);
-            runqueryData.setFloat(2, insertDataLT1);
-            runqueryData.setFloat(3, insertDataLT2);
+            runqueryData.setDouble(2, insertDataLT1);
+            runqueryData.setDouble(3, insertDataLT2);
             //runqueryData.setInt(4, insertNameId);
             runqueryData.execute();  
         }catch(Exception e){ System.out.println(e);}
