@@ -1,34 +1,46 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { start } from "./services/api"
-//import { FloatingInput } from "../components/FloatingInput.jsx"
+import lacatelogo from '/lactatelogo.png'
+import { analyse, start } from "./services/api"
 //import classNames from "classnames";
 import './App.css'
-//initiate branch commit
 
 function App() {
-  const [count, setCount] = useState(0);
   
+  const [result, setResult] = useState();
   const [username, setUsername] = useState("");
+  const [power, setPower] = useState(0);
+  const [lactate, setLactate] = useState(0);
+  const [lactate_two, setLactateTwo] = useState(0);
+  const [data, setData] = useState();
   const onsubmit = async () => {
     console.log("clicked")
-    const result = await start(username);
-    console.log(result)  
+    const result = await start(username)
+    console.log(result)
+    setResult(result.username)
+  }
+
+  const onsubmitData = async () => {
+    console.log("clicked2")
+    const data = await analyse(power, lactate, lactate_two)
+    console.log(data)
+    setData(data.lt_diff)
+  }
+
+  function ShowUsername() {
+   return <div>username: {result}</div>}
+
+
+  function ShowData() {
+    return <div>lactate: {data}</div>
   }
 
   return (
     <>
       <div>
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-          <img src={reactLogo} className="logo react" alt="React logo" />
+          <img src={lacatelogo} className='lactate logo' alt='Lactate logo'/>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        </div>
+      <h1>MLSS data analysis</h1>
+      
         <div>                 
             <input
               type = "text"
@@ -38,10 +50,41 @@ function App() {
               onChange={e => setUsername(e.target.value)}
               />   
         <button onClick={() => onsubmit()}  >
-          Analyse
-         
+          submit 
         </button>
-       
+        
+        <ShowUsername
+       />
+       <br />
+       <div className="grid grid-cols-4 gap-4">
+       <input
+        type="text"
+        id="power"
+        placeholder="power"
+        value={power}
+        onChange={e => setPower(e.target.value)}
+        />
+        <input
+        type="text"
+        id="lactate"
+        placeholder="lactate at 3min"
+        value={lactate}
+        onChange={e => setLactate(e.target.value)}
+        />
+        <input 
+        type="text"
+        id="lactate2"
+        placeholder="lactate at 9min"
+        value={lactate_two}
+        onChange={e => setLactateTwo(e.target.value)}
+        />
+        <br />
+        <ShowData/>
+      </div>
+      <button onClick={() => onsubmitData()}>
+        analyse
+      </button>
+      
       </div>
     </>
   )

@@ -12,19 +12,21 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+
 import sogyo.wesley.ipsportdata.app.CountDTO;
 import sogyo.wesley.ipsportdata.app.InputDTO;
 
 import sogyo.wesley.ipsportdata.domain.IAnalysor;
 import sogyo.wesley.ipsportdata.domain.IFactory;
+import sogyo.wesley.ipsportdata.persistence.IMock;
 import sogyo.wesley.ipsportdata.persistence.IRepository;
 
 @Path("/sogyo/wesley/ipsportdata/app")
 public class IPController {
     private IFactory factory;
-    private IRepository repository;
+    private IMock repository;
 
-    public IPController(IFactory factory, IRepository repository) {
+    public IPController(IFactory factory, IMock repository) {
         this.factory = factory;
         this.repository = repository;
     }
@@ -36,28 +38,27 @@ public class IPController {
     public Response start(@Context HttpServletRequest request, InputDTO input) {
         HttpSession session = request.getSession(true);
         System.out.println(input.getUsername());
-        IAnalysor analysor = factory.createNewAnalysis(input.getUsername());
+        IAnalysor inputname = factory.createNewAnalysis(input.getUsername());
         String gameId = UUID.randomUUID().toString();
         session.setAttribute("gameId", gameId);
-        repository.save(gameId, analysor); //hash
-        
-        System.out.println(repository.get(gameId));
         CountDTO count = new CountDTO();
         count.setCount(5);
-        repository.MysqlCon(analysor);
-        return Response.status(200).entity(count).build();
+        repository.save(gameId, inputname);
+        System.out.println(repository.get(gameId));
+        //repository.MysqlCon(inputname);
+        return Response.status(200).entity(inputname).build();
     }
 
-   /*  @Path("/analyse")
+    @Path("/analyse")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response analyse(@Context HttpServletRequest request) {
+    public Response analyse(@Context HttpServletRequest request, InputDTO input) {
         HttpSession session = request.getSession(false);
-        String Id = (String) session.getAttribute("id");
-        IAnalysor analysor = repository.get(Id);
+        String Id = (String) session.getAttribute("gameId");
+        IAnalysor analysor = factory.createNewAnalysis(input.getPower(), input.getLactate_one(), input.getLactate_two());
+        //repository.MysqlCon(analysor);
         repository.save(Id, analysor);
-       
-        return Response.status(200).build();
-    } */
+        return Response.status(200).entity(analysor).build();
+    }
 }
