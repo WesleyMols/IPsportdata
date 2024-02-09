@@ -12,6 +12,5 @@ public class AnalysisFactoryTest {
     @Test
     void createNewAnalysisTest() {
         assertInstanceOf(Analysor.class, testObject);
-       
     }
 }

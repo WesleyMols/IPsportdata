@@ -6,6 +6,7 @@ public class Analysor implements IAnalysor {
     double lactate_one;
     double lactate_two;
     double lt_diff;
+    boolean isEnd;
 
     public Analysor(String name) {
         this.name = name;
@@ -15,7 +16,7 @@ public class Analysor implements IAnalysor {
         this.power = power2;
         this.lactate_one = lactate_one2;
         this.lactate_two = lactate_two2;
-        lt_diff = lactate_one2 - lactate_two2;
+        calcLactateDiff();
     }
 
     @Override
@@ -39,7 +40,16 @@ public class Analysor implements IAnalysor {
     }
 
     public double calcLactateDiff() {
-        lt_diff = lactate_one - lactate_two;
+        lt_diff = lactate_two - lactate_one;
         return lt_diff;
+    }
+
+    public boolean isAnalysisEnd() {   
+        if(lt_diff > 1) {
+            isEnd = true;
+        } else {
+            isEnd = false;
+        }
+        return isEnd;
     }
 }
