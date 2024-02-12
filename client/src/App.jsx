@@ -31,7 +31,8 @@ function App() {
 
 
   function ShowData() {
-    return <div>lactate: {data}</div>
+    return <><div>lactate difference: {data}</div>
+    <div>therefore your MLSS power lies between power-1 and {power} </div></>
   }
 
   return (
