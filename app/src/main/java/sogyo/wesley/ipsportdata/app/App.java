@@ -9,21 +9,14 @@ import org.glassfish.jersey.servlet.ServletContainer;
 import sogyo.wesley.ipsportdata.app.controllers.IPController;
 import sogyo.wesley.ipsportdata.domain.AnalysisFactory;
 import sogyo.wesley.ipsportdata.domain.IFactory;
-import sogyo.wesley.ipsportdata.persistence.IMock;
 import sogyo.wesley.ipsportdata.persistence.IRepository;
-import sogyo.wesley.ipsportdata.persistence.Mock;
 import sogyo.wesley.ipsportdata.persistence.Repository;
 
 
 public class App {
     private static final int PORT = 8080;
 
-    public String getGreeting() {
-        return " World!";
-    }
-
     public static void main(String[] args) throws Exception {
-   
         Server server = createServer(PORT);
         server.start();
         server.join();
@@ -49,7 +42,7 @@ public class App {
 
      private static ResourceConfig createResources() {
         IFactory factory = new AnalysisFactory();
-        IMock repository = new Mock();
+        IRepository repository = new Repository();
         IPController ipController = new IPController(factory, repository);
         return new ResourceConfig().register(ipController);
     }
