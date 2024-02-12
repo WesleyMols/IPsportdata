@@ -15,8 +15,10 @@ function App() {
   
   const onsubmitData = async () => {
     console.log("clicked")
+    
     const data = await analyse(username, power, lactate, lactate_two)
     console.log(data) // alle getters uit analysor.java
+    setResult(data.username)
     setData(data.calcLactateDiff)
   }
 
