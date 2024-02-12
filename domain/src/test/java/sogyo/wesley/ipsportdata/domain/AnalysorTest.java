@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 public class AnalysorTest {
     //init
     private String name;
-    private Analysor test;
     private int power;
     private double lactate_one;
     private double lactate_two;
@@ -24,19 +23,14 @@ public class AnalysorTest {
     @BeforeEach
     public void init() {
         name = "Eline";
-        test = new Analysor(name);
         power = 200;
         lactate_one = 3.3;
         lactate_two = 5.2;
         lt_diffTest = lactate_two - lactate_one;
-        result = new Analysor(power, lactate_one, lactate_two);
-        next = new Analysor(power, lactate_one, lactate_one);
+        result = new Analysor(name, power, lactate_one, lactate_two);
+        next = new Analysor(name, power, lactate_one, lactate_one);
     }
     //test
-    @Test
-    void getUsernameTest() {
-        assertEquals(test.getUsername(), "Eline");
-    }
 
     @Test
     void calcLactateDiffTest() { 

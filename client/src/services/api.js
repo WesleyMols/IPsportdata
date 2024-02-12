@@ -1,29 +1,5 @@
 
-
-export async function start(username) {
-    const response = await fetch("sogyo/wesley/ipsportdata/app/start", {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            username: username
-        }),
-    });
-
-    if (response.ok) {
-        const state = await response.json();
-        return state;
-    } else {
-        return {
-            statusCode: response.status,
-            statusText: response.statusText
-        };
-    }
-}
-
-export async function analyse(power, lactate, lactate_two) {
+export async function analyse(username, power, lactate, lactate_two) {
     const response = await fetch("sogyo/wesley/ipsportdata/app/analyse", {
         method: "POST",
         headers: {
@@ -31,6 +7,7 @@ export async function analyse(power, lactate, lactate_two) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
+            username: username,
             power: power,
             lactate: lactate,
             lactate_two: lactate_two

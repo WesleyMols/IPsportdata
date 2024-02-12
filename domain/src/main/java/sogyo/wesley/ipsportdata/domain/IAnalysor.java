@@ -8,4 +8,5 @@ public interface IAnalysor {
     double getLactate_two();
 
     double getLactate_one();
+    double getCalcLactateDiff();
 }
