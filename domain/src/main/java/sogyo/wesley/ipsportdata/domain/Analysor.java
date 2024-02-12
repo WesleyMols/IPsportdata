@@ -1,7 +1,7 @@
 package sogyo.wesley.ipsportdata.domain;
 
 public class Analysor implements IAnalysor {
-    String name = "";
+    String name;
     int power;
     double lactate_one;
     double lactate_two;
@@ -9,16 +9,14 @@ public class Analysor implements IAnalysor {
     boolean isEnd;
     String outputMessage = "Your MLSS power: ";
 
-    public Analysor(String name) {
+    public Analysor(String name, int power2, double lactate_one2, double lactate_two2) {
         this.name = name;
-    }
-
-    public Analysor(int power2, double lactate_one2, double lactate_two2) {
         this.power = power2;
         this.lactate_one = lactate_one2;
         this.lactate_two = lactate_two2;
-        calcLactateDiff();
+        getCalcLactateDiff();
     }
+
 
     @Override
     public String getUsername() {
@@ -40,7 +38,8 @@ public class Analysor implements IAnalysor {
         return lactate_one;
     }
 
-    public double calcLactateDiff() {
+    @Override
+    public double getCalcLactateDiff() {
         lt_diff = lactate_two - lactate_one;
         return lt_diff;
     }
@@ -54,8 +53,12 @@ public class Analysor implements IAnalysor {
         return isEnd;
     }
 
-    public String outputAnalysis() {
-        if(isEnd) {outputMessage= outputMessage + power;}
+    public String getOutputAnalysis() {
+        if(isEnd) {
+            outputMessage = outputMessage + power;
+            } else {
+        outputMessage = "please input next measurement";
+        }
         return outputMessage;
-    }
+    } 
 }

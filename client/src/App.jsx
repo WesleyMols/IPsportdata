@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import lacatelogo from '/lactatelogo.png'
-import { analyse, start } from "./services/api"
+import { analyse } from "./services/api"
 //import classNames from "classnames";
 import './App.css'
 
@@ -12,18 +12,14 @@ function App() {
   const [lactate, setLactate] = useState(0);
   const [lactate_two, setLactateTwo] = useState(0);
   const [data, setData] = useState();
-  const onsubmit = async () => {
-    console.log("clicked")
-    const result = await start(username)
-    console.log(result)
-    setResult(result.username)
-  }
-
+  
   const onsubmitData = async () => {
-    console.log("clicked2")
-    const data = await analyse(power, lactate, lactate_two)
-    console.log(data)
-    setData(data.lt_diff)
+    console.log("clicked")
+    
+    const data = await analyse(username, power, lactate, lactate_two)
+    console.log(data) // alle getters uit analysor.java
+    setResult(data.username)
+    setData(data.calcLactateDiff)
   }
 
   function ShowUsername() {
@@ -31,7 +27,8 @@ function App() {
 
 
   function ShowData() {
-    return <div>lactate: {data}</div>
+    return <><div>lactate difference: {data}</div>
+    <div>therefore your MLSS power lies between power-1 and {power} </div></>
   }
 
   return (
@@ -48,11 +45,7 @@ function App() {
               placeholder="enter your name"
               value={username}
               onChange={e => setUsername(e.target.value)}
-              />   
-        <button onClick={() => onsubmit()}  >
-          submit 
-        </button>
-        
+              />           
         <ShowUsername
        />
        <br />
@@ -79,12 +72,12 @@ function App() {
         onChange={e => setLactateTwo(e.target.value)}
         />
         <br />
-        <ShowData/>
+       
       </div>
       <button onClick={() => onsubmitData()}>
         analyse
       </button>
-      
+      <ShowData/>
       </div>
     </>
   )

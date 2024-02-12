@@ -3,9 +3,9 @@ package sogyo.wesley.ipsportdata.app;
 public class InputDTO {
     private String username;
     private int power;
-    private float lactate_one;
-    private float lactate_two;
-    private float lt_diff = 100;
+    private double lactate_one;
+    private double lactate_two;
+    private double lt_diff;
 
     public int getPower() {
         return power;
@@ -15,19 +15,19 @@ public class InputDTO {
         this.power = power;
     }
 
-    public float getLactate_one() {
+    public double getLactate_one() {
         return lactate_one;
     }
 
-    public void setLactate(float lactate_one) {
+    public void setLactate(double lactate_one) {
         this.lactate_one = lactate_one;
     }
 
-    public float getLactate_two() {
+    public double getLactate_two() {
         return lactate_two;
     }
 
-    public void setLactateTwo(float lactate_two) {
+    public void setLactateTwo(double lactate_two) {
         this.lactate_two = lactate_two;
     }
 
@@ -39,11 +39,11 @@ public class InputDTO {
         this.username = username;
     }
 
-    public float getLt_diff() {
+    public double getLt_diff() {
         return lt_diff;
     }
 
-    public void setLt_diff(float lt_diff){
+    public void setLt_diff(double lt_diff){
         this.lt_diff = lt_diff;
     }
     
