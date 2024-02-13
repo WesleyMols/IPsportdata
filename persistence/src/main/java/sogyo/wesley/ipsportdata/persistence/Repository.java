@@ -8,7 +8,6 @@ public class Repository implements IRepository{
   
     @Override
     public void MysqlCon(IAnalysor game) {
-        ResultSet resultSet;
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ip_wesley", "root", "11BHL>WAX:tv");
@@ -29,14 +28,13 @@ public class Repository implements IRepository{
             runqueryData.setDouble(5, insertLt_diff);
             runqueryData.execute();
 
-            resultSet = statement.executeQuery("select * from user_input");
-            while (resultSet.next()) 
-                System.out.println(resultSet.getInt(3)+"  "
-                +resultSet.getString(2)+"  "
-                +resultSet.getDouble(4)+"  "
-                +resultSet.getDouble(5)+"  "
-        
-                );
+            CallableStatement callableStatement = con.prepareCall("call create_view()" );
+            boolean hasnext = callableStatement.execute();
+                while (hasnext) {
+                    ResultSet rs = statement.getResultSet();
+                   
+                }
+            
         }catch(Exception e){ System.out.println(e);}
     }    
 }
