@@ -12,6 +12,7 @@ function App() {
   const [lactate, setLactate] = useState(0);
   const [lactate_two, setLactateTwo] = useState(0);
   const [data, setData] = useState();
+  const [returnMessage, setReturnMessage] = useState("");
   
   const onsubmitData = async () => {
     console.log("clicked")
@@ -20,6 +21,7 @@ function App() {
     console.log(data) // alle getters uit analysor.java
     setResult(data.username)
     setData(data.calcLactateDiff)
+    setReturnMessage(data.outputAnalysis)
   }
 
   function ShowUsername() {
@@ -28,7 +30,7 @@ function App() {
 
   function ShowData() {
     return <><div>lactate difference: {data}</div>
-    <div>therefore your MLSS power lies between power-1 and {power} </div></>
+    <div>{returnMessage} </div></>
   }
 
   return (

@@ -56,9 +56,11 @@ public class Analysor implements IAnalysor {
     public String getOutputAnalysis() {
         if(isEnd) {
             outputMessage = outputMessage + power;
+            return outputMessage;
             } else {
-        outputMessage = "please input next measurement";
+            outputMessage = "please input next measurement";
+            return outputMessage;
         }
-        return outputMessage;
+    
     } 
 }
