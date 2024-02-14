@@ -23,7 +23,7 @@ function App() {
     setResult(data.username)
     setData(data.calcLactateDiff)
     setReturnMessage(data.outputAnalysis)
-    setoutputPower(data.resultList)
+    setoutputPower(data.resultList.join(", "))
   }
 
   function ShowUsername() {
@@ -33,7 +33,7 @@ function App() {
   function ShowData() {
     return <><div>lactate difference: {data}</div>
     <div>{returnMessage} </div>
-    <div>{outputPower}</div>
+    <div>power inputs: {outputPower}</div>
     </>
   }
 
