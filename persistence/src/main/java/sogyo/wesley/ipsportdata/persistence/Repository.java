@@ -5,19 +5,20 @@ import sogyo.wesley.ipsportdata.domain.IAnalysor;
 import java.sql.*;
 
 public class Repository implements IRepository{
-  
+    int power;
+    Double lactate_one;
+    Double lactate_two;
+    Double lt_diff;
+    String insertName;
     @Override
-    public void MysqlCon(IAnalysor game) {
-        int power;
-        Double lactate_one;
-        Double lactate_two;
-        Double lt_diff;
+    public void MysqlSave(IAnalysor game) {
+        
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ip_wesley", "root", "11BHL>WAX:tv");
             Statement statement = con.createStatement();
             //insert user input in table
-            String insertName = game.getUsername();             
+            insertName = game.getUsername();             
             int insertDataP = game.getPower();
             double insertDataLT1 = game.getLactate_one();
             double insertDataLT2 = game.getLactate_two();
@@ -31,6 +32,16 @@ public class Repository implements IRepository{
             runqueryData.setDouble(5, insertLt_diff);
             runqueryData.execute();
             
+           
+            }catch(Exception e){ System.out.println(e);}
+        }
+
+    @Override
+    public void MysqlGet(IAnalysor game) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ip_wesley", "root", "11BHL>WAX:tv");
+            Statement statement = con.createStatement();
             //set username for view
             String setQuery = "set @username := ?";
             PreparedStatement setname = con.prepareStatement(setQuery);
@@ -47,9 +58,8 @@ public class Repository implements IRepository{
                 lactate_two = rs.getDouble(3);
                 lt_diff = rs.getDouble(4);
             }
-
-            
-
-        }catch(Exception e){ System.out.println(e);}
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }    
 }

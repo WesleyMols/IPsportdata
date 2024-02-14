@@ -38,7 +38,8 @@ public class IPController {
         System.out.println(input.getUsername());
         String Id = (String) session.getAttribute("gameId");
         IAnalysor analysor = factory.createNewAnalysis(input.getUsername(), input.getPower(), input.getLactate_one(), input.getLactate_two());
-        repository.MysqlCon(analysor);
+        repository.MysqlSave(analysor);
+        repository.MysqlGet(analysor);
         return Response.status(200).entity(analysor).build();
     }
 }
