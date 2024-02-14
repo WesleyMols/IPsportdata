@@ -58,16 +58,18 @@ public class Analysor implements IAnalysor {
         lt_diff = lactate_two - lactate_one;
         return lt_diff;
     }
-
+    
     public boolean isAnalysisEnd() {   
         if(lt_diff > 1) {
-           return isEnd = true;
+           isEnd = true;
+           return isEnd;
         } else {
-            return isEnd = false;
+            isEnd = false;
+            return isEnd;
         }
        
     }
-
+    
     public String getOutputAnalysis() {
         if(isEnd==true) {
             outputMessage = "Your MLSS power: " + power;
