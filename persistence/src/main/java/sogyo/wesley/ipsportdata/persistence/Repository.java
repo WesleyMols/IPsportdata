@@ -61,14 +61,10 @@ public class Repository implements IRepository{
             while(rs.next()){
                 power = rs.getInt(1);
                 arpower.add(arpower.size(),String.valueOf(power));
-                //
-                
+
                 lactate_one = rs.getDouble(2);
-                //arlt_one.add(0,String.valueOf(lactate_one)); // breaks if isEnd in Analysor java !?
                 lactate_two = rs.getDouble(3);
-                //arlt_two.add(0, String.valueOf(lactate_two));
                 lt_diff = rs.getDouble(4);
-                //arlt_diff.add(0,String.valueOf(lt_diff));
             }
             //returnpower.add(arpower.get(arpower.size()-2));
             returnpower.add(arpower.get(arpower.size()-1));
