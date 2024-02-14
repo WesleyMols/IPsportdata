@@ -22,7 +22,6 @@ public class Repository implements IRepository{
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ip_wesley", "root", "11BHL>WAX:tv");
-            Statement statement = con.createStatement();
             //insert user input in table
             insertName = game.getUsername();             
             int insertDataP = game.getPower();

@@ -1,10 +1,7 @@
 package sogyo.wesley.ipsportdata.app.controllers;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 
 import jakarta.ws.rs.Consumes;
 
@@ -36,9 +33,7 @@ public class IPController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response analyse(@Context HttpServletRequest request, InputDTO input) {
-        HttpSession session = request.getSession(true);
         System.out.println(input.getUsername());
-        String Id = (String) session.getAttribute("gameId");
         IAnalysor analysor = factory.createNewAnalysis(input.getUsername(), input.getPower(), input.getLactate_one(), input.getLactate_two());
         repository.MysqlSave(analysor);
         List<String> ouput = repository.MysqlGet(analysor);
