@@ -7,7 +7,7 @@ public class Analysor implements IAnalysor {
     double lactate_two;
     double lt_diff;
     boolean isEnd;
-    String outputMessage = "Your MLSS power: ";
+    String outputMessage; 
 
     public Analysor(String name, int power2, double lactate_one2, double lactate_two2) {
         this.name = name;
@@ -15,6 +15,7 @@ public class Analysor implements IAnalysor {
         this.lactate_one = lactate_one2;
         this.lactate_two = lactate_two2;
         getCalcLactateDiff();
+
     }
 
 
@@ -46,16 +47,16 @@ public class Analysor implements IAnalysor {
 
     public boolean isAnalysisEnd() {   
         if(lt_diff > 1) {
-            isEnd = true;
+           return isEnd = true;
         } else {
-            isEnd = false;
+            return isEnd = false;
         }
-        return isEnd;
+       
     }
 
     public String getOutputAnalysis() {
         if(isEnd) {
-            outputMessage = outputMessage + power;
+            outputMessage = "Your MLSS power: " + power;
             return outputMessage;
             } else {
             outputMessage = "please input next measurement";

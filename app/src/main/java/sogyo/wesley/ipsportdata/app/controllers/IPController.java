@@ -17,7 +17,6 @@ import sogyo.wesley.ipsportdata.app.InputDTO;
 
 import sogyo.wesley.ipsportdata.domain.IAnalysor;
 import sogyo.wesley.ipsportdata.domain.IFactory;
-//import sogyo.wesley.ipsportdata.persistence.IMock;
 import sogyo.wesley.ipsportdata.persistence.IRepository;
 
 @Path("/sogyo/wesley/ipsportdata/app")
@@ -40,7 +39,6 @@ public class IPController {
         String Id = (String) session.getAttribute("gameId");
         IAnalysor analysor = factory.createNewAnalysis(input.getUsername(), input.getPower(), input.getLactate_one(), input.getLactate_two());
         repository.MysqlCon(analysor);
-        //repository.save(Id, analysor);
         return Response.status(200).entity(analysor).build();
     }
 }
