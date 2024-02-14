@@ -30,7 +30,12 @@ public class Repository implements IRepository{
             runqueryData.setDouble(4, insertDataLT2);
             runqueryData.setDouble(5, insertLt_diff);
             runqueryData.execute();
-            //create view with input from one user(hardcoded)
+            
+            //set username for view
+            String setQuery = "set @username := ?";
+            PreparedStatement setname = con.prepareStatement(setQuery);
+            setname.setString(1, insertName);
+            //create view with input
             CallableStatement callableStatement = con.prepareCall("{call create_view()}" );
             callableStatement.execute();
             //select view
@@ -42,6 +47,8 @@ public class Repository implements IRepository{
                 lactate_two = rs.getDouble(3);
                 lt_diff = rs.getDouble(4);
             }
+
+            
 
         }catch(Exception e){ System.out.println(e);}
     }    
