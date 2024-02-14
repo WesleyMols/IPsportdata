@@ -22,7 +22,7 @@ public class AnalysorTest {
 
     @BeforeEach
     public void init() {
-        name = "Eline";
+        name = "Elizabeth";
         power = 200;
         lactate_one = 3.3;
         lactate_two = 5.2;

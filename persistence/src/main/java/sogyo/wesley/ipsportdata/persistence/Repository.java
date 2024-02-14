@@ -46,6 +46,7 @@ public class Repository implements IRepository{
             String setQuery = "set @username := ?";
             PreparedStatement setname = con.prepareStatement(setQuery);
             setname.setString(1, insertName);
+            setname.execute();
             //create view with input
             CallableStatement callableStatement = con.prepareCall("{call create_view()}" );
             callableStatement.execute();
@@ -57,6 +58,7 @@ public class Repository implements IRepository{
                 lactate_one = rs.getDouble(2);
                 lactate_two = rs.getDouble(3);
                 lt_diff = rs.getDouble(4);
+                System.out.println(power);
             }
         } catch (Exception e) {
             System.out.println(e);
