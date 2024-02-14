@@ -13,6 +13,7 @@ function App() {
   const [lactate_two, setLactateTwo] = useState(0);
   const [data, setData] = useState();
   const [returnMessage, setReturnMessage] = useState("");
+  const [outputPower, setoutputPower] = useState(0);
   
   const onsubmitData = async () => {
     console.log("clicked")
@@ -22,6 +23,7 @@ function App() {
     setResult(data.username)
     setData(data.calcLactateDiff)
     setReturnMessage(data.outputAnalysis)
+    setoutputPower(data.resultList)
   }
 
   function ShowUsername() {
@@ -30,7 +32,9 @@ function App() {
 
   function ShowData() {
     return <><div>lactate difference: {data}</div>
-    <div>{returnMessage} </div></>
+    <div>{returnMessage} </div>
+    <div>{outputPower}</div>
+    </>
   }
 
   return (

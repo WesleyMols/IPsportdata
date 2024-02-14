@@ -1,5 +1,7 @@
 package sogyo.wesley.ipsportdata.domain;
 
+import java.util.List;
+
 public interface IAnalysor {
     String getUsername();
 
@@ -9,4 +11,6 @@ public interface IAnalysor {
 
     double getLactate_one();
     double getCalcLactateDiff();
+    List<String> getResultList();
+    void setResultList(List<String> resultList);
 }

@@ -9,11 +9,13 @@ import java.util.List;
 
 public class Repository implements IRepository{
     int power;
-    List<String> arpower = new ArrayList<String>();
+    ArrayList<String> arpower = new ArrayList<String>();
     Double lactate_one;
     Double lactate_two;
     Double lt_diff;
     String insertName;
+    List<String> arlt_diff = new ArrayList<>();
+    List<String> returnpower = new ArrayList<>();
     @Override
     public void MysqlSave(IAnalysor game) {
         
@@ -40,7 +42,7 @@ public class Repository implements IRepository{
         }
 
     @Override
-    public void MysqlGet(IAnalysor game) {
+    public List<String> MysqlGet(IAnalysor game) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ip_wesley", "root", "11BHL>WAX:tv");
@@ -58,14 +60,22 @@ public class Repository implements IRepository{
             ResultSet rs = statement.executeQuery(queryView);
             while(rs.next()){
                 power = rs.getInt(1);
-                arpower.add(0,String.valueOf(power));       
+                arpower.add(arpower.size(),String.valueOf(power));
+                //
+                
                 lactate_one = rs.getDouble(2);
+                //arlt_one.add(0,String.valueOf(lactate_one)); // breaks if isEnd in Analysor java !?
                 lactate_two = rs.getDouble(3);
+                //arlt_two.add(0, String.valueOf(lactate_two));
                 lt_diff = rs.getDouble(4);
+                //arlt_diff.add(0,String.valueOf(lt_diff));
             }
-            System.out.println(arpower);
+            //returnpower.add(arpower.get(arpower.size()-2));
+            returnpower.add(arpower.get(arpower.size()-1));
+            System.out.println(returnpower);
         } catch (Exception e) {
             System.out.println(e);
         }
+        return returnpower;
     }    
 }

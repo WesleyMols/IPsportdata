@@ -1,5 +1,7 @@
 package sogyo.wesley.ipsportdata.domain;
 
+import java.util.List;
+
 public class Analysor implements IAnalysor {
     String name;
     int power;
@@ -7,7 +9,19 @@ public class Analysor implements IAnalysor {
     double lactate_two;
     double lt_diff;
     boolean isEnd;
-    String outputMessage; 
+    String outputMessage;
+    List<String> resultList;
+
+    @Override
+    public List<String> getResultList() {
+        return resultList;
+    }
+
+    @Override
+    public void setResultList(List<String> resultList) {
+        this.resultList = resultList;
+    }
+
 
     public Analysor(String name, int power2, double lactate_one2, double lactate_two2) {
         this.name = name;
