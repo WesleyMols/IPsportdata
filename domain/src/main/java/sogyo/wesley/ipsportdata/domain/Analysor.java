@@ -71,6 +71,7 @@ public class Analysor implements IAnalysor {
     }
     
     public String getOutputAnalysis() {
+        isAnalysisEnd();
         if(isEnd==true) {
             outputMessage = "Your MLSS power: " + power;
             return outputMessage;

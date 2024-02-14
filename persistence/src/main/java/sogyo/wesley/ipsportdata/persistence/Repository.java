@@ -67,7 +67,7 @@ public class Repository implements IRepository{
             }
             //returnpower.add(arpower.get(arpower.size()-2));
             returnpower.add(arpower.get(arpower.size()-1));
-            System.out.println(returnpower);
+            System.out.println(returnpower.get(returnpower.size()-1));
         } catch (Exception e) {
             System.out.println(e);
         }
