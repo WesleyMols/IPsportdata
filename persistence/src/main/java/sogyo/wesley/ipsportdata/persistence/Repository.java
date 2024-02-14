@@ -3,9 +3,13 @@ package sogyo.wesley.ipsportdata.persistence;
 import sogyo.wesley.ipsportdata.domain.IAnalysor;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Repository implements IRepository{
     int power;
+    List<String> arpower = new ArrayList<String>();
     Double lactate_one;
     Double lactate_two;
     Double lt_diff;
@@ -31,7 +35,6 @@ public class Repository implements IRepository{
             runqueryData.setDouble(4, insertDataLT2);
             runqueryData.setDouble(5, insertLt_diff);
             runqueryData.execute();
-            
            
             }catch(Exception e){ System.out.println(e);}
         }
@@ -55,11 +58,12 @@ public class Repository implements IRepository{
             ResultSet rs = statement.executeQuery(queryView);
             while(rs.next()){
                 power = rs.getInt(1);
+                arpower.add(0,String.valueOf(power));       
                 lactate_one = rs.getDouble(2);
                 lactate_two = rs.getDouble(3);
                 lt_diff = rs.getDouble(4);
-                System.out.println(power);
             }
+            System.out.println(arpower);
         } catch (Exception e) {
             System.out.println(e);
         }
