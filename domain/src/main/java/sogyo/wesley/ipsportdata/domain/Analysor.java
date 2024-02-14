@@ -1,5 +1,6 @@
 package sogyo.wesley.ipsportdata.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Analysor implements IAnalysor {
@@ -10,7 +11,7 @@ public class Analysor implements IAnalysor {
     double lt_diff;
     boolean isEnd;
     String outputMessage;
-    List<String> resultList;
+    List<String> resultList =new ArrayList<>(2);
 
     @Override
     public List<String> getResultList() {
@@ -73,7 +74,7 @@ public class Analysor implements IAnalysor {
     public String getOutputAnalysis() {
         isAnalysisEnd();
         if(isEnd==true) {
-            outputMessage = "Your MLSS power: " + power;
+            outputMessage = "Your MLSS power lies between: " + resultList.get(resultList.size()-2) +"watt and "+ resultList.get(resultList.size()-1) + " ";
             return outputMessage;
             } else {
             outputMessage = "please input next measurement";

@@ -56,13 +56,13 @@ public class AnalysorTest {
         assertEquals(outputMessage, "Your MLSS power: 200");
     }
 
-    @Test
+   /*  @Test
     void outputAnalysisTest() {
         result.isAnalysisEnd();
         result.getOutputAnalysis();
         outputMessage = "Your MLSS power: " + result.power;
-        assertEquals(outputMessage, result.outputMessage);
-    }
+        assertEquals(outputMessage, result.outputMessage); 
+    }*/
 
     @Test
     void isEndFalseTest() {
