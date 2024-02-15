@@ -18,6 +18,7 @@ function App() {
   const [heartrate, setHeartrate] = useState();
   const [xaxisdata, setXaxis] = useState([]);
   const [yaxisdata, setYaxis] = useState([]);
+  const [ydataLTdiff, setydataLTdiff] = useState([]);
 
   
   const onsubmitData = async () => {
@@ -29,6 +30,7 @@ function App() {
     setoutputPower(data.resultList.join(', '))
     setXaxis([...xaxisdata,power])
     setYaxis([...yaxisdata,heartrate])
+    setydataLTdiff([...ydataLTdiff, data.calcLactateDiff])
   }
 
   function ShowUsername() {
@@ -52,15 +54,20 @@ function App() {
             type: 'scatter',
             mode: 'lines+markers',
             marker: {color: 'red'},
+          },
+          {
+            x: xaxisdata,
+            y: ydataLTdiff,
+            type: 'scatter',
+            mode: 'lines+markers',
+            marker: {color: 'blue'},
           }
-         
-          //{type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
         ]}
-        layout={ {width: 320, height: 240, title: 'A Fancy Plot'} }
+        layout={ {width: 640, height: 480, title: 'Your heart rate and lactate difference over power'} }
       />
     );
   }
-
+  
   return (
     <>
       <div>
