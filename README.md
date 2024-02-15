@@ -10,9 +10,51 @@ This results in the following business rules:
 
 Installation guide
 1. to run this application one would need to install Node and gradle
-2. what about the database?
-3. the backend server is started with the command: gradle run
-4. the frontend server is started from the client folder with the command: npm run dev
+2. A MySQL database is required to store data inputs and return those;
+    * Run this SQL script to create the required table:
+    ``` 
+    CREATE TABLE user_input (
+    input_id int NOT NULL auto_increment,
+    username varChar(50),
+    power int,
+    lactate_one decimal(5,2),
+    lactate_two decimal(5,2),
+    lt_diff decimal(5,2),
+    heart_rate int,
+    primary key (input_id)
+    );
+    ```
+    * Run this SQL script to create the required function:
+    ```
+    create function namePar2 ()
+    RETURNS varchar(50) DETERMINISTIC
+    return @username;
+    ```
+    * Run this SQL script to create the required stored procedure:
+    ```
+    CREATE DEFINER=`root`@`localhost` PROCEDURE `create_view`()
+    BEGIN
+    Drop view  if exists output;
+
+    CREATE VIEW output AS
+        SELECT 
+            power, lactate_one, lactate_two, lt_diff, heart_rate
+        FROM
+            user_input
+        WHERE
+            user_input.username = namePar2();
+
+    SELECT 
+        *
+    FROM
+        db_ip_wesley.output;
+    END
+    ```
+
+3. the backend server is started with the command: 
+    ``` gradle run ```
+4. the frontend server is started from the client folder with the command:
+    ``` npm run dev ```
 5. localhost can then be found at port 5173 (default)
 
 Usage

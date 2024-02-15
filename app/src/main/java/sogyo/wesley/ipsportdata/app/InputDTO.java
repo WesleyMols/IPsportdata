@@ -6,6 +6,7 @@ public class InputDTO {
     private double lactate_one;
     private double lactate_two;
     private double lt_diff;
+    private int heartrate;
 
     public int getPower() {
         return power;
@@ -43,8 +44,13 @@ public class InputDTO {
         return lt_diff;
     }
 
-    public void setLt_diff(double lt_diff){
+    public void setLt_diff(double lt_diff) {
         this.lt_diff = lt_diff;
     }
-    
+    public int getHeartrate() {
+        return heartrate;
+    }
+    public void setHeartrate(int heartrate) {
+        this.heartrate = heartrate;
+    }
 }
