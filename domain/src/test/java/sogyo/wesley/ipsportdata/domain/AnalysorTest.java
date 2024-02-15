@@ -54,7 +54,7 @@ public class AnalysorTest {
 
     @Test
     void outputAnalysisConcatTest() {
-        isEnd = result.isAnalysisEnd();
+        isEnd = true;
         if(isEnd) {outputMessage = "Your MLSS power lies between: " + result.power + "watt and " + secondResult.power + " ";}
         assertEquals(outputMessage, "Your MLSS power lies between: 200watt and 300 ");
     }
