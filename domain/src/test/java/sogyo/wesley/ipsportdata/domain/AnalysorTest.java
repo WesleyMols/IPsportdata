@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,6 +34,9 @@ public class AnalysorTest {
         result = new Analysor(name, power, lactate_one, lactate_two, heartrate);
         next = new Analysor(name, power, lactate_one, lactate_one, heartrate);
         secondResult = new Analysor(name, 300, lactate_one +1, lactate_two+1, 170);
+        result.resultList = new ArrayList<>();
+        result.resultList.add(String.valueOf(next.power));
+        result.resultList.add(String.valueOf(secondResult.power));
     }
     //test
 
@@ -55,7 +60,7 @@ public class AnalysorTest {
     @Test
     void outputAnalysisConcatTest() {
         isEnd = true;
-        if(isEnd) {outputMessage = "Your MLSS power lies between: " + result.power + "watt and " + secondResult.power + " ";}
+        outputMessage = result.getOutputAnalysis();
         assertEquals(outputMessage, "Your MLSS power lies between: 200watt and 300 ");
     }
 
