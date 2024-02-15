@@ -3,6 +3,10 @@
     "classnames": "^2.5.1"
   },
   "devDependencies": {
+    "cypress": "^13.6.4",
     "react-router-dom": "^6.21.3"
-  }
+   
+  },
+  "scripts": { "cypress:open": "cypress open",
+  "cypress:run": "cypress run"}
 }

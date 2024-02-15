@@ -1,8 +1,7 @@
 package sogyo.wesley.ipsportdata.app.controllers;
-import java.util.UUID;
+import java.util.List;
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 
 import jakarta.ws.rs.Consumes;
 
@@ -17,7 +16,6 @@ import sogyo.wesley.ipsportdata.app.InputDTO;
 
 import sogyo.wesley.ipsportdata.domain.IAnalysor;
 import sogyo.wesley.ipsportdata.domain.IFactory;
-//import sogyo.wesley.ipsportdata.persistence.IMock;
 import sogyo.wesley.ipsportdata.persistence.IRepository;
 
 @Path("/sogyo/wesley/ipsportdata/app")
@@ -35,12 +33,10 @@ public class IPController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response analyse(@Context HttpServletRequest request, InputDTO input) {
-        HttpSession session = request.getSession(true);
-        System.out.println(input.getUsername());
-        String Id = (String) session.getAttribute("gameId");
-        IAnalysor analysor = factory.createNewAnalysis(input.getUsername(), input.getPower(), input.getLactate_one(), input.getLactate_two());
-        repository.MysqlCon(analysor);
-        //repository.save(Id, analysor);
+        IAnalysor analysor = factory.createNewAnalysis(input.getUsername(), input.getPower(), input.getLactate_one(), input.getLactate_two(), input.getHeartrate());
+        repository.MysqlSave(analysor);
+        List<String> ouput = repository.MysqlGet(analysor);
+        analysor.setResultList(ouput);
         return Response.status(200).entity(analysor).build();
     }
 }
