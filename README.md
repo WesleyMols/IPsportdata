@@ -38,7 +38,7 @@ Installation guide
 
     CREATE VIEW output AS
         SELECT 
-            power, lactate_one, lactate_two, lt_diff
+            power, lactate_one, lactate_two, lt_diff, heart_rate
         FROM
             user_input
         WHERE
