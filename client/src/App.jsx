@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import lacatelogo from '/lactatelogo.png'
 import { analyse } from "./services/api"
-//import classNames from "classnames";
+import React from 'react';
+import Plot from 'react-plotly.js';
 import './App.css'
 
 function App() {
@@ -15,16 +16,19 @@ function App() {
   const [returnMessage, setReturnMessage] = useState("");
   const [outputPower, setoutputPower] = useState();
   const [heartrate, setHeartrate] = useState();
+  const [xaxisdata, setXaxis] = useState([]);
+  const [yaxisdata, setYaxis] = useState([]);
+
   
   const onsubmitData = async () => {
-    console.log("clicked")
-    
     const data = await analyse(username, power, lactate, lactate_two, heartrate)
     console.log(data) // alle getters uit analysor.java
     setResult(data.username)
     setData(data.calcLactateDiff)
     setReturnMessage(data.outputAnalysis)
-    setoutputPower(data.resultList.join(", "))
+    setoutputPower(data.resultList.join(', '))
+    setXaxis([...xaxisdata,power])
+    setYaxis([...yaxisdata,heartrate])
   }
 
   function ShowUsername() {
@@ -36,6 +40,25 @@ function App() {
     <div>{returnMessage} </div>
     <div>power inputs: {outputPower}</div>
     </>
+  }
+
+  function Render() {
+    return (
+      <Plot
+        data={[
+          {
+            x: xaxisdata,
+            y: yaxisdata,
+            type: 'scatter',
+            mode: 'lines+markers',
+            marker: {color: 'red'},
+          }
+         
+          //{type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
+        ]}
+        layout={ {width: 320, height: 240, title: 'A Fancy Plot'} }
+      />
+    );
   }
 
   return (
@@ -92,7 +115,10 @@ function App() {
         analyse
       </button>
       <ShowData/>
+      <br />
+      <Render/>
       </div>
+      
     </>
   )
 }
