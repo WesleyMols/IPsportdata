@@ -12,6 +12,7 @@ public class Analysor implements IAnalysor {
     boolean isEnd;
     String outputMessage;
     List<String> resultList =new ArrayList<>(2);
+    int heartrate;
 
     @Override
     public List<String> getResultList() {
@@ -24,11 +25,12 @@ public class Analysor implements IAnalysor {
     }
 
 
-    public Analysor(String name, int power2, double lactate_one2, double lactate_two2) {
+    public Analysor(String name, int power2, double lactate_one2, double lactate_two2, int heartrate) {
         this.name = name;
         this.power = power2;
         this.lactate_one = lactate_one2;
         this.lactate_two = lactate_two2;
+        this.heartrate = heartrate;
         getCalcLactateDiff();
 
     }
@@ -81,5 +83,10 @@ public class Analysor implements IAnalysor {
             return outputMessage;
         }
     
-    } 
+    }
+
+    @Override
+    public int getHeartrate() {
+        return heartrate;
+    }
 }

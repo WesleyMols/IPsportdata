@@ -8,17 +8,18 @@ function App() {
   
   const [result, setResult] = useState();
   const [username, setUsername] = useState("");
-  const [power, setPower] = useState(0);
-  const [lactate, setLactate] = useState(0);
-  const [lactate_two, setLactateTwo] = useState(0);
+  const [power, setPower] = useState();
+  const [lactate, setLactate] = useState();
+  const [lactate_two, setLactateTwo] = useState();
   const [data, setData] = useState();
   const [returnMessage, setReturnMessage] = useState("");
-  const [outputPower, setoutputPower] = useState(0);
+  const [outputPower, setoutputPower] = useState();
+  const [heartrate, setHeartrate] = useState();
   
   const onsubmitData = async () => {
     console.log("clicked")
     
-    const data = await analyse(username, power, lactate, lactate_two)
+    const data = await analyse(username, power, lactate, lactate_two, heartrate)
     console.log(data) // alle getters uit analysor.java
     setResult(data.username)
     setData(data.calcLactateDiff)
@@ -76,6 +77,13 @@ function App() {
         placeholder="lactate at 9min"
         value={lactate_two}
         onChange={e => setLactateTwo(e.target.value)}
+        />
+        <input 
+        type="text"
+        id="heart_rate"
+        placeholder="avg HR last 4min"
+        value={heartrate}
+        onChange={e => setHeartrate(e.target.value)}
         />
         <br />
        

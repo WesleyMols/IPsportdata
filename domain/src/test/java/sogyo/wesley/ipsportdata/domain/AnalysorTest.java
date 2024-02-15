@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
-//import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class AnalysorTest {
@@ -17,8 +16,10 @@ public class AnalysorTest {
     private double lt_diffTest;
     private Analysor result;
     private Analysor next;
+    private Analysor secondResult;
     private boolean isEnd;
     private String outputMessage;
+    private int heartrate;
 
     @BeforeEach
     public void init() {
@@ -27,8 +28,10 @@ public class AnalysorTest {
         lactate_one = 3.3;
         lactate_two = 5.2;
         lt_diffTest = lactate_two - lactate_one;
-        result = new Analysor(name, power, lactate_one, lactate_two);
-        next = new Analysor(name, power, lactate_one, lactate_one);
+        heartrate = 155;
+        result = new Analysor(name, power, lactate_one, lactate_two, heartrate);
+        next = new Analysor(name, power, lactate_one, lactate_one, heartrate);
+        secondResult = new Analysor(name, 300, lactate_one +1, lactate_two+1, 170);
     }
     //test
 
@@ -52,17 +55,16 @@ public class AnalysorTest {
     @Test
     void outputAnalysisConcatTest() {
         isEnd = result.isAnalysisEnd();
-        if(isEnd) {outputMessage = "Your MLSS power: " + result.power;}
-        assertEquals(outputMessage, "Your MLSS power: 200");
+        if(isEnd) {outputMessage = "Your MLSS power lies between: " + result.power + "watt and " + secondResult.power + " ";}
+        assertEquals(outputMessage, "Your MLSS power lies between: 200watt and 300 ");
     }
 
-   /*  @Test
+    @Test
     void outputAnalysisTest() {
-        result.isAnalysisEnd();
-        result.getOutputAnalysis();
-        outputMessage = "Your MLSS power: " + result.power;
-        assertEquals(outputMessage, result.outputMessage); 
-    }*/
+        isEnd = false;
+        outputMessage = next.getOutputAnalysis();
+        assertEquals(outputMessage, "please input next measurement");
+    }
 
     @Test
     void isEndFalseTest() {
@@ -71,5 +73,10 @@ public class AnalysorTest {
         next.getOutputAnalysis();
         outputMessage = "please input next measurement";
         assertEquals(outputMessage, next.outputMessage);
+    }
+
+    @Test
+    void setHeartrateTest() {
+        assertEquals(secondResult.heartrate, 170);
     }
 }

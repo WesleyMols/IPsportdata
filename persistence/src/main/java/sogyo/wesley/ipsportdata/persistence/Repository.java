@@ -13,6 +13,7 @@ public class Repository implements IRepository{
     Double lactate_one;
     Double lactate_two;
     Double lt_diff;
+    int heartrate;
     String insertName;
     List<String> arlt_diff = new ArrayList<>();
     List<String> returnpower = new ArrayList<>();
@@ -28,13 +29,15 @@ public class Repository implements IRepository{
             double insertDataLT1 = game.getLactate_one();
             double insertDataLT2 = game.getLactate_two();
             double insertLt_diff = game.getCalcLactateDiff();
-            String query = "INSERT INTO user_input (username, power, lactate_one, lactate_two, lt_diff) " + "VALUES (?,?,?,?,?)";
+            int insertHR = game.getHeartrate();
+            String query = "INSERT INTO user_input (username, power, lactate_one, lactate_two, lt_diff, heart_rate) " + "VALUES (?,?,?,?,?,?)";
             PreparedStatement runqueryData = con.prepareStatement(query);
             runqueryData.setString(1, insertName);
             runqueryData.setInt(2, insertDataP);
             runqueryData.setDouble(3, insertDataLT1);
             runqueryData.setDouble(4, insertDataLT2);
             runqueryData.setDouble(5, insertLt_diff);
+            runqueryData.setInt(6, insertHR);
             runqueryData.execute();
            
             }catch(Exception e){ System.out.println(e);}
@@ -64,10 +67,9 @@ public class Repository implements IRepository{
                 lactate_one = rs.getDouble(2);
                 lactate_two = rs.getDouble(3);
                 lt_diff = rs.getDouble(4);
+                heartrate = rs.getInt(5);
             }
-            //returnpower.add(arpower.get(arpower.size()-2));
             returnpower.add(arpower.get(arpower.size()-1));
-            System.out.println(returnpower.get(returnpower.size()-1));
         } catch (Exception e) {
             System.out.println(e);
         }

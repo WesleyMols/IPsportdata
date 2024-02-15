@@ -12,6 +12,7 @@ public class AnalysisFactoryTest {
     private double lactate_one;
     private double lactate_two;
     private IAnalysor init;
+    private int heartrate;
     
     @BeforeEach
     public void init() {
@@ -20,7 +21,8 @@ public class AnalysisFactoryTest {
     power = 200;
     lactate_one = 2.2;
     lactate_two = 3.3;
-    init = test.createNewAnalysis(name, power, lactate_one, lactate_two);
+    heartrate = 142;
+    init = test.createNewAnalysis(name, power, lactate_one, lactate_two, heartrate);
     }
 
     @Test
@@ -29,5 +31,6 @@ public class AnalysisFactoryTest {
         assertEquals(power, init.getPower());
         assertEquals(lactate_one, init.getLactate_one());
         assertEquals(lactate_two, init.getLactate_two());
+        assertEquals(heartrate, init.getHeartrate());
     }
 }
