@@ -24,19 +24,22 @@ export const Results = ({xaxisdata, yaxisdata, ydataLTdiff}) => {
     var layout = {
     title: 'MLSS data analysis scatter plot',
     yaxis: {title: 'heart rate over power'},
+    xaxis: { autorange: false, range:[0, 500]},
+    yaxis: { autorange: false, range:[0, 220]},
     yaxis2: {
         title: 'lactate difference over power',
         titlefont: {color: 'rgb(148, 103, 189)'},
         tickfont: {color: 'rgb(148, 103, 189)'},
         overlaying: 'y',
-        side: 'right'
+        side: 'right',
+        autorange: false, range:[0,10]
     }
     };
     
     useEffect(() => {Plotly.newPlot('myDiv', data, layout)})
       
 
-    return <div >
+    return <><div >
         
             <h1>Plot</h1>
             <p>
@@ -45,5 +48,5 @@ export const Results = ({xaxisdata, yaxisdata, ydataLTdiff}) => {
         
         <div id = 'myDiv'>
         </div>
-    </div>
+    </div></>
 }

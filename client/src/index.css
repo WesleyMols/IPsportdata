@@ -12,19 +12,15 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.article {
-  border: 1px solid var(--primary-color);
-  color: var(--light-text-color);
-  margin: 5px;
-}
+
 
 header {
   font-size: 1em;
 }
 main {
-  padding: 25px;
+  padding: 99px;
   position: relative;
-  top: 80px;
+  top: 180px;
 }
 .navbar {
   overflow: hidden;
@@ -38,6 +34,7 @@ main {
   overflow: visible;
   position: fixed;
   top: 0;
+  margin-left: 25px;
   display: flex;
   height: 3cm;
   padding:0;
@@ -64,15 +61,17 @@ li a:hover {
   color: white;
 }
 
-
+.myDiv {
+  overflow: scroll;
+}
 
 body {
-  margin: 0;
+   margin: 0;
   padding: 0px;
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100vh; 
 }
 
 h1 {
