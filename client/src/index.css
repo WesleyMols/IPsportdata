@@ -22,6 +22,9 @@ main {
   position: relative;
   top: 180px;
 }
+article {
+  width: 900px;
+}
 .navbar {
   overflow: hidden;
   position: fixed;
