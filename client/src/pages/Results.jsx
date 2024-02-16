@@ -8,7 +8,7 @@ export const Results = ({xaxisdata, yaxisdata, ydataLTdiff}) => {
         x: xaxisdata,
         y: yaxisdata,
         name: 'HR',
-        type: 'scatter'
+        type: 'scatter',
     };
     
     var trace2 = {
@@ -37,12 +37,12 @@ export const Results = ({xaxisdata, yaxisdata, ydataLTdiff}) => {
       
 
     return <div >
-        <article >
+        
             <h1>Plot</h1>
             <p>
                 This plot is generated on your input.
             </p>
-        </article>
+        
         <div id = 'myDiv'>
         </div>
     </div>

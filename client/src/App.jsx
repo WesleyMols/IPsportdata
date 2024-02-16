@@ -2,7 +2,6 @@ import { useState } from 'react'
 import lacatelogo from '/lactatelogo.png'
 import { analyse } from "./services/api"
 import React from 'react';
-import Plot from 'react-plotly.js';
 import {Results} from './pages/Results.jsx';
 import './App.css'
 
