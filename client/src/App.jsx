@@ -43,32 +43,6 @@ function App() {
     <div>power inputs: {outputPower}</div>
     </>
   }
-
-  function Render() {
-    return (
-      <Plot
-        data={[
-          {
-            x: xaxisdata,
-            y: yaxisdata,
-            type: 'scatter',
-            mode: 'lines+markers',
-            marker: {color: 'red'},
-            name: 'HR'
-          },
-          {
-            x: xaxisdata,
-            y: ydataLTdiff,
-            type: 'scatter',
-            mode: 'lines+markers',
-            marker: {color: 'blue'},
-            name: 'lt_diff'
-          }
-        ]}
-        layout={ {width: 640, height: 480, title: 'Your heart rate and lactate difference over power'} }
-      />
-    );
-  }
   
   return (
     <>
@@ -125,7 +99,6 @@ function App() {
       </button>
       <ShowData/>
       <br />
-      <Render/>
       </div>
       <Results xaxisdata={xaxisdata} yaxisdata={yaxisdata} ydataLTdiff={ydataLTdiff}/>
     </>

@@ -37,7 +37,6 @@ export const Results = ({xaxisdata, yaxisdata, ydataLTdiff}) => {
       
 
     return <div >
-        <button onClick = {() => onsubmitData()} > show plot </button>
         <article >
             <h1>Plot</h1>
             <p>
