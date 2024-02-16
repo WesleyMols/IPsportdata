@@ -1,11 +1,10 @@
 import { useState } from 'react'
-import lacatelogo from '/lactatelogo.png'
 import { analyse } from "./services/api"
-//import classNames from "classnames";
+import React from 'react';
+import {Results} from './pages/Results.jsx';
 import './App.css'
 
 function App() {
-  
   const [result, setResult] = useState();
   const [username, setUsername] = useState("");
   const [power, setPower] = useState();
@@ -15,16 +14,21 @@ function App() {
   const [returnMessage, setReturnMessage] = useState("");
   const [outputPower, setoutputPower] = useState();
   const [heartrate, setHeartrate] = useState();
+  const [xaxisdata, setXaxis] = useState([]);
+  const [yaxisdata, setYaxis] = useState([]);
+  const [ydataLTdiff, setydataLTdiff] = useState([]);
+
   
   const onsubmitData = async () => {
-    console.log("clicked")
-    
     const data = await analyse(username, power, lactate, lactate_two, heartrate)
     console.log(data) // alle getters uit analysor.java
     setResult(data.username)
     setData(data.calcLactateDiff)
     setReturnMessage(data.outputAnalysis)
-    setoutputPower(data.resultList.join(", "))
+    setoutputPower(data.resultList.join(', '))
+    setXaxis([...xaxisdata,power])
+    setYaxis([...yaxisdata,heartrate])
+    setydataLTdiff([...ydataLTdiff, data.calcLactateDiff])
   }
 
   function ShowUsername() {
@@ -37,13 +41,10 @@ function App() {
     <div>power inputs: {outputPower}</div>
     </>
   }
-
+  
   return (
     <>
-      <div>
-          <img src={lacatelogo} className='lactate logo' alt='Lactate logo'/>
-      </div>
-      <h1>MLSS data analysis</h1>
+ 
       
         <div>                 
             <input
@@ -92,7 +93,9 @@ function App() {
         analyse
       </button>
       <ShowData/>
+      <br />
       </div>
+      <Results xaxisdata={xaxisdata} yaxisdata={yaxisdata} ydataLTdiff={ydataLTdiff}/>
     </>
   )
 }
