@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import lacatelogo from '/lactatelogo.png'
 import { analyse } from "./services/api"
 import React from 'react';
 import {Results} from './pages/Results.jsx';
@@ -45,10 +44,7 @@ function App() {
   
   return (
     <>
-      <div>
-          <img src={lacatelogo} className='lactate logo' alt='Lactate logo'/>
-      </div>
-      <h1>MLSS data analysis</h1>
+ 
       
         <div>                 
             <input

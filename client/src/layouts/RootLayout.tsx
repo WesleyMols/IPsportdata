@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
+/* import { Outlet, useLocation } from "react-router-dom";
 import logo from "../assets/logo.jpg";
 import { NavButton } from "../components/NavButton";
 
@@ -18,3 +18,4 @@ export const RootLayout = () => {
         </main>
     </div>
 };
+ */
