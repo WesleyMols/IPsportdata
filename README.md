@@ -56,6 +56,7 @@ Installation guide
 4. the frontend server is started from the client folder with the command:
     ``` npm run dev ```
 5. localhost can then be found at port 5173 (default)
+6. Plotly is used to generated the graphs, therefore the following command needs to ben ran in client folder: ```npm install plotly.js-dist```
 
 Usage
 * Any user should first submit an username

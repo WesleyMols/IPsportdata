@@ -3,10 +3,10 @@ import lacatelogo from '/lactatelogo.png'
 import { analyse } from "./services/api"
 import React from 'react';
 import Plot from 'react-plotly.js';
+import {Results} from './pages/Results.jsx';
 import './App.css'
 
 function App() {
-  
   const [result, setResult] = useState();
   const [username, setUsername] = useState("");
   const [power, setPower] = useState();
@@ -54,6 +54,7 @@ function App() {
             type: 'scatter',
             mode: 'lines+markers',
             marker: {color: 'red'},
+            name: 'HR'
           },
           {
             x: xaxisdata,
@@ -61,6 +62,7 @@ function App() {
             type: 'scatter',
             mode: 'lines+markers',
             marker: {color: 'blue'},
+            name: 'lt_diff'
           }
         ]}
         layout={ {width: 640, height: 480, title: 'Your heart rate and lactate difference over power'} }
@@ -125,7 +127,7 @@ function App() {
       <br />
       <Render/>
       </div>
-      
+      <Results xaxisdata={xaxisdata} yaxisdata={yaxisdata} ydataLTdiff={ydataLTdiff}/>
     </>
   )
 }

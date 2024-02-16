@@ -1,16 +1,20 @@
-import { useEffect } from "react";
-export const Results = () => {
+import { useEffect, useState } from "react";
+
+
+
+export const Results = ({xaxisdata, yaxisdata, ydataLTdiff}) => {
+    
     var trace1 = {
-        x: [1, 2, 3],
-        y: [40, 50, 60],
-        name: 'yaxis data',
+        x: xaxisdata,
+        y: yaxisdata,
+        name: 'HR',
         type: 'scatter'
     };
     
     var trace2 = {
-    x: [2, 3, 4],
-    y: [4, 5, 6],
-    name: 'yaxis2 data',
+    x: xaxisdata,
+    y: ydataLTdiff,
+    name: 'lt_diff',
     yaxis: 'y2',
     type: 'scatter'
     };
@@ -18,10 +22,10 @@ export const Results = () => {
     var data = [trace1, trace2];
     
     var layout = {
-    title: 'Double Y Axis Example',
-    yaxis: {title: 'yaxis title'},
+    title: 'MLSS data analysis scatter plot',
+    yaxis: {title: 'heart rate over power'},
     yaxis2: {
-        title: 'yaxis2 title',
+        title: 'lactate difference over power',
         titlefont: {color: 'rgb(148, 103, 189)'},
         tickfont: {color: 'rgb(148, 103, 189)'},
         overlaying: 'y',
@@ -33,6 +37,7 @@ export const Results = () => {
       
 
     return <div >
+        <button onClick = {() => onsubmitData()} > show plot </button>
         <article >
             <h1>Plot</h1>
             <p>
