@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wesley's MLSS Analysis</title>
     <script src='https://cdn.plot.ly/plotly-2.27.0.min.js'></script>
+    <style>
+      ul {
+        list-style-type: none;
+        margin: auto;
+        padding: 0;
+        width: 60px;
+      } 
+      
+      li a {
+        display: block;
+        background-color: #ff7b00;
+      }
+      li a:hover {
+  background-color: #f20808;
+  color: white;
+}
+      </style>
   </head>
   <body>
     <div id="root"></div>
     <div id="myDiv"></div>
     <script type="module" src="/src/main.jsx"></script>
-    
+    <ul>
+      <li><a href="http://localhost:5173/">Home</a></li>
+      <li><a href="http://localhost:5173/Results">Results</a></li>
+      <li><a href="http://localhost:5173/About">About</a></li>
+    </ul>
   </body>
 </html>
