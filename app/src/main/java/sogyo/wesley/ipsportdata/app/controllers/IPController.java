@@ -14,7 +14,7 @@ import jakarta.ws.rs.core.Response;
 
 import sogyo.wesley.ipsportdata.app.InputDTO;
 
-import sogyo.wesley.ipsportdata.domain.IAnalysor;
+import sogyo.wesley.ipsportdata.domain.IAnalyser;
 import sogyo.wesley.ipsportdata.domain.IFactory;
 import sogyo.wesley.ipsportdata.persistence.IRepository;
 
@@ -33,10 +33,10 @@ public class IPController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response analyse(@Context HttpServletRequest request, InputDTO input) {
-        IAnalysor analysor = factory.createNewAnalysis(input.getUsername(), input.getPower(), input.getLactate_one(), input.getLactate_two(), input.getHeartrate());
+        IAnalyser analysor = factory.createNewAnalysis(input.getUsername(), input.getPower(), input.getLactate_one(), input.getLactate_two(), input.getHeartrate());
         repository.MysqlSave(analysor);
         List<String> ouput = repository.MysqlGet(analysor);
-        analysor.setResultList(ouput);
+        analysor.setPowerInputList(ouput);
         return Response.status(200).entity(analysor).build();
     }
 }

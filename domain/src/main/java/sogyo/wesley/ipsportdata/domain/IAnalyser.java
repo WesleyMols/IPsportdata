@@ -2,13 +2,13 @@ package sogyo.wesley.ipsportdata.domain;
 
 import java.util.List;
 
-public interface IAnalysor {
+public interface IAnalyser {
     String getUsername();
     int getPower();
     double getLactate_two();
     int getHeartrate();
     double getLactate_one();
-    double getCalcLactateDiff();
-    List<String> getResultList();
-    void setResultList(List<String> resultList);
+    double getCalcLactateDifference();
+    List<String> getPowerInputList();
+    void setPowerInputList(List<String> powerInputList);
 }

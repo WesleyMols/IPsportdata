@@ -2,9 +2,9 @@ package sogyo.wesley.ipsportdata.persistence;
 
 import java.util.List;
 
-import sogyo.wesley.ipsportdata.domain.IAnalysor;
+import sogyo.wesley.ipsportdata.domain.IAnalyser;
 
 public interface IRepository {
-    void MysqlSave(IAnalysor game);
-    List<String> MysqlGet(IAnalysor game);
+    void MysqlSave(IAnalyser game);
+    List<String> MysqlGet(IAnalyser game);
 }
