@@ -15,7 +15,6 @@ public class Repository implements IRepository{
     Double lt_diff;
     int heartrate;
     String insertName;
-    List<String> array_lt_diff = new ArrayList<>();
     List<String> returnpower = new ArrayList<>();
     @Override
     public void MysqlSave(IAnalysor game) {
