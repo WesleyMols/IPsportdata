@@ -17,18 +17,18 @@ public class Repository implements IRepository{
     String insertName;
     List<String> returnpower = new ArrayList<>();
     @Override
-    public void MysqlSave(IAnalyser game) {
+    public void MysqlSave(IAnalyser analyser) {
         
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ip_wesley", "root", "11BHL>WAX:tv");
             //insert user input in table
-            insertName = game.getUsername();             
-            int insertDataP = game.getPower();
-            double insertDataLT1 = game.getLactate_one();
-            double insertDataLT2 = game.getLactate_two();
-            double insertLt_diff = game.getCalcLactateDifference();
-            int insertHeartRate = game.getHeartrate();
+            insertName = analyser.getUsername();             
+            int insertDataP = analyser.getPower();
+            double insertDataLT1 = analyser.getLactate_one();
+            double insertDataLT2 = analyser.getLactate_two();
+            double insertLt_diff = analyser.getCalcLactateDifference();
+            int insertHeartRate = analyser.getHeartrate();
             String query = "INSERT INTO user_input (username, power, lactate_one, lactate_two, lt_diff, heart_rate) " + "VALUES (?,?,?,?,?,?)";
             PreparedStatement runqueryData = con.prepareStatement(query);
             runqueryData.setString(1, insertName);
@@ -43,7 +43,7 @@ public class Repository implements IRepository{
         }
 
     @Override
-    public List<String> MysqlGet(IAnalyser game) {
+    public List<String> MysqlGet(IAnalyser analyser) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ip_wesley", "root", "11BHL>WAX:tv");

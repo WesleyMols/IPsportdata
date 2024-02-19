@@ -36,7 +36,7 @@ export const Results = ({xaxisdata, yaxisdata, ydataLTdiff}) => {
     }
     };
     
-    useEffect(() => {Plotly.newPlot('myDiv', data, layout)})
+    useEffect(() => {Plotly.newPlot('plot', data, layout)})
       
 
     return <><div >
@@ -46,7 +46,7 @@ export const Results = ({xaxisdata, yaxisdata, ydataLTdiff}) => {
                 This plot is generated on your input.
             </p>
         
-        <div id = 'myDiv'>
+        <div id = 'plot'>
         </div>
     </div></>
 }

@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class AnalysorTest {
+public class AnalyserTest {
     //init
     private String name;
     private int power;

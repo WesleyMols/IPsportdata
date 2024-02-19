@@ -25,10 +25,10 @@ function App() {
     setResult(data.username)
     setData(data.calcLactateDifference)
     setReturnMessage(data.outputAnalysis)
-    setoutputPower(data.powerInputList.join(', '))
+    setoutputPower(data.powerInputList.map((item) => <p>{item}</p>))
     setXaxis([...xaxisdata,power])
     setYaxis([...yaxisdata,heartrate])
-    setydataLTdiff([...ydataLTdiff, data.calcLactateDiff])
+    setydataLTdiff([...ydataLTdiff, data.calcLactateDifference])
   }
 
   function ShowUsername() {
