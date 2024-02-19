@@ -36,7 +36,7 @@ public class IPController {
         IAnalysor analysor = factory.createNewAnalysis(input.getUsername(), input.getPower(), input.getLactate_one(), input.getLactate_two(), input.getHeartrate());
         repository.MysqlSave(analysor);
         List<String> ouput = repository.MysqlGet(analysor);
-        analysor.setResultList(ouput);
+        analysor.setPowerInputList(ouput);
         return Response.status(200).entity(analysor).build();
     }
 }

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,6 +23,7 @@ public class AnalysorTest {
     private boolean isEnd;
     private String outputMessage;
     private int heartrate;
+    private List<String> resultList;
 
     @BeforeEach
     public void init() {
@@ -34,9 +36,9 @@ public class AnalysorTest {
         result = new Analysor(name, power, lactate_one, lactate_two, heartrate);
         next = new Analysor(name, power, lactate_one, lactate_one, heartrate);
         secondResult = new Analysor(name, 300, lactate_one +1, lactate_two+1, 170);
-        result.resultList = new ArrayList<>();
-        result.resultList.add(String.valueOf(next.power));
-        result.resultList.add(String.valueOf(secondResult.power));
+        resultList = result.powerInputList = new ArrayList<>();
+        result.powerInputList.add(String.valueOf(next.power));
+        result.powerInputList.add(String.valueOf(secondResult.power));
     }
     //test
 
@@ -83,5 +85,11 @@ public class AnalysorTest {
     @Test
     void setHeartrateTest() {
         assertEquals(secondResult.heartrate, 170);
+    }
+
+    @Test
+    void getResultListTest() {
+        assertEquals(resultList.size(), 2);
+        
     }
 }

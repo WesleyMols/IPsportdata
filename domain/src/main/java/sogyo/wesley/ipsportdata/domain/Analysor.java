@@ -11,17 +11,17 @@ public class Analysor implements IAnalysor {
     double lt_diff;
     boolean isEnd;
     String outputMessage;
-    List<String> resultList =new ArrayList<>(2);
+    List<String> powerInputList =new ArrayList<>(2);
     int heartrate;
 
     @Override
-    public List<String> getResultList() {
-        return resultList;
+    public List<String> getPowerInputList() {
+        return powerInputList;
     }
 
     @Override
-    public void setResultList(List<String> resultList) {
-        this.resultList = resultList;
+    public void setPowerInputList(List<String> resultList) {
+        this.powerInputList = resultList;
     }
 
 
@@ -76,7 +76,7 @@ public class Analysor implements IAnalysor {
     public String getOutputAnalysis() {
         isAnalysisEnd();
         if(isEnd==true) {
-            outputMessage = "Your MLSS power lies between: " + resultList.get(resultList.size()-2) +"watt and "+ resultList.get(resultList.size()-1) + " ";
+            outputMessage = "Your MLSS power lies between: " + powerInputList.get(powerInputList.size()-2) +"watt and "+ powerInputList.get(powerInputList.size()-1) + " ";
             return outputMessage;
             } else {
             outputMessage = "please input next measurement";
