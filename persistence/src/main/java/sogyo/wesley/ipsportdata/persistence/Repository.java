@@ -57,6 +57,18 @@ public class Repository implements IRepository{
             //create view with input
             CallableStatement callViewStatement = con.prepareCall("{call create_view()}" );
             callViewStatement.execute();
+            //select view
+            String queryView = "SELECT * FROM db_ip_wesley.output;";
+            ResultSet rs = statement.executeQuery(queryView);
+            while(rs.next()){
+                power = rs.getInt(1);
+                arrayPower.add(arrayPower.size(),String.valueOf(power));
+
+                lactate_one = rs.getDouble(2);
+                lactate_two = rs.getDouble(3);
+                lt_diff = rs.getDouble(4);
+                heartrate = rs.getInt(5);
+            }
             returnpower.add(arrayPower.get(arrayPower.size()-1));
         } catch (Exception e) {
             System.out.println(e);
