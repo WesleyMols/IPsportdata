@@ -2,7 +2,7 @@ package sogyo.wesley.ipsportdata.domain;
 
 import java.util.List;
 
-public interface IAnalysor {
+public interface IAnalyser {
     String getUsername();
     int getPower();
     double getLactate_two();

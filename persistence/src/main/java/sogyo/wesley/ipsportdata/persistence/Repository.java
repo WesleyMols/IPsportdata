@@ -1,6 +1,6 @@
 package sogyo.wesley.ipsportdata.persistence;
 
-import sogyo.wesley.ipsportdata.domain.IAnalysor;
+import sogyo.wesley.ipsportdata.domain.IAnalyser;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class Repository implements IRepository{
     String insertName;
     List<String> returnpower = new ArrayList<>();
     @Override
-    public void MysqlSave(IAnalysor game) {
+    public void MysqlSave(IAnalyser game) {
         
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -43,7 +43,7 @@ public class Repository implements IRepository{
         }
 
     @Override
-    public List<String> MysqlGet(IAnalysor game) {
+    public List<String> MysqlGet(IAnalyser game) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ip_wesley", "root", "11BHL>WAX:tv");

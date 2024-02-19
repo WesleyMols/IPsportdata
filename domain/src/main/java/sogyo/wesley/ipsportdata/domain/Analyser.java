@@ -3,7 +3,7 @@ package sogyo.wesley.ipsportdata.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Analysor implements IAnalysor {
+public class Analyser implements IAnalyser {
     String name;
     int power;
     double lactate_one;
@@ -25,7 +25,7 @@ public class Analysor implements IAnalysor {
     }
 
 
-    public Analysor(String name, int power2, double lactate_one2, double lactate_two2, int heartrate) {
+    public Analyser(String name, int power2, double lactate_one2, double lactate_two2, int heartrate) {
         this.name = name;
         this.power = power2;
         this.lactate_one = lactate_one2;

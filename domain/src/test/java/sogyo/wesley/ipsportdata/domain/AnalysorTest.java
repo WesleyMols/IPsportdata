@@ -16,9 +16,9 @@ public class AnalysorTest {
     private double lactate_one;
     private double lactate_two;
     private double lt_diffTest;
-    private Analysor result;
-    private Analysor next;
-    private Analysor secondResult;
+    private Analyser result;
+    private Analyser next;
+    private Analyser secondResult;
     private boolean isEnd;
     private String outputMessage;
     private int heartrate;
@@ -32,9 +32,9 @@ public class AnalysorTest {
         lactate_two = 5.2;
         lt_diffTest = lactate_two - lactate_one;
         heartrate = 155;
-        result = new Analysor(name, power, lactate_one, lactate_two, heartrate);
-        next = new Analysor(name, power, lactate_one, lactate_one, heartrate);
-        secondResult = new Analysor(name, 300, lactate_one +1, lactate_two+1, 170);
+        result = new Analyser(name, power, lactate_one, lactate_two, heartrate);
+        next = new Analyser(name, power, lactate_one, lactate_one, heartrate);
+        secondResult = new Analyser(name, 300, lactate_one +1, lactate_two+1, 170);
         resultTestList = result.powerInputList;
         resultTestList.add(String.valueOf(next.power));
         resultTestList.add(String.valueOf(secondResult.power));
