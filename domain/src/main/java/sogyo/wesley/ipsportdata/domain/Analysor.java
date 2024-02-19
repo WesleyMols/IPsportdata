@@ -20,8 +20,8 @@ public class Analysor implements IAnalysor {
     }
 
     @Override
-    public void setPowerInputList(List<String> resultList) {
-        this.powerInputList = resultList;
+    public void setPowerInputList(List<String> powerInputList) {
+        this.powerInputList = powerInputList;
     }
 
 
@@ -31,7 +31,7 @@ public class Analysor implements IAnalysor {
         this.lactate_one = lactate_one2;
         this.lactate_two = lactate_two2;
         this.heartrate = heartrate;
-        getCalcLactateDiff();
+        getCalcLactateDifference();
 
     }
 
@@ -57,7 +57,7 @@ public class Analysor implements IAnalysor {
     }
 
     @Override
-    public double getCalcLactateDiff() {
+    public double getCalcLactateDifference() {
         lt_diff = lactate_two - lactate_one;
         return lt_diff;
     }

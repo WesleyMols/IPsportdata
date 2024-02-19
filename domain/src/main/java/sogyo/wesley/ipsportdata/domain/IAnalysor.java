@@ -8,7 +8,7 @@ public interface IAnalysor {
     double getLactate_two();
     int getHeartrate();
     double getLactate_one();
-    double getCalcLactateDiff();
+    double getCalcLactateDifference();
     List<String> getPowerInputList();
     void setPowerInputList(List<String> powerInputList);
 }

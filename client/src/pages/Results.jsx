@@ -23,9 +23,9 @@ export const Results = ({xaxisdata, yaxisdata, ydataLTdiff}) => {
     
     var layout = {
     title: 'MLSS data analysis scatter plot',
-    yaxis: {title: 'heart rate over power'},
+    yaxis: {title: 'heart rate over power', autorange: false, range:[0, 220]},
     xaxis: { autorange: false, range:[0, 500]},
-    yaxis: { autorange: false, range:[0, 220]},
+  
     yaxis2: {
         title: 'lactate difference over power',
         titlefont: {color: 'rgb(148, 103, 189)'},
