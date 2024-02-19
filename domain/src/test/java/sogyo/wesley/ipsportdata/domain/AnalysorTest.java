@@ -90,6 +90,5 @@ public class AnalysorTest {
     @Test
     void getResultListTest() {
         assertEquals(resultList.size(), 2);
-        
     }
 }
