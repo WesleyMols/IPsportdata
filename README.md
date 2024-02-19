@@ -102,14 +102,3 @@ It is intended to gain experience in the following technical aspects:
 Furthermore, the following personal goals are formulated to improve upon:
 * growth mindset
 * ask help to understand the problem better 
-
-
-
-Details of software stack:
-* client layer interacts with a user on the localhost server of Vite and communicates with the API layer through an App and api
-* app/API layer acts as a layer in between client and domain, this layer contains a controllor that communicates with client, persistence, and domain
-* domain layer contains the businesslogic and communicates with the API via interfaces
-* persistence is used to store data and username in a MySQL database
-
-![alt text](/Tekeningen/architectureDraw.svg "architecture")
-
