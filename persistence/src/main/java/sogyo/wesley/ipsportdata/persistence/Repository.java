@@ -63,11 +63,6 @@ public class Repository implements IRepository{
             while(rs.next()){
                 power = rs.getInt(1);
                 arrayPower.add(arrayPower.size(),String.valueOf(power));
-
-                lactate_one = rs.getDouble(2);
-                lactate_two = rs.getDouble(3);
-                lt_diff = rs.getDouble(4);
-                heartrate = rs.getInt(5);
             }
             returnpower.add(arrayPower.get(arrayPower.size()-1));
         } catch (Exception e) {
