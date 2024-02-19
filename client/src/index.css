@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(200, 196, 224, 0.87);
-  background-color: #242424;
+  background-color: #423f51;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -55,12 +55,12 @@ ul {
 
 li a {
   display: block;
-  background-color: #ff7b00;
+  background-color: #3c905c;
   color: rgb(0, 0, 0);
   border-bottom: 1px solid #555;
 }
 li a:hover {
-  background-color: #f20808;
+  background-color: #84298a;
   color: white;
 }
 
