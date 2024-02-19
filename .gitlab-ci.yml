@@ -42,8 +42,3 @@ coverage-job:
   when: always
   coverage: '/([0-9]{1,3}.[0-9]*).%.covered/'
 
-jacocoTestCoverageVerification:
-    violationRules:
-        rule:
-            limit:
-                minimum: 0.95
