@@ -23,7 +23,7 @@ public class AnalysorTest {
     private boolean isEnd;
     private String outputMessage;
     private int heartrate;
-    private List<String> resultList;
+    private List<String> resultTestList;
 
     @BeforeEach
     public void init() {
@@ -36,9 +36,9 @@ public class AnalysorTest {
         result = new Analysor(name, power, lactate_one, lactate_two, heartrate);
         next = new Analysor(name, power, lactate_one, lactate_one, heartrate);
         secondResult = new Analysor(name, 300, lactate_one +1, lactate_two+1, 170);
-        resultList = result.powerInputList = new ArrayList<>();
-        result.powerInputList.add(String.valueOf(next.power));
-        result.powerInputList.add(String.valueOf(secondResult.power));
+        resultTestList = result.powerInputList;
+        resultTestList.add(String.valueOf(next.power));
+        resultTestList.add(String.valueOf(secondResult.power));
     }
     //test
 
@@ -88,7 +88,15 @@ public class AnalysorTest {
     }
 
     @Test
-    void getResultListTest() {
-        assertEquals(resultList.size(), 2);
+    void getPowerInputListTest() {
+        assertEquals(resultTestList.size(), 2);
+        assertEquals(resultTestList.get(0), String.valueOf(result.power));
+        assertEquals(resultTestList.get(1), String.valueOf(secondResult.power));
+    }
+
+    @Test
+    void setPowerInputListTest() {
+        result.setPowerInputList(resultTestList);
+        assertEquals(resultTestList, result.getPowerInputList());
     }
 }
