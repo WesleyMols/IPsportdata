@@ -1,6 +1,6 @@
 package sogyo.wesley.ipsportdata.persistence;
 
-import sogyo.wesley.ipsportdata.domain.IAnalysor;
+import sogyo.wesley.ipsportdata.domain.IAnalyser;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,16 +9,15 @@ import java.util.List;
 
 public class Repository implements IRepository{
     int power;
-    ArrayList<String> arpower = new ArrayList<String>();
+    ArrayList<String> arrayPower = new ArrayList<String>();
     Double lactate_one;
     Double lactate_two;
     Double lt_diff;
     int heartrate;
     String insertName;
-    List<String> arlt_diff = new ArrayList<>();
     List<String> returnpower = new ArrayList<>();
     @Override
-    public void MysqlSave(IAnalysor game) {
+    public void MysqlSave(IAnalyser game) {
         
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -28,8 +27,8 @@ public class Repository implements IRepository{
             int insertDataP = game.getPower();
             double insertDataLT1 = game.getLactate_one();
             double insertDataLT2 = game.getLactate_two();
-            double insertLt_diff = game.getCalcLactateDiff();
-            int insertHR = game.getHeartrate();
+            double insertLt_diff = game.getCalcLactateDifference();
+            int insertHeartRate = game.getHeartrate();
             String query = "INSERT INTO user_input (username, power, lactate_one, lactate_two, lt_diff, heart_rate) " + "VALUES (?,?,?,?,?,?)";
             PreparedStatement runqueryData = con.prepareStatement(query);
             runqueryData.setString(1, insertName);
@@ -37,39 +36,34 @@ public class Repository implements IRepository{
             runqueryData.setDouble(3, insertDataLT1);
             runqueryData.setDouble(4, insertDataLT2);
             runqueryData.setDouble(5, insertLt_diff);
-            runqueryData.setInt(6, insertHR);
+            runqueryData.setInt(6, insertHeartRate);
             runqueryData.execute();
            
             }catch(Exception e){ System.out.println(e);}
         }
 
     @Override
-    public List<String> MysqlGet(IAnalysor game) {
+    public List<String> MysqlGet(IAnalyser game) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ip_wesley", "root", "11BHL>WAX:tv");
             Statement statement = con.createStatement();
             //set username for view
-            String setQuery = "set @username := ?";
-            PreparedStatement setname = con.prepareStatement(setQuery);
-            setname.setString(1, insertName);
-            setname.execute();
+            String setNameQuery = "set @username := ?";
+            PreparedStatement setnameStatement = con.prepareStatement(setNameQuery);
+            setnameStatement.setString(1, insertName);
+            setnameStatement.execute();
             //create view with input
-            CallableStatement callableStatement = con.prepareCall("{call create_view()}" );
-            callableStatement.execute();
+            CallableStatement callViewStatement = con.prepareCall("{call create_view()}" );
+            callViewStatement.execute();
             //select view
             String queryView = "SELECT * FROM db_ip_wesley.output;";
             ResultSet rs = statement.executeQuery(queryView);
             while(rs.next()){
                 power = rs.getInt(1);
-                arpower.add(arpower.size(),String.valueOf(power));
-
-                lactate_one = rs.getDouble(2);
-                lactate_two = rs.getDouble(3);
-                lt_diff = rs.getDouble(4);
-                heartrate = rs.getInt(5);
+                arrayPower.add(arrayPower.size(),String.valueOf(power));
             }
-            returnpower.add(arpower.get(arpower.size()-1));
+            returnpower.add(arrayPower.get(arrayPower.size()-1));
         } catch (Exception e) {
             System.out.println(e);
         }

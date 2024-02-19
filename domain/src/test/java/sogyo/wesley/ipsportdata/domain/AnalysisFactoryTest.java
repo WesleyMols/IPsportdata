@@ -11,7 +11,7 @@ public class AnalysisFactoryTest {
     private int power;
     private double lactate_one;
     private double lactate_two;
-    private IAnalysor init;
+    private IAnalyser init;
     private int heartrate;
     
     @BeforeEach

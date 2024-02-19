@@ -23,9 +23,9 @@ function App() {
     const data = await analyse(username, power, lactate, lactate_two, heartrate)
     console.log(data) // alle getters uit analysor.java
     setResult(data.username)
-    setData(data.calcLactateDiff)
+    setData(data.calcLactateDifference)
     setReturnMessage(data.outputAnalysis)
-    setoutputPower(data.resultList.join(', '))
+    setoutputPower(data.powerInputList.join(', '))
     setXaxis([...xaxisdata,power])
     setYaxis([...yaxisdata,heartrate])
     setydataLTdiff([...ydataLTdiff, data.calcLactateDiff])
