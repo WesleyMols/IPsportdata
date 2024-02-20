@@ -29,6 +29,7 @@ function App() {
     setXaxis([...xaxisdata,power])
     setYaxis([...yaxisdata,heartrate])
     setydataLTdiff([...ydataLTdiff, data.calcLactateDifference])
+    
   }
 
   function ShowUsername() {

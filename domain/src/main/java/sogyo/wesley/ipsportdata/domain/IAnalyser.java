@@ -11,4 +11,6 @@ public interface IAnalyser {
     double getCalcLactateDifference();
     List<String> getPowerInputList();
     void setPowerInputList(List<String> powerInputList);
+    List<Integer> getLastTwoPowerList();
+    int getAverageMLSSPower();
 }

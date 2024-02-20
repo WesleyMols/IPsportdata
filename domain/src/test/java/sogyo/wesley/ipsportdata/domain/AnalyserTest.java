@@ -61,9 +61,13 @@ public class AnalyserTest {
 
     @Test
     void outputAnalysisConcatTest() {
+        result.setPowerInputList(resultTestList);
+        result.setLastTwoPowerList();
+        result.setAverageMLSSPower();
+        result.getAverageMLSSPower();
         isEnd = true;
         outputMessage = result.getOutputAnalysis();
-        assertEquals(outputMessage, "Your MLSS power lies between : 200 watt and 300 watt. With an average of 0");
+        assertEquals(outputMessage, "Your MLSS power lies between : 200 watt and 300 watt. With an average of 250");
     }
 
     @Test

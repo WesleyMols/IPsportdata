@@ -15,6 +15,8 @@ public class Analyser implements IAnalyser {
     int heartrate;
     int MLSSPower;
     List<Integer> lastTwoPowerList = new ArrayList<>();
+    int one;
+    int two;
 
     @Override
     public List<String> getPowerInputList() {
@@ -34,7 +36,6 @@ public class Analyser implements IAnalyser {
         this.lactate_two = lactate_two2;
         this.heartrate = heartrate;
         getCalcLactateDifference();
-
     }
 
 
@@ -74,19 +75,21 @@ public class Analyser implements IAnalyser {
         }
        
     }
-
+    
+    @Override
     public List<Integer> getLastTwoPowerList() {
         return lastTwoPowerList;
     }
+
     public void setLastTwoPowerList() {
-        lastTwoPowerList.add(Integer.parseInt(powerInputList.get(powerInputList.size()-1)));
-        lastTwoPowerList.add(Integer.parseInt(powerInputList.get(powerInputList.size()-2)));
+        one = Integer.parseInt(powerInputList.get(powerInputList.size()-1));
+        two = Integer.parseInt(powerInputList.get(powerInputList.size()-2));
     }
-        
+    
     public void setAverageMLSSPower() {
-       
-        MLSSPower = (lastTwoPowerList.get(0) + lastTwoPowerList.get(1)) /2;
+        MLSSPower = (one+two) /2;
     }
+    @Override
     public int getAverageMLSSPower() {
         return MLSSPower;
     }
