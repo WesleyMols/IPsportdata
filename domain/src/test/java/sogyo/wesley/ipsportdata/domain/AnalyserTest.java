@@ -38,6 +38,7 @@ public class AnalyserTest {
         resultTestList = result.powerInputList;
         resultTestList.add(String.valueOf(next.power));
         resultTestList.add(String.valueOf(secondResult.power));
+  
     }
     //test
 
@@ -62,14 +63,14 @@ public class AnalyserTest {
     void outputAnalysisConcatTest() {
         isEnd = true;
         outputMessage = result.getOutputAnalysis();
-        assertEquals(outputMessage, "Your MLSS power lies between: 200watt and 300 ");
+        assertEquals(outputMessage, "Your MLSS power lies between : 200 watt and 300 watt. With an average of 0");
     }
 
     @Test
     void outputAnalysisTest() {
         isEnd = false;
         outputMessage = next.getOutputAnalysis();
-        assertEquals(outputMessage, "please input next measurement");
+        assertEquals(outputMessage, "Please input next measurement");
     }
 
     @Test
@@ -77,7 +78,7 @@ public class AnalyserTest {
         next.isAnalysisEnd();
         assertFalse(isEnd);
         next.getOutputAnalysis();
-        outputMessage = "please input next measurement";
+        outputMessage = "Please input next measurement";
         assertEquals(outputMessage, next.outputMessage);
     }
 
@@ -97,5 +98,14 @@ public class AnalyserTest {
     void setPowerInputListTest() {
         result.setPowerInputList(resultTestList);
         assertEquals(resultTestList, result.getPowerInputList());
+    }
+
+    @Test
+    void setAverageMLSSPower() {
+        result.setPowerInputList(resultTestList);
+        result.setLastTwoPowerList();
+        result.setAverageMLSSPower();
+        int avg = result.getAverageMLSSPower();
+        assertEquals(250, avg);
     }
 }

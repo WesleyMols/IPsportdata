@@ -13,6 +13,8 @@ public class Analyser implements IAnalyser {
     String outputMessage;
     List<String> powerInputList =new ArrayList<>(2);
     int heartrate;
+    int MLSSPower;
+    List<Integer> lastTwoPowerList = new ArrayList<>();
 
     @Override
     public List<String> getPowerInputList() {
@@ -72,14 +74,30 @@ public class Analyser implements IAnalyser {
         }
        
     }
-    
+
+    public List<Integer> getLastTwoPowerList() {
+        return lastTwoPowerList;
+    }
+    public void setLastTwoPowerList() {
+        lastTwoPowerList.add(Integer.parseInt(powerInputList.get(powerInputList.size()-1)));
+        lastTwoPowerList.add(Integer.parseInt(powerInputList.get(powerInputList.size()-2)));
+    }
+        
+    public void setAverageMLSSPower() {
+       
+        MLSSPower = (lastTwoPowerList.get(0) + lastTwoPowerList.get(1)) /2;
+    }
+    public int getAverageMLSSPower() {
+        return MLSSPower;
+    }
+
     public String getOutputAnalysis() {
         isAnalysisEnd();
         if(isEnd==true) {
-            outputMessage = "Your MLSS power lies between: " + powerInputList.get(powerInputList.size()-2) +"watt and "+ powerInputList.get(powerInputList.size()-1) + " ";
+            outputMessage = String.format("Your MLSS power lies between : %s watt and %s watt. With an average of %d", powerInputList.get(powerInputList.size()-2), powerInputList.get(powerInputList.size()-1), MLSSPower);
             return outputMessage;
             } else {
-            outputMessage = "please input next measurement";
+            outputMessage = "Please input next measurement";
             return outputMessage;
         }
     

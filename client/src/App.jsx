@@ -36,9 +36,10 @@ function App() {
 
 
   function ShowData() {
-    return <><div>lactate difference: {data}</div>
+    return <>
+    
     <div>{returnMessage} </div>
-    <div>power inputs: {outputPower}</div>
+    <div>Power inputs: {outputPower}</div>
     </>
   }
   
@@ -92,8 +93,9 @@ function App() {
       <button onClick={() => onsubmitData()}>
         analyse
       </button>
+      <br /><br />
       <ShowData/>
-      <br />
+      <br /><br />
       </div>
       <Results xaxisdata={xaxisdata} yaxisdata={yaxisdata} ydataLTdiff={ydataLTdiff}/>
     </>
