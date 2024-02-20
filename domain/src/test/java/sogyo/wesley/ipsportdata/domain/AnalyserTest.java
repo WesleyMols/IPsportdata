@@ -23,6 +23,8 @@ public class AnalyserTest {
     private String outputMessage;
     private int heartrate;
     private List<String> resultTestList;
+    private double weigth;
+    private int size;
 
     @BeforeEach
     public void init() {
@@ -32,9 +34,9 @@ public class AnalyserTest {
         lactate_two = 5.2;
         lt_diffTest = lactate_two - lactate_one;
         heartrate = 155;
-        result = new Analyser(name, power, lactate_one, lactate_two, heartrate);
-        next = new Analyser(name, power, lactate_one, lactate_one, heartrate);
-        secondResult = new Analyser(name, 300, lactate_one +1, lactate_two+1, 170);
+        result = new Analyser(name, power, lactate_one, lactate_two, heartrate, weigth, size);
+        next = new Analyser(name, power, lactate_one, lactate_one, heartrate,weigth, size);
+        secondResult = new Analyser(name, 300, lactate_one +1, lactate_two+1, 170, weigth, size);
         resultTestList = result.powerInputList;
         resultTestList.add(String.valueOf(next.power));
         resultTestList.add(String.valueOf(secondResult.power));

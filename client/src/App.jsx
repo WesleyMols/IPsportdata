@@ -17,11 +17,12 @@ function App() {
   const [xaxisdata, setXaxis] = useState([]);
   const [yaxisdata, setYaxis] = useState([]);
   const [ydataLTdiff, setydataLTdiff] = useState([]);
-
+  const [weigth, setWeigth] = useState();
+  const [size, setSize] = useState();
   
   const onsubmitData = async () => {
-    const data = await analyse(username, power, lactate, lactate_two, heartrate)
-    console.log(data) // alle getters uit analysor.java
+    const data = await analyse(username, power, lactate, lactate_two, heartrate, weigth, size)
+    
     setResult(data.username)
     setData(data.calcLactateDifference)
     setReturnMessage(data.outputAnalysis)
@@ -29,7 +30,9 @@ function App() {
     setXaxis([...xaxisdata,power])
     setYaxis([...yaxisdata,heartrate])
     setydataLTdiff([...ydataLTdiff, data.calcLactateDifference])
-    
+    setWeigth(data.weigth)
+    setSize(data.size)
+    console.log(data) // alle getters uit analysor.java
   }
 
   function ShowUsername() {
@@ -46,8 +49,6 @@ function App() {
   
   return (
     <>
- 
-      
         <div>                 
             <input
               type = "text"
@@ -55,7 +56,21 @@ function App() {
               placeholder="enter your name"
               value={username}
               onChange={e => setUsername(e.target.value)}
-              />           
+              />
+              <input
+              type = "text"
+              id="weigth"
+              placeholder="enter your weigth in kilograms"
+              value={weigth}
+              onChange={e => setWeigth(e.target.value)}
+              />
+              <input
+              type = "text"
+              id="size"
+              placeholder="enter your length in centimeters"
+              value={size}
+              onChange={e => setSize(e.target.value)}
+              />          
         <ShowUsername
        />
        <br />

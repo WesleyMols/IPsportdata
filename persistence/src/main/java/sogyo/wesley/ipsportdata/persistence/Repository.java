@@ -8,13 +8,15 @@ import java.util.List;
 
 
 public class Repository implements IRepository{
-    int power;
+    int insertDataP;
     ArrayList<String> arrayPower = new ArrayList<String>();
-    Double lactate_one;
-    Double lactate_two;
-    Double lt_diff;
-    int heartrate;
+    Double insertDataLT1;
+    Double insertDataLT2;
+    Double insertLt_diff;
+    int insertHeartRate;
     String insertName;
+    double insertWeigth;
+    int size;
     List<String> returnpower = new ArrayList<>();
     @Override
     public void MysqlSave(IAnalyser analyser) {
@@ -24,12 +26,14 @@ public class Repository implements IRepository{
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ip_wesley", "root", "11BHL>WAX:tv");
             //insert user input in table
             insertName = analyser.getUsername();             
-            int insertDataP = analyser.getPower();
-            double insertDataLT1 = analyser.getLactate_one();
-            double insertDataLT2 = analyser.getLactate_two();
-            double insertLt_diff = analyser.getCalcLactateDifference();
-            int insertHeartRate = analyser.getHeartrate();
-            String query = "INSERT INTO user_input (username, power, lactate_one, lactate_two, lt_diff, heart_rate) " + "VALUES (?,?,?,?,?,?)";
+            insertDataP = analyser.getPower();
+            insertDataLT1 = analyser.getLactate_one();
+            insertDataLT2 = analyser.getLactate_two();
+            insertLt_diff = analyser.getCalcLactateDifference();
+            insertHeartRate = analyser.getHeartrate();
+            insertWeigth = analyser.getWeigth();
+            size = analyser.getSize();
+            String query = "INSERT INTO user_input (username, power, lactate_one, lactate_two, lt_diff, heart_rate, weigth, size) " + "VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement runqueryData = con.prepareStatement(query);
             runqueryData.setString(1, insertName);
             runqueryData.setInt(2, insertDataP);
@@ -37,6 +41,8 @@ public class Repository implements IRepository{
             runqueryData.setDouble(4, insertDataLT2);
             runqueryData.setDouble(5, insertLt_diff);
             runqueryData.setInt(6, insertHeartRate);
+            runqueryData.setDouble(7, insertWeigth);
+            runqueryData.setInt(8, size);
             runqueryData.execute();
            
             }catch(Exception e){ System.out.println(e);}
@@ -60,8 +66,8 @@ public class Repository implements IRepository{
             String queryView = "SELECT * FROM db_ip_wesley.output;";
             ResultSet rs = statement.executeQuery(queryView);
             while(rs.next()){
-                power = rs.getInt(1);
-                arrayPower.add(arrayPower.size(),String.valueOf(power));
+                insertDataP = rs.getInt(1);
+                arrayPower.add(arrayPower.size(),String.valueOf(insertDataP));
             }
             returnpower.add(arrayPower.get(arrayPower.size()-1));
         } catch (Exception e) {

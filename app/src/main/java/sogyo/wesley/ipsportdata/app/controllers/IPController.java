@@ -33,7 +33,7 @@ public class IPController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response analyse(@Context HttpServletRequest request, InputDTO input) {
-        IAnalyser analyser = factory.createNewAnalysis(input.getUsername(), input.getPower(), input.getLactate_one(), input.getLactate_two(), input.getHeartrate());
+        IAnalyser analyser = factory.createNewAnalysis(input.getUsername(), input.getPower(), input.getLactate_one(), input.getLactate_two(), input.getHeartrate(), input.getWeigth(), input.getSize());
         repository.MysqlSave(analyser);
         List<String> ouput = repository.MysqlGet(analyser);
         analyser.setPowerInputList(ouput);
