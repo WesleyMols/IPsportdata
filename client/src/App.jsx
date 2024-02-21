@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { analyse } from "./services/api"
 import React from 'react';
 import {Results} from './pages/Results.jsx';
+import { FaMoon, FaSun } from "react-icons/fa";
 
 function App() {
   const [dbUsername, setdbUsername] = useState();
@@ -18,6 +19,7 @@ function App() {
   const [ydataLTdiff, setydataLTdiff] = useState([]);
   const [weigth, setWeigth] = useState();
   const [size, setSize] = useState();
+  const [toggle, setToggle] = useState(false);
   
   const onsubmitData = async () => {
     const data = await analyse(username, power, lactate, lactate_two, heartrate, weigth, size)
@@ -48,6 +50,9 @@ function App() {
   
   return (
     <>
+    <div>
+      {toggle?<FaMoon onClick= {() => setToggle(false)} />: <FaSun onClick={() => setToggle(true)}/>}
+    </div>
         <div>                 
             <input
               type = "text"
