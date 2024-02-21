@@ -5,7 +5,7 @@ import {Results} from './pages/Results.jsx';
 import './App.css'
 
 function App() {
-  const [result, setResult] = useState();
+  const [dbUsername, setdbUsername] = useState();
   const [username, setUsername] = useState("");
   const [power, setPower] = useState();
   const [lactate, setLactate] = useState();
@@ -23,7 +23,7 @@ function App() {
   const onsubmitData = async () => {
     const data = await analyse(username, power, lactate, lactate_two, heartrate, weigth, size)
     
-    setResult(data.username)
+    setdbUsername(data.username)
     setData(data.calcLactateDifference)
     setReturnMessage(data.outputAnalysis)
     setoutputPower(data.powerInputList.map((item) => <p>{item}</p>))
@@ -36,7 +36,7 @@ function App() {
   }
 
   function ShowUsername() {
-   return <div>username: {result}</div>}
+   return <div>username: {dbUsername}</div>}
 
 
   function ShowData() {
