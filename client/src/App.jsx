@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { analyse } from "./services/api"
 import React from 'react';
 import {Results} from './pages/Results.jsx';
-import './App.css'
 
 function App() {
   const [dbUsername, setdbUsername] = useState();
