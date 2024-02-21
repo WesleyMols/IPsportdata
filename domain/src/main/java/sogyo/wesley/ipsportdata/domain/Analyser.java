@@ -2,6 +2,7 @@ package sogyo.wesley.ipsportdata.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class Analyser implements IAnalyser {
     String name;
@@ -19,6 +20,7 @@ public class Analyser implements IAnalyser {
     List<Integer> lastTwoPowerList = new ArrayList<>();
     int one;
     int two;
+    double wattPerKg;
 
     @Override
     public List<String> getPowerInputList() {
@@ -88,7 +90,13 @@ public class Analyser implements IAnalyser {
         }
        
     }
-    
+    @Override
+    public double getWattPerKg() {
+        getAverageMLSSPower();
+        wattPerKg = MLSSPower/weigth;
+        return wattPerKg;
+    }
+
     @Override
     public List<Integer> getLastTwoPowerList() {
         return lastTwoPowerList;
@@ -105,7 +113,7 @@ public class Analyser implements IAnalyser {
     public String getOutputAnalysis() {
         isAnalysisEnd();
         if(isEnd==true) {
-            outputMessage = String.format("Your MLSS power lies between : %s watt and %s watt. With an average of %d", powerInputList.get(powerInputList.size()-2), powerInputList.get(powerInputList.size()-1), MLSSPower);
+            outputMessage = String.format(Locale.GERMAN,"Your MLSS power lies between : %s watt and %s watt. With an average of %d, or %2.1f watt/kg", powerInputList.get(powerInputList.size()-2), powerInputList.get(powerInputList.size()-1), MLSSPower, wattPerKg);
             return outputMessage;
             } else {
             outputMessage = "Please input next measurement";

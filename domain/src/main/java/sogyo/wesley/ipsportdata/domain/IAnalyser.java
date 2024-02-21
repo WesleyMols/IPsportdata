@@ -15,4 +15,5 @@ public interface IAnalyser {
     void setPowerInputList(List<String> powerInputList);
     List<Integer> getLastTwoPowerList();
     int getAverageMLSSPower();
+    double getWattPerKg();
 }

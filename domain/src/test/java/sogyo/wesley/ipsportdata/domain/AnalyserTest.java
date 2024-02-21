@@ -34,6 +34,7 @@ public class AnalyserTest {
         lactate_two = 5.2;
         lt_diffTest = lactate_two - lactate_one;
         heartrate = 155;
+        weigth = 50;
         result = new Analyser(name, power, lactate_one, lactate_two, heartrate, weigth, size);
         next = new Analyser(name, power, lactate_one, lactate_one, heartrate,weigth, size);
         secondResult = new Analyser(name, 300, lactate_one +1, lactate_two+1, 170, weigth, size);
@@ -65,9 +66,10 @@ public class AnalyserTest {
     void outputAnalysisConcatTest() {
         result.setPowerInputList(resultTestList);
         result.getAverageMLSSPower();
+        result.getWattPerKg();
         isEnd = true;
         outputMessage = result.getOutputAnalysis();
-        assertEquals(outputMessage, "Your MLSS power lies between : 200 watt and 300 watt. With an average of 250");
+        assertEquals(outputMessage, "Your MLSS power lies between : 200 watt and 300 watt. With an average of 250, or 5,0 watt/kg");
     }
 
     @Test
