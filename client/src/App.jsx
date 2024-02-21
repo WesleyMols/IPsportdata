@@ -18,6 +18,7 @@ function App() {
   const [ydataLTdiff, setydataLTdiff] = useState([]);
   const [weigth, setWeigth] = useState();
   const [size, setSize] = useState();
+  const [aerobePower, setaerobePower] = useState(0);
  
   const onsubmitData = async () => {
     const data = await analyse(username, power, lactate, lactate_two, heartrate, weigth, size)
@@ -30,6 +31,7 @@ function App() {
     setydataLTdiff([...ydataLTdiff, data.calcLactateDifference])
     setWeigth(data.weigth)
     setSize(data.size)
+    setaerobePower(data.aerobePower)
     console.log(data) // alle getters uit analysor.java
   }
 
@@ -41,7 +43,7 @@ function App() {
     return <>
     
     <div>{returnMessage} </div>
-    <div>Power inputs: {outputPower}</div>
+    <div>Power inputs: {outputPower} AerobePower: {aerobePower}watt</div>
     </>
   }
   

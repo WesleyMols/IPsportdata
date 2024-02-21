@@ -69,7 +69,7 @@ public class AnalyserTest {
         result.getWattPerKg();
         isEnd = true;
         outputMessage = result.getOutputAnalysis();
-        assertEquals(outputMessage, "Your MLSS power lies between : 200 watt and 300 watt. With an average of 250, or 5,0 watt/kg");
+        assertEquals(outputMessage, "Your MLSS power lies between : 200 watt and 300 watt. With an average of 250watt, or 5,0 watt/kg");
     }
 
     @Test
@@ -115,8 +115,7 @@ public class AnalyserTest {
     @Test
     void calcAerobePowerTest() {
         result.setPowerInputList(resultTestList);
-        int avg = result.getAverageMLSSPower();
-        double aerobePower = avg*0.72;
+        double aerobePower = result.getAerobePower();
         assertEquals(aerobePower, 180);
     }
 }
