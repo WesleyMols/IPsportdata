@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 
 export const Results = ({xaxisdata, yaxisdata, ydataLTdiff}) => {
-    let min = 0;
     var trace1 = {
         x: xaxisdata,
         y: yaxisdata,

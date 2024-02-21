@@ -112,4 +112,11 @@ public class AnalyserTest {
         int avg = result.getAverageMLSSPower();
         assertEquals(250, avg);
     }
+    @Test
+    void calcAerobePowerTest() {
+        result.setPowerInputList(resultTestList);
+        int avg = result.getAverageMLSSPower();
+        double aerobePower = avg*0.72;
+        assertEquals(aerobePower, 180);
+    }
 }

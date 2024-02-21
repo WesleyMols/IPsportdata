@@ -10,7 +10,6 @@ function App() {
   const [power, setPower] = useState();
   const [lactate, setLactate] = useState();
   const [lactate_two, setLactateTwo] = useState();
-  const [data, setData] = useState();
   const [returnMessage, setReturnMessage] = useState("");
   const [outputPower, setoutputPower] = useState();
   const [heartrate, setHeartrate] = useState();
@@ -24,7 +23,6 @@ function App() {
     const data = await analyse(username, power, lactate, lactate_two, heartrate, weigth, size)
     
     setdbUsername(data.username)
-    setData(data.calcLactateDifference)
     setReturnMessage(data.outputAnalysis)
     setoutputPower(data.powerInputList.map((item) => <p>{item}</p>))
     setXaxis([...xaxisdata,power])
