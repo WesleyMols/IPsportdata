@@ -64,8 +64,6 @@ public class AnalyserTest {
     @Test
     void outputAnalysisConcatTest() {
         result.setPowerInputList(resultTestList);
-        result.setLastTwoPowerList();
-        result.setAverageMLSSPower();
         result.getAverageMLSSPower();
         isEnd = true;
         outputMessage = result.getOutputAnalysis();
@@ -109,8 +107,6 @@ public class AnalyserTest {
     @Test
     void setAverageMLSSPower() {
         result.setPowerInputList(resultTestList);
-        result.setLastTwoPowerList();
-        result.setAverageMLSSPower();
         int avg = result.getAverageMLSSPower();
         assertEquals(250, avg);
     }

@@ -94,16 +94,11 @@ public class Analyser implements IAnalyser {
         return lastTwoPowerList;
     }
 
-    public void setLastTwoPowerList() {
-        one = Integer.parseInt(powerInputList.get(powerInputList.size()-1));
-        two = Integer.parseInt(powerInputList.get(powerInputList.size()-2));
-    }
-    
-    public void setAverageMLSSPower() {
-        MLSSPower = (one+two) /2;
-    }
     @Override
     public int getAverageMLSSPower() {
+        one = Integer.parseInt(powerInputList.get(powerInputList.size()-1));
+        two = Integer.parseInt(powerInputList.get(powerInputList.size()-2));
+        MLSSPower = (one+two) /2;
         return MLSSPower;
     }
 
