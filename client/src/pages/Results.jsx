@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 
 export const Results = ({xaxisdata, yaxisdata, ydataLTdiff}) => {
-    
+    let min = 0;
     var trace1 = {
         x: xaxisdata,
         y: yaxisdata,
@@ -23,8 +23,8 @@ export const Results = ({xaxisdata, yaxisdata, ydataLTdiff}) => {
     
     var layout = {
     title: 'MLSS data analysis scatter plot',
-    yaxis: {title: 'heart rate over power', autorange: false, range:[0, 220]},
-    xaxis: { autorange: false, range:[0, 500]},
+    yaxis: {title: 'heart rate over power', showgrid: true, rangemode: 'tozero',},
+    xaxis: {title: 'power in watt', showgrid: true, rangemode: 'tozero',},
   
     yaxis2: {
         title: 'lactate difference over power',
@@ -32,11 +32,11 @@ export const Results = ({xaxisdata, yaxisdata, ydataLTdiff}) => {
         tickfont: {color: 'rgb(148, 103, 189)'},
         overlaying: 'y',
         side: 'right',
-        autorange: false, range:[0,10]
+        rangemode: 'tozero',
     }
     };
     
-    useEffect(() => {Plotly.newPlot('myDiv', data, layout)})
+    useEffect(() => {Plotly.newPlot('plot', data, layout)})
       
 
     return <><div >
@@ -46,7 +46,7 @@ export const Results = ({xaxisdata, yaxisdata, ydataLTdiff}) => {
                 This plot is generated on your input.
             </p>
         
-        <div id = 'myDiv'>
+        <div id = 'plot'>
         </div>
     </div></>
 }

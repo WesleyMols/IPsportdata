@@ -2,10 +2,10 @@ import { useState } from 'react'
 import { analyse } from "./services/api"
 import React from 'react';
 import {Results} from './pages/Results.jsx';
-import './App.css'
+
 
 function App() {
-  const [result, setResult] = useState();
+  const [dbUsername, setdbUsername] = useState();
   const [username, setUsername] = useState("");
   const [power, setPower] = useState();
   const [lactate, setLactate] = useState();
@@ -17,35 +17,38 @@ function App() {
   const [xaxisdata, setXaxis] = useState([]);
   const [yaxisdata, setYaxis] = useState([]);
   const [ydataLTdiff, setydataLTdiff] = useState([]);
-
-  
+  const [weigth, setWeigth] = useState();
+  const [size, setSize] = useState();
+ 
   const onsubmitData = async () => {
-    const data = await analyse(username, power, lactate, lactate_two, heartrate)
-    console.log(data) // alle getters uit analysor.java
-    setResult(data.username)
+    const data = await analyse(username, power, lactate, lactate_two, heartrate, weigth, size)
+    
+    setdbUsername(data.username)
     setData(data.calcLactateDifference)
     setReturnMessage(data.outputAnalysis)
-    setoutputPower(data.powerInputList.join(', '))
+    setoutputPower(data.powerInputList.map((item) => <p>{item}</p>))
     setXaxis([...xaxisdata,power])
     setYaxis([...yaxisdata,heartrate])
-    setydataLTdiff([...ydataLTdiff, data.calcLactateDiff])
+    setydataLTdiff([...ydataLTdiff, data.calcLactateDifference])
+    setWeigth(data.weigth)
+    setSize(data.size)
+    console.log(data) // alle getters uit analysor.java
   }
 
   function ShowUsername() {
-   return <div>username: {result}</div>}
+   return <div>username: {dbUsername}</div>}
 
 
   function ShowData() {
-    return <><div>lactate difference: {data}</div>
+    return <>
+    
     <div>{returnMessage} </div>
-    <div>power inputs: {outputPower}</div>
+    <div>Power inputs: {outputPower}</div>
     </>
   }
   
   return (
     <>
- 
-      
         <div>                 
             <input
               type = "text"
@@ -53,7 +56,21 @@ function App() {
               placeholder="enter your name"
               value={username}
               onChange={e => setUsername(e.target.value)}
-              />           
+              />
+              <input
+              type = "text"
+              id="weigth"
+              placeholder="enter your weigth in kilograms"
+              value={weigth}
+              onChange={e => setWeigth(e.target.value)}
+              />
+              <input
+              type = "text"
+              id="size"
+              placeholder="enter your length in centimeters"
+              value={size}
+              onChange={e => setSize(e.target.value)}
+              />          
         <ShowUsername
        />
        <br />
@@ -92,8 +109,9 @@ function App() {
       <button onClick={() => onsubmitData()}>
         analyse
       </button>
+      <br /><br />
       <ShowData/>
-      <br />
+      <br /><br />
       </div>
       <Results xaxisdata={xaxisdata} yaxisdata={yaxisdata} ydataLTdiff={ydataLTdiff}/>
     </>

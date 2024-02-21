@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class AnalysorTest {
+public class AnalyserTest {
     //init
     private String name;
     private int power;
@@ -23,6 +23,8 @@ public class AnalysorTest {
     private String outputMessage;
     private int heartrate;
     private List<String> resultTestList;
+    private double weigth;
+    private int size;
 
     @BeforeEach
     public void init() {
@@ -32,12 +34,14 @@ public class AnalysorTest {
         lactate_two = 5.2;
         lt_diffTest = lactate_two - lactate_one;
         heartrate = 155;
-        result = new Analyser(name, power, lactate_one, lactate_two, heartrate);
-        next = new Analyser(name, power, lactate_one, lactate_one, heartrate);
-        secondResult = new Analyser(name, 300, lactate_one +1, lactate_two+1, 170);
+        weigth = 50;
+        result = new Analyser(name, power, lactate_one, lactate_two, heartrate, weigth, size);
+        next = new Analyser(name, power, lactate_one, lactate_one, heartrate,weigth, size);
+        secondResult = new Analyser(name, 300, lactate_one +1, lactate_two+1, 170, weigth, size);
         resultTestList = result.powerInputList;
         resultTestList.add(String.valueOf(next.power));
         resultTestList.add(String.valueOf(secondResult.power));
+  
     }
     //test
 
@@ -60,16 +64,19 @@ public class AnalysorTest {
 
     @Test
     void outputAnalysisConcatTest() {
+        result.setPowerInputList(resultTestList);
+        result.getAverageMLSSPower();
+        result.getWattPerKg();
         isEnd = true;
         outputMessage = result.getOutputAnalysis();
-        assertEquals(outputMessage, "Your MLSS power lies between: 200watt and 300 ");
+        assertEquals(outputMessage, "Your MLSS power lies between : 200 watt and 300 watt. With an average of 250, or 5,0 watt/kg");
     }
 
     @Test
     void outputAnalysisTest() {
         isEnd = false;
         outputMessage = next.getOutputAnalysis();
-        assertEquals(outputMessage, "please input next measurement");
+        assertEquals(outputMessage, "Please input next measurement");
     }
 
     @Test
@@ -77,7 +84,7 @@ public class AnalysorTest {
         next.isAnalysisEnd();
         assertFalse(isEnd);
         next.getOutputAnalysis();
-        outputMessage = "please input next measurement";
+        outputMessage = "Please input next measurement";
         assertEquals(outputMessage, next.outputMessage);
     }
 
@@ -97,5 +104,12 @@ public class AnalysorTest {
     void setPowerInputListTest() {
         result.setPowerInputList(resultTestList);
         assertEquals(resultTestList, result.getPowerInputList());
+    }
+
+    @Test
+    void setAverageMLSSPower() {
+        result.setPowerInputList(resultTestList);
+        int avg = result.getAverageMLSSPower();
+        assertEquals(250, avg);
     }
 }
