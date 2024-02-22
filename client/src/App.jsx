@@ -26,7 +26,7 @@ function App() {
     
     setdbUsername(data.username)
     setReturnMessage(data.outputAnalysis)
-    setoutputPower(data.powerInputList.map((item) => <p>{item}</p>))
+    setoutputPower(data.powerInputList)
     setXaxis([...xaxisdata,power])
     setYaxis([...yaxisdata,heartrate])
     setydataLTdiff([...ydataLTdiff, data.calcLactateDifference])
@@ -34,7 +34,7 @@ function App() {
     setSize(data.size)
     setaerobePower(data.aerobePower)
     setSpeed(data.speedFromMLSSPower)
-    console.log(data) // alle getters uit analysor.java
+    console.log(data) // alle getters 
   }
 
   function ShowUsername() {
@@ -42,12 +42,33 @@ function App() {
 
 
   function ShowData() {
-    return <>
-    
-    <div>{returnMessage} </div>
-    <div>Power inputs: {outputPower} AerobePower: {aerobePower}watt</div>
-    <div>Calculated speed at MLSS power: {speed}</div>
+    return <><table>
+      <tr>
+   <th> Message </th>
+   <th> AerobePower </th>
+   <th>Calculated speed at MLSS power</th>
+   </tr>
+   <tr>
+  <td>{returnMessage} </td>
+    <td> {aerobePower}</td>
+    <td> {speed}</td>
+    </tr></table>
     </>
+  }
+
+  function TablePower() {
+    return <>
+    <table>
+      <th>
+        power inputs
+      </th>
+      <tr>
+        <td>
+          {outputPower}
+        </td>
+      </tr>
+      </table>
+      </>
   }
   
   return (
@@ -74,8 +95,8 @@ function App() {
               value={size}
               onChange={e => setSize(e.target.value)}
               />          
-        <ShowUsername
-       />
+        <ShowUsername/>
+       
        <br />
        <div className="grid grid-cols-4 gap-4">
        <input
@@ -113,6 +134,7 @@ function App() {
         analyse
       </button>
       <br /><br />
+      <TablePower/><br />
       <ShowData/>
       <br /><br />
       </div>

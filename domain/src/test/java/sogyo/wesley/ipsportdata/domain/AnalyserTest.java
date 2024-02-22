@@ -122,9 +122,16 @@ public class AnalyserTest {
 
     @Test
     void calcLNPowerTest() {
+        result.getOutputAnalysis();
         speed = result.getSpeedFromMLSSPower();
         double actual = 15.96*Math.log(250)-48.48;
         assertEquals(Math.log(Math.E), 1);
         assertEquals(speed, actual);
+    }
+
+    @Test 
+    void speedIfisEndFalse() {
+        speed = next.getSpeedFromMLSSPower();
+        assertEquals(speed, 0);
     }
 }

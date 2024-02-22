@@ -126,9 +126,14 @@ public class Analyser implements IAnalyser {
     }
 
     public double getSpeedFromMLSSPower() {
+        isAnalysisEnd();
+        if(isEnd==true) {
         getAverageMLSSPower();
         speed = 15.96*Math.log(MLSSPower)-48.48;
         return speed;
+        } else {
+            return 0;
+        }
     }
 
     @Override
