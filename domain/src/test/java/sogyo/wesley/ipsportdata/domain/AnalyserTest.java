@@ -25,6 +25,7 @@ public class AnalyserTest {
     private List<String> resultTestList;
     private double weigth;
     private int size;
+    private double speed;
 
     @BeforeEach
     public void init() {
@@ -117,5 +118,13 @@ public class AnalyserTest {
         result.setPowerInputList(resultTestList);
         double aerobePower = result.getAerobePower();
         assertEquals(aerobePower, 180);
+    }
+
+    @Test
+    void calcLNPowerTest() {
+        speed = result.getSpeedFromMLSSPower();
+        double actual = 15.96*Math.log(250)-48.48;
+        assertEquals(Math.log(Math.E), 1);
+        assertEquals(speed, actual);
     }
 }

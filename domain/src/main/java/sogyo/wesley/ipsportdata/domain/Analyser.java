@@ -23,6 +23,7 @@ public class Analyser implements IAnalyser {
     double wattPerKg;
     private double aerobeFactor = 0.72;
     private double aerobePower;
+    private double speed;
 
     @Override
     public List<String> getPowerInputList() {
@@ -122,6 +123,12 @@ public class Analyser implements IAnalyser {
             return outputMessage;
         }
     
+    }
+
+    public double getSpeedFromMLSSPower() {
+        getAverageMLSSPower();
+        speed = 15.96*Math.log(MLSSPower)-48.48;
+        return speed;
     }
 
     @Override

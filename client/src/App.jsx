@@ -19,6 +19,7 @@ function App() {
   const [weigth, setWeigth] = useState();
   const [size, setSize] = useState();
   const [aerobePower, setaerobePower] = useState(0);
+  const [speed, setSpeed] = useState(0);
  
   const onsubmitData = async () => {
     const data = await analyse(username, power, lactate, lactate_two, heartrate, weigth, size)
@@ -32,6 +33,7 @@ function App() {
     setWeigth(data.weigth)
     setSize(data.size)
     setaerobePower(data.aerobePower)
+    setSpeed(data.speedFromMLSSPower)
     console.log(data) // alle getters uit analysor.java
   }
 
@@ -44,6 +46,7 @@ function App() {
     
     <div>{returnMessage} </div>
     <div>Power inputs: {outputPower} AerobePower: {aerobePower}watt</div>
+    <div>Calculated speed at MLSS power: {speed}</div>
     </>
   }
   
