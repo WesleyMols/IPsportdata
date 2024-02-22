@@ -21,6 +21,9 @@ public class Analyser implements IAnalyser {
     int one;
     int two;
     double wattPerKg;
+    private double aerobeFactor = 0.72;
+    private double aerobePower;
+    private double speed;
 
     @Override
     public List<String> getPowerInputList() {
@@ -113,7 +116,7 @@ public class Analyser implements IAnalyser {
     public String getOutputAnalysis() {
         isAnalysisEnd();
         if(isEnd==true) {
-            outputMessage = String.format(Locale.GERMAN,"Your MLSS power lies between : %s watt and %s watt. With an average of %d, or %2.1f watt/kg", powerInputList.get(powerInputList.size()-2), powerInputList.get(powerInputList.size()-1), MLSSPower, wattPerKg);
+            outputMessage = String.format(Locale.GERMAN,"Your MLSS power lies between : %s watt and %s watt. With an average of %dwatt, or %2.1f watt/kg", powerInputList.get(powerInputList.size()-2), powerInputList.get(powerInputList.size()-1), MLSSPower, wattPerKg);
             return outputMessage;
             } else {
             outputMessage = "Please input next measurement";
@@ -122,8 +125,20 @@ public class Analyser implements IAnalyser {
     
     }
 
+    public double getSpeedFromMLSSPower() {
+        getAverageMLSSPower();
+        speed = 15.96*Math.log(MLSSPower)-48.48;
+        return speed;
+    }
+
     @Override
     public int getHeartrate() {
         return heartrate;
+    }
+
+    public double getAerobePower() {
+        getAverageMLSSPower();
+        aerobePower = MLSSPower*aerobeFactor;
+        return aerobePower;
     }
 }

@@ -10,7 +10,6 @@ function App() {
   const [power, setPower] = useState();
   const [lactate, setLactate] = useState();
   const [lactate_two, setLactateTwo] = useState();
-  const [data, setData] = useState();
   const [returnMessage, setReturnMessage] = useState("");
   const [outputPower, setoutputPower] = useState();
   const [heartrate, setHeartrate] = useState();
@@ -19,12 +18,13 @@ function App() {
   const [ydataLTdiff, setydataLTdiff] = useState([]);
   const [weigth, setWeigth] = useState();
   const [size, setSize] = useState();
+  const [aerobePower, setaerobePower] = useState(0);
+  const [speed, setSpeed] = useState(0);
  
   const onsubmitData = async () => {
     const data = await analyse(username, power, lactate, lactate_two, heartrate, weigth, size)
     
     setdbUsername(data.username)
-    setData(data.calcLactateDifference)
     setReturnMessage(data.outputAnalysis)
     setoutputPower(data.powerInputList.map((item) => <p>{item}</p>))
     setXaxis([...xaxisdata,power])
@@ -32,6 +32,8 @@ function App() {
     setydataLTdiff([...ydataLTdiff, data.calcLactateDifference])
     setWeigth(data.weigth)
     setSize(data.size)
+    setaerobePower(data.aerobePower)
+    setSpeed(data.speedFromMLSSPower)
     console.log(data) // alle getters uit analysor.java
   }
 
@@ -43,7 +45,8 @@ function App() {
     return <>
     
     <div>{returnMessage} </div>
-    <div>Power inputs: {outputPower}</div>
+    <div>Power inputs: {outputPower} AerobePower: {aerobePower}watt</div>
+    <div>Calculated speed at MLSS power: {speed}</div>
     </>
   }
   
