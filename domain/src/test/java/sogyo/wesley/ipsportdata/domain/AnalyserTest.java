@@ -2,6 +2,7 @@ package sogyo.wesley.ipsportdata.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -121,11 +122,13 @@ public class AnalyserTest {
     }
 
     @Test
-    void calcLNPowerTest() {
+    void calcSpeedPowerTest() {
         result.getOutputAnalysis();
         speed = result.getSpeedFromMLSSPower();
         double actual = 15.96*Math.log(250)-48.48;
         assertEquals(Math.log(Math.E), 1);
+        actual = result.round(actual, 2);
+        speed = result.round(speed, 2);
         assertEquals(speed, actual);
     }
 
@@ -133,5 +136,10 @@ public class AnalyserTest {
     void speedIfisEndFalse() {
         speed = next.getSpeedFromMLSSPower();
         assertEquals(speed, 0);
+    }
+
+    @Test
+    void roundExceptionTest() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {result.round(lactate_one,-2);});
     }
 }
