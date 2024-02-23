@@ -4,14 +4,15 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(200, 196, 224, 0.87);
-  background-color: #423f51;
+  color: rgba(211, 207, 237, 1);
+  background-image: linear-gradient(to right, rgba(0,255,0,0.1), rgb(103, 4, 130,0.3));
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 table, th, td {
   
   border: 1px solid;
@@ -44,11 +45,14 @@ article {
 }
 .navbar {
   overflow: hidden;
-  position: fixed;
+  position:absolute;
   
   top: 0;
   width: 100%;
   height: 3cm;
+}
+img{
+  border-radius: 30%;
 }
 .logo {
   overflow: visible;
@@ -86,7 +90,7 @@ li a:hover {
 }
 
 body {
-   margin: 0;
+  margin: 0;
   padding: 0px;
   display: flex;
   place-items: center;
