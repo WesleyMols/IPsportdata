@@ -26,7 +26,7 @@ function App() {
     
     setdbUsername(data.username)
     setReturnMessage(data.outputAnalysis)
-    setoutputPower(data.powerInputList)
+    setoutputPower(data.powerInputList.map((item) => <p>{item}</p>))
     setXaxis([...xaxisdata,power])
     setYaxis([...yaxisdata,heartrate])
     setydataLTdiff([...ydataLTdiff, data.calcLactateDifference])
@@ -42,34 +42,24 @@ function App() {
 
 
   function ShowData() {
-    return <><table>
+    return <>
+    <table>
       <tr>
+    <th>Power Inputs</th>
    <th> Message </th>
    <th> AerobePower </th>
    <th>Calculated speed at MLSS power</th>
    </tr>
    <tr>
+   <td>{outputPower} </td>
   <td>{returnMessage} </td>
     <td> {aerobePower}</td>
     <td> {speed}</td>
-    </tr></table>
+    </tr>
+    </table>
     </>
   }
 
-  function TablePower() {
-    return <>
-    <table>
-      <th>
-        power inputs
-      </th>
-      <tr>
-        <td>
-          {outputPower}
-        </td>
-      </tr>
-      </table>
-      </>
-  }
   
   return (
     <>
@@ -134,7 +124,6 @@ function App() {
         analyse
       </button>
       <br /><br />
-      <TablePower/><br />
       <ShowData/>
       <br /><br />
       </div>
