@@ -98,8 +98,13 @@ public class Analyser implements IAnalyser {
     @Override
     public double getWattPerKg() {
         getAverageMLSSPower();
+        if(weigth != 0) {
         wattPerKg = MLSSPower/weigth;
         return wattPerKg;
+        } else {
+            return 0;
+        }
+
     }
 
     @Override

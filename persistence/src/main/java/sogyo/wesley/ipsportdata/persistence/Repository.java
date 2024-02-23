@@ -23,7 +23,7 @@ public class Repository implements IRepository{
         
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ip_wesley", "root", "11BHL>WAX:tv");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ip_wesley", "root", "password");
             //insert user input in table
             insertName = analyser.getUsername();             
             insertDataP = analyser.getPower();
@@ -52,7 +52,7 @@ public class Repository implements IRepository{
     public List<String> MysqlGet(IAnalyser analyser) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ip_wesley", "root", "11BHL>WAX:tv");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ip_wesley", "root", "password");
             Statement statement = con.createStatement();
             //set username for view
             String setNameQuery = "set @username := ?";
