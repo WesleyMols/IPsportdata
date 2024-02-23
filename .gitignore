@@ -4,6 +4,7 @@
 **/build
 **/target
 **/.gradle
+**/.png
 
 # Ignore Gradle project-specific cache directory
 .gradle

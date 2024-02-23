@@ -13,6 +13,8 @@ public class AnalysisFactoryTest {
     private double lactate_two;
     private IAnalyser init;
     private int heartrate;
+    private double weigth;
+    private int size;
     
     @BeforeEach
     public void init() {
@@ -22,7 +24,7 @@ public class AnalysisFactoryTest {
     lactate_one = 2.2;
     lactate_two = 3.3;
     heartrate = 142;
-    init = test.createNewAnalysis(name, power, lactate_one, lactate_two, heartrate);
+    init = test.createNewAnalysis(name, power, lactate_one, lactate_two, heartrate, weigth, size);
     }
 
     @Test

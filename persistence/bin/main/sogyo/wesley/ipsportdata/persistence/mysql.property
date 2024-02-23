@@ -1,6 +1,0 @@
-{dbDriver=com.mysql.jdbc.Driver
-dbUrl="jdbc:mysql://localhost:3306/db_ip_wesley"
-dbName=db_ip_wesley
-dbLogin=root
-dbPassword="11BHL>WAX:tv"
-}
