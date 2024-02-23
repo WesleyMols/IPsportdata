@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -38,16 +39,16 @@ public class AnalyserTest {
         result = new Analyser(name, power, lactate_one, lactate_two, heartrate, weigth, size);
         next = new Analyser(name, power, lactate_one, lactate_one, heartrate,weigth, size);
         secondResult = new Analyser(name, power+100, lactate_one +1, lactate_two+1, heartrate+15, weigth, size);
-        resultTestList = result.powerInputList;
-        resultTestList.add(String.valueOf(next.power));
-        resultTestList.add(String.valueOf(secondResult.power));
+        resultTestList = result.getPowerInputList();
+        resultTestList.add(String.valueOf(next.getPower()));
+        resultTestList.add(String.valueOf(secondResult.getPower()));
   
     }
 
     @Test
     void calcLactateDiffTest() { 
-        double lt_diff = result.lactate_two - result.lactate_one;
-        assertEquals(lt_diff, result.lt_diff);
+        double lt_diff = lactate_two - lactate_one;
+        assertEquals(lt_diff, result.getCalcLactateDifference());
     }
 
     @Test
@@ -74,14 +75,14 @@ public class AnalyserTest {
     void isEndMessageTest() {
         next.getOutputAnalysis();
         outputMessage = "Please input next measurement";
-        assertEquals(outputMessage, next.outputMessage);
+        assertEquals(outputMessage, next.getOutputAnalysis());
     }
 
     @Test
     void getPowerInputListTest() {
         assertEquals(resultTestList.size(), 2);
-        assertEquals(resultTestList.get(0), String.valueOf(result.power));
-        assertEquals(resultTestList.get(1), String.valueOf(secondResult.power));
+        assertEquals(resultTestList.get(0), String.valueOf(result.getPower()));
+        assertEquals(resultTestList.get(1), String.valueOf(secondResult.getPower()));
     }
 
     @Test
@@ -100,15 +101,18 @@ public class AnalyserTest {
     void calcAerobePowerTest() {
         result.setPowerInputList(resultTestList);
         double aerobePower = result.getAerobePower();
-        assertEquals(aerobePower, 180);
+        assertEquals(180, aerobePower);
     }
 
     @Test
     void zeroWeigthTest() {
-        result.setPowerInputList(resultTestList);
-        result.weigth = 0;
-        double wattPerkg = result.getWattPerKg();
-        assertEquals(wattPerkg, 0);
+        Analyser test = new Analyser(name, power, lactate_one, lactate_two, heartrate, 0, size);
+        List<String> listtest = new ArrayList<>();
+        listtest.add("200");
+        listtest.add("300");
+        test.setPowerInputList(listtest);
+        double wattPerkg = test.getWattPerKg();
+        assertEquals(0, wattPerkg);
     }
     @Test
     void calcSpeedPowerTest() {
@@ -124,7 +128,7 @@ public class AnalyserTest {
     @Test 
     void speedIfisEndFalse() {
         speed = next.getSpeedFromMLSSPower();
-        assertEquals(speed, 0);
+        assertEquals(0, speed);
     }
 
     @Test
