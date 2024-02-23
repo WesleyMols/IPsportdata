@@ -71,14 +71,14 @@ function App() {
               onChange={e => setUsername(e.target.value)}
               />
               <input
-              type = "text"
+              type = "number"
               id="weigth"
               placeholder="enter your weigth in kilograms"
               value={weigth}
               onChange={e => setWeigth(e.target.value)}
               />
               <input
-              type = "text"
+              type = "number"
               id="size"
               placeholder="enter your length in centimeters"
               value={size}
@@ -89,28 +89,28 @@ function App() {
        <br />
        <div className="grid grid-cols-4 gap-4">
        <input
-        type="text"
+        type="number"
         id="power"
         placeholder="power"
         value={power}
         onChange={e => setPower(e.target.value)}
         />
         <input
-        type="text"
+        type="number"
         id="lactate"
         placeholder="lactate at 3min"
         value={lactate}
         onChange={e => setLactate(e.target.value)}
         />
         <input 
-        type="text"
+        type="number"
         id="lactate2"
         placeholder="lactate at 9min"
         value={lactate_two}
         onChange={e => setLactateTwo(e.target.value)}
         />
         <input 
-        type="text"
+        type="number"
         id="heart_rate"
         placeholder="avg HR last 4min"
         value={heartrate}
