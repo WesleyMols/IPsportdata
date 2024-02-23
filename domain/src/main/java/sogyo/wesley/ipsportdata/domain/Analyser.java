@@ -1,5 +1,7 @@
 package sogyo.wesley.ipsportdata.domain;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -126,9 +128,15 @@ public class Analyser implements IAnalyser {
     }
 
     public double getSpeedFromMLSSPower() {
+        isAnalysisEnd();
+        if(isEnd==true) {
         getAverageMLSSPower();
         speed = 15.96*Math.log(MLSSPower)-48.48;
+        speed = round(speed, 2);
         return speed;
+        } else {
+            return 0;
+        }
     }
 
     @Override
@@ -139,6 +147,15 @@ public class Analyser implements IAnalyser {
     public double getAerobePower() {
         getAverageMLSSPower();
         aerobePower = MLSSPower*aerobeFactor;
+        aerobePower = round(aerobePower,2);
         return aerobePower;
     }
+
+    static double round(double value, int places) {
+    if (places < 0) throw new IllegalArgumentException();
+
+    BigDecimal bd = new BigDecimal(Double.toString(value));
+    bd = bd.setScale(places, RoundingMode.HALF_UP);
+    return bd.doubleValue();
+}
 }
