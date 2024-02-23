@@ -7,23 +7,23 @@ import java.util.List;
 import java.util.Locale;
 
 public class Analyser implements IAnalyser {
-    String name;
-    int power;
-    double lactate_one;
-    double lactate_two;
-    double lt_diff;
-    double weigth;
-    int size;
-    boolean isEnd;
-    String outputMessage;
-    List<String> powerInputList =new ArrayList<>(2);
-    int heartrate;
-    int MLSSPower;
-    List<Integer> lastTwoPowerList = new ArrayList<>();
-    int one;
-    int two;
-    double wattPerKg;
-    private double aerobeFactor = 0.72;
+    private String name;
+    private int power;
+    private double lactate_one;
+    private double lactate_two;
+    private double lt_diff;
+    private double weigth;
+    private int size;
+    private boolean isEnd;
+    private String outputMessage;
+    private List<String> powerInputList =new ArrayList<>(2);
+    private int heartrate;
+    private int MLSSPower;
+    private List<Integer> lastTwoPowerList = new ArrayList<>();
+    private int one;
+    private int two;
+    private double wattPerKg;
+    private final double aerobeFactor = 0.72;
     private double aerobePower;
     private double speed;
 
@@ -98,8 +98,13 @@ public class Analyser implements IAnalyser {
     @Override
     public double getWattPerKg() {
         getAverageMLSSPower();
+        if(weigth != 0) {
         wattPerKg = MLSSPower/weigth;
         return wattPerKg;
+        } else {
+            return 0;
+        }
+
     }
 
     @Override

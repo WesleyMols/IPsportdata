@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +17,6 @@ public class AnalyserTest {
     private int power;
     private double lactate_one;
     private double lactate_two;
-    private double lt_diffTest;
     private Analyser result;
     private Analyser next;
     private Analyser secondResult;
@@ -34,28 +34,21 @@ public class AnalyserTest {
         power = 200;
         lactate_one = 3.3;
         lactate_two = 5.2;
-        lt_diffTest = lactate_two - lactate_one;
         heartrate = 155;
         weigth = 50;
         result = new Analyser(name, power, lactate_one, lactate_two, heartrate, weigth, size);
         next = new Analyser(name, power, lactate_one, lactate_one, heartrate,weigth, size);
-        secondResult = new Analyser(name, 300, lactate_one +1, lactate_two+1, 170, weigth, size);
-        resultTestList = result.powerInputList;
-        resultTestList.add(String.valueOf(next.power));
-        resultTestList.add(String.valueOf(secondResult.power));
+        secondResult = new Analyser(name, power+100, lactate_one +1, lactate_two+1, heartrate+15, weigth, size);
+        resultTestList = result.getPowerInputList();
+        resultTestList.add(String.valueOf(next.getPower()));
+        resultTestList.add(String.valueOf(secondResult.getPower()));
   
     }
-    //test
 
     @Test
     void calcLactateDiffTest() { 
-        double lt_diff = result.lactate_two - result.lactate_one;
-        assertEquals(lt_diffTest, lt_diff);
-    }
-
-    @Test
-    void getCalcLactateDiffTest() {
-        assertEquals(lt_diffTest, result.lt_diff);
+        double lt_diff = lactate_two - lactate_one;
+        assertEquals(lt_diff, result.getCalcLactateDifference());
     }
 
     @Test
@@ -69,37 +62,27 @@ public class AnalyserTest {
         result.setPowerInputList(resultTestList);
         result.getAverageMLSSPower();
         result.getWattPerKg();
-        isEnd = true;
-        outputMessage = result.getOutputAnalysis();
-        assertEquals(outputMessage, "Your MLSS power lies between : 200 watt and 300 watt. With an average of 250watt, or 5,0 watt/kg");
-    }
-
-    @Test
-    void outputAnalysisTest() {
-        isEnd = false;
-        outputMessage = next.getOutputAnalysis();
-        assertEquals(outputMessage, "Please input next measurement");
+        outputMessage = "Your MLSS power lies between : 200 watt and 300 watt. With an average of 250watt, or 5,0 watt/kg";
+        assertEquals(outputMessage, result.getOutputAnalysis());
     }
 
     @Test
     void isEndFalseTest() {
         next.isAnalysisEnd();
         assertFalse(isEnd);
+    }
+    @Test
+    void isEndMessageTest() {
         next.getOutputAnalysis();
         outputMessage = "Please input next measurement";
-        assertEquals(outputMessage, next.outputMessage);
-    }
-
-    @Test
-    void setHeartrateTest() {
-        assertEquals(secondResult.heartrate, 170);
+        assertEquals(outputMessage, next.getOutputAnalysis());
     }
 
     @Test
     void getPowerInputListTest() {
         assertEquals(resultTestList.size(), 2);
-        assertEquals(resultTestList.get(0), String.valueOf(result.power));
-        assertEquals(resultTestList.get(1), String.valueOf(secondResult.power));
+        assertEquals(resultTestList.get(0), String.valueOf(result.getPower()));
+        assertEquals(resultTestList.get(1), String.valueOf(secondResult.getPower()));
     }
 
     @Test
@@ -118,9 +101,19 @@ public class AnalyserTest {
     void calcAerobePowerTest() {
         result.setPowerInputList(resultTestList);
         double aerobePower = result.getAerobePower();
-        assertEquals(aerobePower, 180);
+        assertEquals(180, aerobePower);
     }
 
+    @Test
+    void zeroWeigthTest() {
+        Analyser test = new Analyser(name, power, lactate_one, lactate_two, heartrate, 0, size);
+        List<String> listtest = new ArrayList<>();
+        listtest.add("200");
+        listtest.add("300");
+        test.setPowerInputList(listtest);
+        double wattPerkg = test.getWattPerKg();
+        assertEquals(0, wattPerkg);
+    }
     @Test
     void calcSpeedPowerTest() {
         result.getOutputAnalysis();
@@ -135,11 +128,11 @@ public class AnalyserTest {
     @Test 
     void speedIfisEndFalse() {
         speed = next.getSpeedFromMLSSPower();
-        assertEquals(speed, 0);
+        assertEquals(0, speed);
     }
 
     @Test
     void roundExceptionTest() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {result.round(lactate_one,-2);});
+        assertThrows(IllegalArgumentException.class, () -> {result.round(lactate_one,-2);});
     }
 }
