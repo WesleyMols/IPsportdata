@@ -25,6 +25,6 @@ describe('The Home Page', () => {
     
     it('go to about page', () => {
         cy.get('ul > :nth-child(2) > a').contains('About').click()
-        
+        cy.location("pathname").should("eq", "/About")
     })
   })
