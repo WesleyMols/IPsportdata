@@ -10,8 +10,15 @@ describe("multiple inputs followed by analysis", () => {
         cy.get('#lactate2').type(3)
         cy.get('#heart_rate').type(155)
         cy.get('button').click()
-    })
-    it("second input", () => {
+    
+        cy.get('[type="text"]').clear()
+        cy.get('[type="number"]').clear()
+        cy.get('#power').clear()
+        cy.get('#lactate').clear()
+        cy.get('#lactate2').clear()
+        cy.get('#heart_rate').clear()
+
+
         cy.get('#username').type('wes') // Cypress deletes previous inputs in contrast with the browser
         cy.get('#weigth').type('60')
         cy.get('#power').type(250)
@@ -19,8 +26,14 @@ describe("multiple inputs followed by analysis", () => {
         cy.get('#lactate2').type(3.9)
         cy.get('#heart_rate').type(165)
         cy.get('button').click()
-    })
-    it("final input", () => {
+
+        cy.get('[type="text"]').clear()
+        cy.get('[type="number"]').clear()
+        cy.get('#power').clear()
+        cy.get('#lactate').clear()
+        cy.get('#lactate2').clear()
+        cy.get('#heart_rate').clear()
+   
         cy.get('#username').type('wes')
         cy.get('#weigth').type('60')
         cy.get('#power').type(300)
