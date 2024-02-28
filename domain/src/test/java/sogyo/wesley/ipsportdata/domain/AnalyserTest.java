@@ -52,6 +52,13 @@ public class AnalyserTest {
     }
 
     @Test
+    void calclactateDiffnegativeTest() {
+        Analyser test = new Analyser(name, power, lactate_one, 0, heartrate, weigth, size);
+        double testDiff = 0 - lactate_one;
+        assertEquals(testDiff, test.getCalcLactateDifference());
+    }
+    
+    @Test
     void isAnalysisEndTest() {
         isEnd = result.isAnalysisEnd();
         assertTrue(isEnd);
