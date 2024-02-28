@@ -9,6 +9,7 @@
     "react-router-dom": "^6.21.3"
   },
   "scripts": {
+    "npm run dev": "vite --host",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   }
