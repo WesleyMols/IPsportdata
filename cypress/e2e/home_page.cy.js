@@ -3,7 +3,7 @@ describe('The Home Page', () => {
       cy.visit('/') // URL in cypress.config
       cy.get('#username')
         .type('wes')
-      cy.get('#weigth').type('60')
+      cy.get('#weigth').type('60') // doesnot look like it matters if this value is a string or number
       cy.get('#power').type(200)
       cy.get('#lactate').type(2.2)
       cy.get('#lactate2').type(3)
