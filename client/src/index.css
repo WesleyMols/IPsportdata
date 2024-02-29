@@ -85,7 +85,7 @@ li a:hover {
   color: white;
 }
 
-.myDiv {
+.plot {
   overflow: scroll;
 }
 
@@ -132,5 +132,19 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+@media screen and (max-width: 992px) {
+  :root {
+    width: 50%;
+    color:#f1eb35;
+  }
+  article {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 600px) {
+  article {
+    width: 30%;
   }
 }
