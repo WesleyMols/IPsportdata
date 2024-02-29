@@ -5,10 +5,11 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "cypress": "^13.6.4",
+    "cypress": "^13.6.6",
     "react-router-dom": "^6.21.3"
   },
   "scripts": {
+    "npm run dev": "vite --host",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   }
