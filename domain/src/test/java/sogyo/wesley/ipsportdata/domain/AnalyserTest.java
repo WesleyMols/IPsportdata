@@ -11,7 +11,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class AnalyserTest {
+class AnalyserTest {
     //init
     private String name;
     private int power;
@@ -87,7 +87,7 @@ public class AnalyserTest {
 
     @Test
     void getPowerInputListTest() {
-        assertEquals(resultTestList.size(), 2);
+        assertEquals(2, resultTestList.size());
         assertEquals(resultTestList.get(0), String.valueOf(result.getPower()));
         assertEquals(resultTestList.get(1), String.valueOf(secondResult.getPower()));
     }
@@ -126,9 +126,9 @@ public class AnalyserTest {
         result.getOutputAnalysis();
         speed = result.getSpeedFromMLSSPower();
         double actual = 15.96*Math.log(250)-48.48;
-        assertEquals(Math.log(Math.E), 1);
-        actual = result.round(actual, 2);
-        speed = result.round(speed, 2);
+        assertEquals(1, Math.log(Math.E));
+        actual = Analyser.round(actual, 2);
+        speed = Analyser.round(speed, 2);
         assertEquals(speed, actual);
     }
 
@@ -140,6 +140,6 @@ public class AnalyserTest {
 
     @Test
     void roundExceptionTest() {
-        assertThrows(IllegalArgumentException.class, () -> {result.round(lactate_one,-2);});
+        assertThrows(IllegalArgumentException.class, () -> {Analyser.round(lactate_one,-2);});
     }
 }
