@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { analyse } from "./services/api"
-import React from 'react';
+
 import {Results} from './pages/Results.jsx';
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
     
     setdbUsername(data.username)
     setReturnMessage(data.outputAnalysis)
-    setoutputPower(data.powerInputList.map((item) => <p>{item}</p>))
+    setoutputPower(data.powerInputList.map((item) => <p key={item}> {item}</p>))
     setXaxis([...xaxisdata,power])
     setYaxis([...yaxisdata,heartrate])
     setydataLTdiff([...ydataLTdiff, data.calcLactateDifference])
@@ -42,7 +42,7 @@ function App() {
 
   function ShowData() {
     return <>
-    <table>
+    <table data-cy= "table">
       <tr>
     <th>Power Inputs</th>
    <th> Message </th>
@@ -52,7 +52,7 @@ function App() {
    <tr>
    <td>{outputPower} </td>
   <td>{returnMessage} </td>
-    <td> {aerobePower}</td>
+    <td data-cy="aerobepower"> {aerobePower}</td>
     <td> {speed}</td>
     </tr>
     </table>
@@ -64,6 +64,7 @@ function App() {
     <>
         <div>                 
             <input
+              data-cy="username"
               type = "text"
               id="username"
               placeholder="enter your name"
@@ -71,6 +72,7 @@ function App() {
               onChange={e => setUsername(e.target.value)}
               />
               <input
+              data-cy="weigth"
               type = "number"
               id="weigth"
               placeholder="enter your weigth in kilograms"
@@ -78,6 +80,7 @@ function App() {
               onChange={e => setWeigth(e.target.value)}
               />
               <input
+              data-cy="size"
               type = "number"
               id="size"
               placeholder="enter your length in centimeters"
@@ -89,6 +92,7 @@ function App() {
        <br />
        <div className="grid grid-cols-4 gap-4">
        <input
+       data-cy="power"
         type="number"
         id="power"
         placeholder="power"
@@ -96,6 +100,7 @@ function App() {
         onChange={e => setPower(e.target.value)}
         />
         <input
+        data-cy="lactateone"
         type="number"
         id="lactate"
         placeholder="lactate at 3min"
@@ -103,6 +108,7 @@ function App() {
         onChange={e => setLactate(e.target.value)}
         />
         <input 
+        data-cy="lactatetwo"
         type="number"
         id="lactate2"
         placeholder="lactate at 9min"
@@ -110,6 +116,7 @@ function App() {
         onChange={e => setLactateTwo(e.target.value)}
         />
         <input 
+        data-cy="heartrate"
         type="number"
         id="heart_rate"
         placeholder="avg HR last 4min"
