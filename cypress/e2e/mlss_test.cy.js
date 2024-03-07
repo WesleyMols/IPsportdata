@@ -41,6 +41,8 @@ describe("multiple inputs followed by analysis", () => {
         cy.get('[data-cy="lactatetwo"]').type(7.5)
         cy.get('[data-cy="heartrate"]').type(185)
         cy.get('button').click()
-        cy.get('[data-cy="table"]').cy.get('[data-cy="aerobepower"]').contains("198")
+        cy.get('[data-cy="table"]').within(() => {
+            cy.get('[data-cy="aerobepower"]').contains("198")
+        })
     })
 })
