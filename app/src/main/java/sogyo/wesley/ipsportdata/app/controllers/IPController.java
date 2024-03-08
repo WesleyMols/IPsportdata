@@ -13,9 +13,10 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import sogyo.wesley.ipsportdata.app.InputDTO;
-
+import sogyo.wesley.ipsportdata.app.RampInputDTO;
 import sogyo.wesley.ipsportdata.domain.IAnalyser;
 import sogyo.wesley.ipsportdata.domain.IFactory;
+import sogyo.wesley.ipsportdata.domain.IRampAnalyse;
 import sogyo.wesley.ipsportdata.persistence.IRepository;
 
 @Path("/sogyo/wesley/ipsportdata/app")
@@ -39,4 +40,15 @@ public class IPController {
         analyser.setPowerInputList(ouput);
         return Response.status(200).entity(analyser).build();
     }
+
+    @Path("/RampAnalysis")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response RampAnalysis(@Context HttpServletRequest request, RampInputDTO input) {
+        IRampAnalyse RampAnalysis = factory.createNewRampTest(input.getSpeed(), input.getHeartrate());
+
+        return Response.status(200).entity(RampAnalysis).build();
+    }
+   
 }

@@ -27,3 +27,27 @@ export async function analyse(username, power, lactate, lactate_two, heartrate, 
         };
     }
 }
+
+export async function RampAnalysis(speed, heartrate) {
+    const response = await fetch("sogyo/wesley/ipsportsata/app/RampAnalysis", {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            speed:speed,
+            heartrate:heartrate
+        })
+    });
+    if (response.ok) {
+        const state = await response.json();
+        return state;
+    } else {
+        return {
+            statusCode: response.status,
+            statusText: response.statusText
+        };
+    }    
+
+}
