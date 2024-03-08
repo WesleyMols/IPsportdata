@@ -41,8 +41,7 @@ function App() {
 
 
   function ShowData() {
-    return <>
-    <table data-cy= "table">
+    return <table data-cy= "table">
       <tr>
     <th>Power Inputs</th>
    <th> Message </th>
@@ -56,7 +55,6 @@ function App() {
     <td> {speed}</td>
     </tr>
     </table>
-    </>
   }
 
   
