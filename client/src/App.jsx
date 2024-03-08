@@ -1,5 +1,5 @@
 
-import {MLSS} from './pages/MLSS.jsx';
+import {MLSS} from './components/MLSS.jsx';
 
 function App() {
   
