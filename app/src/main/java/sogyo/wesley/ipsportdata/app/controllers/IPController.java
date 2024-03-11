@@ -1,8 +1,9 @@
 package sogyo.wesley.ipsportdata.app.controllers;
+
 import java.util.List;
+import java.util.UUID;
 
 import jakarta.servlet.http.HttpServletRequest;
-
 import jakarta.ws.rs.Consumes;
 
 import jakarta.ws.rs.POST;
@@ -28,12 +29,14 @@ public class IPController {
         this.factory = factory;
         this.repository = repository;
     }
+    
 
     @Path("/analyse")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response analyse(@Context HttpServletRequest request, InputDTO input) {
+        System.out.println("in response23");
         IAnalyser analyser = factory.createNewAnalysis(input.getUsername(), input.getPower(), input.getLactate_one(), input.getLactate_two(), input.getHeartrate(), input.getWeigth(), input.getSize());
         repository.MysqlSave(analyser);
         List<String> ouput = repository.MysqlGet(analyser);
@@ -41,13 +44,17 @@ public class IPController {
         return Response.status(200).entity(analyser).build();
     }
 
-    @Path("/RampAnalysis")
+    @Path("/rampanalysis")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response RampAnalysis(@Context HttpServletRequest request, RampInputDTO input) {
+     System.out.println("in response");
         IRampAnalyse RampAnalysis = factory.createNewRampTest(input.getSpeed(), input.getHeartrate());
-
+        String inputID = UUID.randomUUID().toString();
+        
+        repository.RampSave(inputID, RampAnalysis);
+        RampAnalysis.setInputCoordinates(inputID, RampAnalysis);
         return Response.status(200).entity(RampAnalysis).build();
     }
    

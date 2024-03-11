@@ -1,4 +1,3 @@
-import { useState } from "react";
 
 function ShowData({returnMessage, outputPower, aerobePower, speed}) {
    

@@ -27,17 +27,17 @@ export async function analyse(username, power, lactate, lactate_two, heartrate, 
         };
     }
 }
-
+ 
 export async function RampAnalysis(speed, heartrate) {
-    const response = await fetch("sogyo/wesley/ipsportsata/app/RampAnalysis", {
+    const response = await fetch("sogyo/wesley/ipsportdata/app/rampanalysis", {
         method: "POST",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            speed:speed,
-            heartrate:heartrate
+            speed: speed,
+            heartrate: heartrate
         })
     });
     if (response.ok) {

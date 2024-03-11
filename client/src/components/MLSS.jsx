@@ -41,12 +41,12 @@ function MLSS() {
 
 return (
     <><input
-        data-cy="username"
-        type="text"
-        id="username"
-        placeholder="enter your name"
-        value={username}
-        onChange={e => setUsername(e.target.value)} />
+            data-cy="username"
+            type="text"
+            id="username"
+            placeholder="enter your name"
+            value={username}
+            onChange={e => setUsername(e.target.value)} />
         <input
             data-cy="weigth"
             type="number"
