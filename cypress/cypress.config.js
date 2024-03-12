@@ -2,8 +2,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    supportFile: 'cypress/support/e2e.js',
-    specPattern: 'e2e/**/*.cy.{js,jsx,ts,tsx}',
+    baseUrl: 'http://localhost:5173',
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
