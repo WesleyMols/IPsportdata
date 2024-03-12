@@ -36,7 +36,6 @@ public class IPController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response analyse(@Context HttpServletRequest request, InputDTO input) {
-        System.out.println("in response23");
         IAnalyser analyser = factory.createNewAnalysis(input.getUsername(), input.getPower(), input.getLactate_one(), input.getLactate_two(), input.getHeartrate(), input.getWeigth(), input.getSize());
         repository.MysqlSave(analyser);
         List<String> ouput = repository.MysqlGet(analyser);
@@ -49,12 +48,12 @@ public class IPController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response RampAnalysis(@Context HttpServletRequest request, RampInputDTO input) {
-     System.out.println("in response");
+     
         IRampAnalyse RampAnalysis = factory.createNewRampTest(input.getSpeed(), input.getHeartrate());
         String inputID = UUID.randomUUID().toString();
-        
         repository.RampSave(inputID, RampAnalysis);
         RampAnalysis.setInputCoordinates(inputID, RampAnalysis);
+        //RampAnalysis.plot();
         return Response.status(200).entity(RampAnalysis).build();
     }
    
