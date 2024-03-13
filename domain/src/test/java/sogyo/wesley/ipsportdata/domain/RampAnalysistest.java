@@ -9,26 +9,35 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class RampAnalysistest {
-    private int speed;
+    private int speed1;
+    private int speed2;
+    private int speed3;
     private int heartrate1;
     private int heartrate2;
     private int heartrate3;
     private RampAnalysis one;
     private double diff;
+    List<Integer> x = new ArrayList<>();
     List<Integer> y = new ArrayList<>();
 
 
     @BeforeEach
     void init() {
-        speed = 14;
+        speed1 = 14;
+        speed2 = 18;
+        speed3 = 22;
+        x.add(speed1);
+        x.add(speed2);
+        x.add(speed3);
         heartrate1 = 120;
         heartrate2 = 140;
         heartrate3 = 160;
-        one = new RampAnalysis(speed, heartrate3);
+        one = new RampAnalysis(speed1, heartrate3);
         y.add(y.size(),heartrate1);
         y.add(y.size(),heartrate2);
         y.add(y.size(),heartrate3);
         one.setY(y);
+        one.setX(x);
     }
 
     @Test
@@ -46,6 +55,10 @@ public class RampAnalysistest {
 
     @Test
     void fillArrayXTest() {
+        assertEquals(x, one.getX());
+    }
+    @Test
+    void fillArrayYTest() {
         assertEquals(y, one.getY());
     }
 }

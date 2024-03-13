@@ -6,5 +6,6 @@ public interface IRampAnalyse {
     int getSpeed();
     int getHeartrate();
     void setY(List<Integer> y);
+    void setX(List<Integer> x);
     //void plot();
 }

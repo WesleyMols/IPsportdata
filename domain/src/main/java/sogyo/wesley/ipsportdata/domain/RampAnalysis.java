@@ -7,6 +7,7 @@ import java.util.List;
 public class RampAnalysis implements IRampAnalyse {
     private int speed;
     private int heartrate;
+    private List<Integer> x= new ArrayList<>();
     private List<Integer> y= new ArrayList<>();
     private double diff;
     private double Yintersection;
@@ -16,10 +17,14 @@ public class RampAnalysis implements IRampAnalyse {
         this.heartrate = heartrate;
         
     }
-    
+
     @Override
     public void setY(List<Integer> y) {
         this.y = y;
+    }
+    @Override
+    public void setX(List<Integer> x) {
+        this.x = x;
     }
 
     @Override
@@ -44,7 +49,9 @@ public class RampAnalysis implements IRampAnalyse {
     public List<Integer> getY() {
         return y;
     }
-
+    public List<Integer> getX() {
+        return x;
+    }
     // @Override // no numpy error
     // public void plot() {
     //     Plot plt = Plot.create();
