@@ -2,29 +2,50 @@ package sogyo.wesley.ipsportdata.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class RampAnalysistest {
     private int speed;
-    private int heartrate;
-    private HashMap<String, IRampAnalyse> inputTest = new HashMap<>();
-    RampAnalysis one;
-    RampAnalysis two;
-    RampAnalysis three;
-    private final String testId = "testId";
-    
+    private int heartrate1;
+    private int heartrate2;
+    private int heartrate3;
+    private RampAnalysis one;
+    private double diff;
+    List<Integer> y = new ArrayList<>();
+
+
+    @BeforeEach
+    void init() {
+        speed = 14;
+        heartrate1 = 120;
+        heartrate2 = 140;
+        heartrate3 = 160;
+        one = new RampAnalysis(speed, heartrate3);
+        y.add(y.size(),heartrate1);
+        y.add(y.size(),heartrate2);
+        y.add(y.size(),heartrate3);
+        one.setY(y);
+    }
 
     @Test
-    void inputToArrayofCoordinatesTest() {
-        speed = 14;
-        heartrate = 160;
-        one = new RampAnalysis(10, 120);
-        two = new RampAnalysis(12, 140);
-        three = new RampAnalysis(speed, heartrate);
-        inputTest.put(testId, one);
-        one.setInputCoordinates(testId, one);
-        assertEquals(one, one.getInputCoordinates(testId));
+    void calcDifferenceYTest() {
+        diff = 140-120;
+        assertEquals(diff, one.calcDifferenceY());
+    }
+
+    @Test
+    void calcYintersectionTest() {
+        calcDifferenceYTest();
+        double Yintersection = heartrate1 - diff;
+        assertEquals(Yintersection, one.calcYintersection());
+    }
+
+    @Test
+    void fillArrayXTest() {
+        assertEquals(y, one.getY());
     }
 }

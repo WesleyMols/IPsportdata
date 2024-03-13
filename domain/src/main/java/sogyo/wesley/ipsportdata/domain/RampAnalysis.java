@@ -1,40 +1,50 @@
 package sogyo.wesley.ipsportdata.domain;
 
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
-import com.github.sh0nk.matplotlib4j.Plot;
-import com.github.sh0nk.matplotlib4j.PythonExecutionException;
 
 public class RampAnalysis implements IRampAnalyse {
     private int speed;
     private int heartrate;
-    private HashMap<String, IRampAnalyse> inputCoordinates = new HashMap<>();
-    List<Double> x= Arrays.asList(1.38, 2.56, 4.3);
-    List<Double> y= Arrays.asList(1.38, 2.56, 4.3);
+    private List<Integer> y= new ArrayList<>();
+    private double diff;
+    private double Yintersection;
 
     public RampAnalysis(int speed, int heartrate){
         this.speed = speed;
         this.heartrate = heartrate;
+        
+    }
+    
+    @Override
+    public void setY(List<Integer> y) {
+        this.y = y;
     }
 
+    @Override
     public int getHeartrate() {
         return heartrate;
     }
+
+    @Override
     public int getSpeed() {
         return speed;
     }
 
-    @Override
-    public void setInputCoordinates(String key, IRampAnalyse input) {
-        inputCoordinates.put(key, input);
+    public double calcDifferenceY() {
+        if(y.size() > 1){
+       return diff = y.get(1) - y.get(0);
+        } else { return 0;}
     }
-    
-    public IRampAnalyse getInputCoordinates(String key) {
-        return inputCoordinates.get(key);
+
+    public double calcYintersection() {
+        return Yintersection = y.get(0) - diff;
     }
+    public List<Integer> getY() {
+        return y;
+    }
+
     // @Override // no numpy error
     // public void plot() {
     //     Plot plt = Plot.create();
