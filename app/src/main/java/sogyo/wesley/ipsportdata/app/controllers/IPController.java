@@ -52,7 +52,9 @@ public class IPController {
         IRampAnalyse RampAnalysis = factory.createNewRampTest(input.getSpeed(), input.getHeartrate());
         String inputID = UUID.randomUUID().toString();
         repository.RampSave(inputID, RampAnalysis);
-        RampAnalysis.setInputCoordinates(inputID, RampAnalysis);
+        IRampAnalyse inputXY = repository.RampGet(inputID);
+        inputXY.setX(inputXY);
+        inputXY.setY(inputXY);
         //RampAnalysis.plot();
         return Response.status(200).entity(RampAnalysis).build();
     }
