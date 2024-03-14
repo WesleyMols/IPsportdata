@@ -15,6 +15,7 @@ import jakarta.ws.rs.core.Response;
 
 import sogyo.wesley.ipsportdata.app.InputDTO;
 import sogyo.wesley.ipsportdata.app.RampInputDTO;
+import sogyo.wesley.ipsportdata.domain.DrawingGraph;
 import sogyo.wesley.ipsportdata.domain.IAnalyser;
 import sogyo.wesley.ipsportdata.domain.IFactory;
 import sogyo.wesley.ipsportdata.domain.IRampAnalyse;
@@ -57,6 +58,16 @@ public class IPController {
         inputXY.setY(inputXY);
         //RampAnalysis.plot();
         return Response.status(200).entity(RampAnalysis).build();
+    }
+
+    @Path("/draw")
+    @POST
+
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response draw(@Context HttpServletRequest request) {
+        DrawingGraph plot = factory.createNewGraph();
+        System.out.println("controller");
+        return Response.status(200).entity(plot).build();
     }
    
 }

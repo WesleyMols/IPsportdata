@@ -11,4 +11,10 @@ public class AnalysisFactory implements IFactory {
     public IRampAnalyse createNewRampTest(int speed, int heartrate) {
         return new RampAnalysis(speed, heartrate);
     }
+
+    @Override
+    public DrawingGraph createNewGraph() {
+        System.out.println("fact");
+        return new DrawingGraph();
+    }
 }

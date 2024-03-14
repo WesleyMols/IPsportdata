@@ -51,3 +51,24 @@ export async function RampAnalysis(speed, heartrate) {
     }    
 
 }
+
+export async function draw() {
+    const response = await fetch("sogyo/wesley/ipsportdata/app/draw", {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            
+        },
+        
+    });
+    if (response.ok) {
+        const state = await response.json();
+        return state;
+    } else {
+        return {
+            statusCode: response.status,
+            statusText: response.statusText
+        };
+    }    
+
+}
