@@ -42,14 +42,17 @@ public class DrawingCanvas extends JComponent {
 	}
 	public void saveCanvas(DrawingCanvas canvas) {
 		System.out.println("in save plot");
-		BufferedImage image = new BufferedImage(canvas.getWidth(), canvas.getHeight(),BufferedImage.TYPE_INT_RGB);
+		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		String outputPath = System.getProperty("user.home") + File.separator + "Documents" + File.separator + "IPsportdata" + File.separator + "Tekeningen" + File.separator + "my_image.png";
+		File outputFile = new File(outputPath);
+		Graphics2D graph2d = (Graphics2D)image.getGraphics();
 			
-		Graphics2D g2 = (Graphics2D)image.getGraphics();
-			
-		canvas.paint(g2);
+		canvas.paint(graph2d);
 		try {
 			System.out.println("in save try");
-			ImageIO.write(image, "png", new File("/figure/plot.png"));
+			ImageIO.write(image, "png", outputFile);
+			System.out.println("File exists: " + outputFile.exists());
+			System.out.println("Image saved successfully to " + outputPath);
 		} catch (Exception e) {
 				
 		}
