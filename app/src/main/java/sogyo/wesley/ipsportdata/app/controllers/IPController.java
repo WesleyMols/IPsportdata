@@ -1,5 +1,6 @@
 package sogyo.wesley.ipsportdata.app.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -39,8 +40,8 @@ public class IPController {
     public Response analyse(@Context HttpServletRequest request, InputDTO input) {
         IAnalyser analyser = factory.createNewAnalysis(input.getUsername(), input.getPower(), input.getLactate_one(), input.getLactate_two(), input.getHeartrate(), input.getWeigth(), input.getSize());
         repository.MysqlSave(analyser);
-        List<String> ouput = repository.MysqlGet(analyser);
-        analyser.setPowerInputList(ouput);
+        List<String> output = repository.MysqlGet(analyser);
+        analyser.setPowerInputList(output);
         return Response.status(200).entity(analyser).build();
     }
 
@@ -54,15 +55,15 @@ public class IPController {
         String inputID = UUID.randomUUID().toString();
         repository.RampSave(inputID, RampAnalysis);
         IRampAnalyse inputXY = repository.RampGet(inputID);
-        inputXY.setX(inputXY);
+        List<Integer> inputX = new ArrayList<>(inputXY.getSpeed());
+        inputXY.setX(inputX);
+        //inputXY.setX(inputXY);
         inputXY.setY(inputXY);
-        //RampAnalysis.plot();
         return Response.status(200).entity(RampAnalysis).build();
     }
 
     @Path("/draw")
     @POST
-
     @Produces(MediaType.APPLICATION_JSON)
     public Response draw(@Context HttpServletRequest request) {
         DrawingGraph plot = factory.createNewGraph();

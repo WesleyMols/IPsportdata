@@ -18,7 +18,7 @@ public class DrawingGraph {
         dc.saveCanvas(dc);
     }
     public int getWidth() {
-        return 9;
+        return 1;
     }
 }
 

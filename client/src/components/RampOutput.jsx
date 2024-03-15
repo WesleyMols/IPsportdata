@@ -1,9 +1,6 @@
-import { RampInput } from "./RampInput"
 
-function RampOutput() {
+import React from "react";
 
-    return (
-        <><p>5</p><p>speed:{RampInput.speed}</p></>
-    )
-}
-export {RampOutput}
+export const RampOutput = ({ speed }) => {
+    return <div>output speed: {speed}</div>;
+};

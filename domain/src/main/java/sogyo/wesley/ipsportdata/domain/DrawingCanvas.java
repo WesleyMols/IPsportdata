@@ -1,9 +1,10 @@
 package sogyo.wesley.ipsportdata.domain;
-
+import java.util.List;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.geom.*;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -11,6 +12,8 @@ import javax.swing.*;
 public class DrawingCanvas extends JComponent {
 	private final int width;
 	private final int height;
+	private List<Integer> x= new ArrayList<>();
+    private List<Integer> y= new ArrayList<>();
 	
 	public DrawingCanvas(int width, int height){
 	this.width = width;
@@ -35,9 +38,10 @@ public class DrawingCanvas extends JComponent {
 		graph2d.draw(yaxis);
 
 		Path2D.Double output = new Path2D.Double();
-		output.moveTo(100,550);
-		output.lineTo(150,450);
-		output.lineTo(200,200);
+		output.moveTo(x.get(0),y.get(0));
+		for(int i = 1; i < x.size(); i++) {
+		output.lineTo(x.get(i),y.get(i));}
+		//output.lineTo(150,150);
 		graph2d.draw(output);
 	}
 	public void saveCanvas(DrawingCanvas canvas) {
@@ -57,4 +61,11 @@ public class DrawingCanvas extends JComponent {
 				
 		}
 	}
+	public void setX(List<Integer> x) {
+        x.addAll(x);
+    }
+  
+    public void setY(List<Integer> y) {
+        y.addAll(y);
+    }
 }

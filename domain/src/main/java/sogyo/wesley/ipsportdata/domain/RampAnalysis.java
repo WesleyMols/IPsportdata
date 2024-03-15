@@ -22,8 +22,13 @@ public class RampAnalysis implements IRampAnalyse {
         x.add(x.size(), inputXY.getSpeed());
     }
     @Override
+    public void setX(List<Integer> x) {
+        this.x = x;
+    }
+    @Override
     public void setY(IRampAnalyse inputXY) {
-        y.add(y.size(), inputXY.getHeartrate());
+        //y.add(5);
+        y.add( inputXY.getHeartrate());
     }
 
     @Override
@@ -34,6 +39,11 @@ public class RampAnalysis implements IRampAnalyse {
     @Override
     public int getSpeed() {
         return speed;
+    }
+
+    public void setGraph() {
+        DrawingCanvas dc = new DrawingCanvas(700, 700);
+        dc.setX(x);
     }
 
     public double calcDifferenceY() {
@@ -51,22 +61,5 @@ public class RampAnalysis implements IRampAnalyse {
     public List<Integer> getX() {
         return x;
     }
-    
-    // @Override // no numpy error
-    // public void plot() {
-    //     Plot plt = Plot.create();
-    //     plt.plot().add(x, y, "o").label("sin");
-    //     plt.legend().loc("upper right");
-    //     plt.title("scatter");
-    //     try {
-    //         plt.show();
-    //     } catch (IOException e) {
-    //         // TODO Auto-generated catch block
-    //         e.printStackTrace();
-    //     } catch (PythonExecutionException e) {
-    //         // TODO Auto-generated catch block
-    //         e.printStackTrace();
-    //     }
-    // }
 
 }

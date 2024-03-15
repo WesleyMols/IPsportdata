@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { RampAnalysis } from "../services/api"
+import {RampOutput} from "./RampOutput.jsx"
 
 function RampInput() {
     const[speed, setSpeed] = useState();
@@ -33,7 +34,7 @@ function RampInput() {
     <button
         onClick={() => onsubmitData()}>submit</button>
     <br/><br/>
-    <div>{speed}</div>
+    <RampOutput speed={speed}/>
     </>
     )
 }

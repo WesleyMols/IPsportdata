@@ -14,7 +14,6 @@ public class AnalysisFactory implements IFactory {
 
     @Override
     public DrawingGraph createNewGraph() {
-        System.out.println("fact");
         return new DrawingGraph();
     }
 }
