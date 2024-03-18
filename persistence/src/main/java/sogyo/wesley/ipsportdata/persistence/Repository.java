@@ -1,9 +1,11 @@
 package sogyo.wesley.ipsportdata.persistence;
 
 import sogyo.wesley.ipsportdata.domain.IAnalyser;
+import sogyo.wesley.ipsportdata.domain.IRampAnalyse;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -18,6 +20,11 @@ public class Repository implements IRepository{
     double insertWeigth;
     int size;
     List<String> returnpower = new ArrayList<>();
+    List<Integer> returnRampSpeed = new ArrayList<>();
+    List<Integer> returnRampHeartrate = new ArrayList<>();
+
+    private  HashMap<String, IRampAnalyse> MockStorage = new HashMap<String, IRampAnalyse>();
+
     @Override
     public void MysqlSave(IAnalyser analyser) {
         
@@ -74,5 +81,25 @@ public class Repository implements IRepository{
             System.out.println(e);
         }
         return returnpower;
-    }    
+    }
+
+    @Override
+    public void RampSave(String key, IRampAnalyse input) {
+        MockStorage.put(key, input);
+        returnRampSpeed.add(input.getSpeed());
+        returnRampHeartrate.add(input.getHeartrate());
+    }
+
+    @Override
+    public IRampAnalyse RampGet(String key) {
+        return MockStorage.get(key);
+    }
+    @Override
+    public List<Integer> getRampSpeed() {
+        return returnRampSpeed;
+    }
+    @Override
+    public List<Integer> getRampHeartrate() {
+        return returnRampHeartrate;
+    }
 }

@@ -27,3 +27,48 @@ export async function analyse(username, power, lactate, lactate_two, heartrate, 
         };
     }
 }
+ 
+export async function RampAnalysis(speed, heartrate) {
+    const response = await fetch("sogyo/wesley/ipsportdata/app/rampanalysis", {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            speed: speed,
+            heartrate: heartrate
+        })
+    });
+    if (response.ok) {
+        const state = await response.json();
+        return state;
+    } else {
+        return {
+            statusCode: response.status,
+            statusText: response.statusText
+        };
+    }    
+
+}
+
+export async function draw() {
+    const response = await fetch("sogyo/wesley/ipsportdata/app/draw", {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            
+        },
+        
+    });
+    if (response.ok) {
+        const state = await response.json();
+        return state;
+    } else {
+        return {
+            statusCode: response.status,
+            statusText: response.statusText
+        };
+    }    
+
+}
