@@ -122,6 +122,15 @@ class AnalyserTest {
         assertEquals(0, wattPerkg);
     }
     @Test
+    void calcWattPerKgtest() {
+        double expected = result.getAverageMLSSPower()/result.getWeigth();
+        assertEquals(expected, result.getWattPerKg());
+    }
+    @Test
+    void getSizeTest() {
+        assertEquals(size, result.getSize());
+    }
+    @Test
     void calcSpeedPowerTest() {
         result.getOutputAnalysis();
         speed = result.getSpeedFromMLSSPower();

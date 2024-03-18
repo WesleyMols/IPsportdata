@@ -5,8 +5,7 @@ import java.util.List;
 public interface IRampAnalyse {
     int getSpeed();
     int getHeartrate();
-    void setY(IRampAnalyse inputXY);
-    void setX(IRampAnalyse inputXY);
-    void setX(List<Integer> x);
-    //void plot();
+    void setY(List<Integer> y);
+    void setX2(List<Integer> x);
+    
 }

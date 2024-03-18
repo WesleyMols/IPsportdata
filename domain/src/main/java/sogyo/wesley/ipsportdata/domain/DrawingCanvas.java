@@ -1,23 +1,26 @@
 package sogyo.wesley.ipsportdata.domain;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.geom.*;
 import java.io.File;
-import java.util.ArrayList;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class DrawingCanvas extends JComponent {
 	private final int width;
 	private final int height;
-	private List<Integer> x= new ArrayList<>();
+	
+	private List<Integer> x = new ArrayList<>();
     private List<Integer> y= new ArrayList<>();
 	
-	public DrawingCanvas(int width, int height){
+	public DrawingCanvas(int width, int height, List<Integer> x, List<Integer> y){
 	this.width = width;
 	this.height = height;
+	this.x = x;
+	this.y = y;
 	}
 	
 	protected void paintComponent(Graphics g) {
@@ -38,10 +41,14 @@ public class DrawingCanvas extends JComponent {
 		graph2d.draw(yaxis);
 
 		Path2D.Double output = new Path2D.Double();
-		output.moveTo(x.get(0),y.get(0));
-		for(int i = 1; i < x.size(); i++) {
-		output.lineTo(x.get(i),y.get(i));}
-		//output.lineTo(150,150);
+	
+		for(int i = 0; i < x.size(); i++) {
+			double xcoorfact = 10;
+			double ycoorfact = 2.73;
+		output.moveTo(x.get(0)*xcoorfact,y.get(0)*ycoorfact);
+		output.lineTo(x.get(i)*xcoorfact,y.get(i)*ycoorfact);
+		}
+		
 		graph2d.draw(output);
 	}
 	public void saveCanvas(DrawingCanvas canvas) {
@@ -61,11 +68,11 @@ public class DrawingCanvas extends JComponent {
 				
 		}
 	}
-	public void setX(List<Integer> x) {
-        x.addAll(x);
-    }
+	// public void setX(List<Integer> x) {
+    //     x.addAll(x);
+    // }
   
-    public void setY(List<Integer> y) {
-        y.addAll(y);
-    }
+    // public void setY(List<Integer> y) {
+    //     y.addAll(y);
+    // }
 }

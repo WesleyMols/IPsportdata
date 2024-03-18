@@ -1,6 +1,5 @@
 package sogyo.wesley.ipsportdata.app.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -26,6 +25,8 @@ import sogyo.wesley.ipsportdata.persistence.IRepository;
 public class IPController {
     private IFactory factory;
     private IRepository repository;
+    List<Integer> inputSpeed;
+    List<Integer> inputHR;
 
     public IPController(IFactory factory, IRepository repository) {
         this.factory = factory;
@@ -50,15 +51,13 @@ public class IPController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response RampAnalysis(@Context HttpServletRequest request, RampInputDTO input) {
-     
-        IRampAnalyse RampAnalysis = factory.createNewRampTest(input.getSpeed(), input.getHeartrate());
+        IRampAnalyse RampAnalysis = factory.createNewRamp(input.getSpeed(), input.getHeartrate());
         String inputID = UUID.randomUUID().toString();
         repository.RampSave(inputID, RampAnalysis);
-        IRampAnalyse inputXY = repository.RampGet(inputID);
-        List<Integer> inputX = new ArrayList<>(inputXY.getSpeed());
-        inputXY.setX(inputX);
-        //inputXY.setX(inputXY);
-        inputXY.setY(inputXY);
+        inputHR = repository.getRampHeartrate();
+        inputSpeed= repository.getRampSpeed();
+        RampAnalysis.setX2(inputSpeed);
+        RampAnalysis.setY(inputHR);
         return Response.status(200).entity(RampAnalysis).build();
     }
 
@@ -66,7 +65,7 @@ public class IPController {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response draw(@Context HttpServletRequest request) {
-        DrawingGraph plot = factory.createNewGraph();
+        DrawingGraph plot = factory.createNewGraph(inputSpeed,inputHR);
         System.out.println("controller");
         return Response.status(200).entity(plot).build();
     }

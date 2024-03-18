@@ -1,5 +1,7 @@
 package sogyo.wesley.ipsportdata.domain;
 
+import java.util.List;
+
 public class AnalysisFactory implements IFactory {
 
     @Override
@@ -8,12 +10,12 @@ public class AnalysisFactory implements IFactory {
     }
 
     @Override
-    public IRampAnalyse createNewRampTest(int speed, int heartrate) {
+    public IRampAnalyse createNewRamp(int speed, int heartrate) {
         return new RampAnalysis(speed, heartrate);
     }
 
     @Override
-    public DrawingGraph createNewGraph() {
-        return new DrawingGraph();
+    public DrawingGraph createNewGraph(List<Integer> x,  List<Integer> y) {
+        return new DrawingGraph(x, y);
     }
 }

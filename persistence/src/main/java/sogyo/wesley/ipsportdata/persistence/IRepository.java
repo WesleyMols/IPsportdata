@@ -10,4 +10,6 @@ public interface IRepository {
     List<String> MysqlGet(IAnalyser input);
     void RampSave(String key, IRampAnalyse input);
     IRampAnalyse RampGet(String key);
+    List<Integer> getRampSpeed();
+    List<Integer> getRampHeartrate();
 }
