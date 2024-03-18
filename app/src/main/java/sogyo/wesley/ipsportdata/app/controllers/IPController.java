@@ -51,7 +51,6 @@ public class IPController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response RampAnalysis(@Context HttpServletRequest request, RampInputDTO input) {
-     
         IRampAnalyse RampAnalysis = factory.createNewRampTest(input.getSpeed(), input.getHeartrate());
         String inputID = UUID.randomUUID().toString();
         repository.RampSave(inputID, RampAnalysis);
@@ -59,9 +58,6 @@ public class IPController {
         inputSpeed= repository.getRampSpeed();
         RampAnalysis.setX2(inputSpeed);
         RampAnalysis.setY(inputHR);
-        DrawingGraph draw = factory.createNewGraph(inputSpeed,inputHR);
-        draw.setX(inputSpeed);
-        draw.setY(inputHR);
         return Response.status(200).entity(RampAnalysis).build();
     }
 
