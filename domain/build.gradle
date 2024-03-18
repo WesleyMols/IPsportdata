@@ -53,6 +53,15 @@ jacoco {
 }
 
 jacocoTestReport {
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                'sogyo/wesley/ipsportdata/domain/DrawingCanvas.class',
+                'sogyo/wesley/ipsportdata/domain/DrawingGraph.class',
+
+            ])
+        }))
+    }
     reports {
         xml.required = true
         csv.required = true
