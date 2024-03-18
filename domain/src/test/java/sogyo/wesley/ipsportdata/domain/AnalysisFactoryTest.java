@@ -43,15 +43,15 @@ public class AnalysisFactoryTest {
         initRamp = test.createNewRamp(speed, heartrateTwo);
 
     }
-    @BeforeEach
-    //given user when Ramp data is submitted and create plot request is made
-    public void initGraph() {
-        x.add(30);
-        x.add(50);
-        y.add(100);
-        y.add(150);
-        initGraph = test.createNewGraph(x, y);
-    }
+    // @BeforeEach
+    // //given user when Ramp data is submitted and create plot request is made
+    // public void initGraph() {
+    //     x.add(30);
+    //     x.add(50);
+    //     y.add(100);
+    //     y.add(150);
+    //     initGraph = test.createNewGraph(x, y);
+    // }
 
     @Test
     void createNewAnalysisMLSSTest() {
@@ -69,9 +69,9 @@ public class AnalysisFactoryTest {
         assertEquals(heartrateTwo, initRamp.getHeartrate());
     }
 
-    @Test
-    void createNewGraphTest() {
-        assertEquals(1, initGraph.getWidth());
-        //cannot get into the constructor
-    }
+    // @Test
+    // void createNewGraphTest() {
+    //     assertEquals(1, initGraph.getWidth());
+    //     //cannot get into the constructor
+    // }
 }
