@@ -51,7 +51,7 @@ public class IPController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response RampAnalysis(@Context HttpServletRequest request, RampInputDTO input) {
-        IRampAnalyse RampAnalysis = factory.createNewRampTest(input.getSpeed(), input.getHeartrate());
+        IRampAnalyse RampAnalysis = factory.createNewRamp(input.getSpeed(), input.getHeartrate());
         String inputID = UUID.randomUUID().toString();
         repository.RampSave(inputID, RampAnalysis);
         inputHR = repository.getRampHeartrate();

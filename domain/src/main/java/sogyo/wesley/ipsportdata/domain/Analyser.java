@@ -19,7 +19,6 @@ public class Analyser implements IAnalyser {
     private List<String> powerInputList =new ArrayList<>(2);
     private int heartrate;
     private int MLSSPower;
-    private List<Integer> lastTwoPowerList = new ArrayList<>();
     private int one;
     private int two;
     private double wattPerKg;
@@ -105,11 +104,6 @@ public class Analyser implements IAnalyser {
             return 0;
         }
 
-    }
-
-    @Override
-    public List<Integer> getLastTwoPowerList() {
-        return lastTwoPowerList;
     }
 
     @Override

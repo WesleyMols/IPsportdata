@@ -10,7 +10,7 @@ public class AnalysisFactory implements IFactory {
     }
 
     @Override
-    public IRampAnalyse createNewRampTest(int speed, int heartrate) {
+    public IRampAnalyse createNewRamp(int speed, int heartrate) {
         return new RampAnalysis(speed, heartrate);
     }
 

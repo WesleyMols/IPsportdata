@@ -16,6 +16,7 @@ public class RampAnalysistest {
     private int heartrate2;
     private int heartrate3;
     private RampAnalysis one;
+    private RampAnalysis two;
     private double diff;
     List<Integer> x = new ArrayList<>();
     List<Integer> y = new ArrayList<>();
@@ -41,12 +42,14 @@ public class RampAnalysistest {
         one.setY(y);
         resultTestList = one.getX();
         resultTestListHR = one.getY();
+        two = new RampAnalysis(speed1, heartrate1);
     }
 
     @Test
     void calcDifferenceYTest() {
         diff = 140-120;
         assertEquals(diff, one.calcDifferenceY());
+        assertEquals(0, two.calcDifferenceY());
     }
 
     @Test
@@ -59,13 +62,15 @@ public class RampAnalysistest {
     @Test
     void fillArrayXRepoTest() {
         assertEquals(3, resultTestList.size());
-        assertEquals(resultTestList.get(0), 14);
+        assertEquals(14, resultTestList.get(0));
+        assertEquals(resultTestList.get(0), one.getSpeed());
     }
 
     @Test
     void fillArrayYRepoTest() {
         assertEquals(3, resultTestListHR.size());
-        assertEquals(resultTestListHR.get(2), 160);
+        assertEquals(160, resultTestListHR.get(2));
+        assertEquals(resultTestListHR.get(0), one.getHeartrate());
     }
 
     @Test
