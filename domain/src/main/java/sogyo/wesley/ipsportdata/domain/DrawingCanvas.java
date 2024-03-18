@@ -43,8 +43,10 @@ public class DrawingCanvas extends JComponent {
 		Path2D.Double output = new Path2D.Double();
 	
 		for(int i = 0; i < x.size(); i++) {
-		output.moveTo(x.get(0),y.get(0));
-		output.lineTo(x.get(i),y.get(i));
+			double xcoorfact = 10;
+			double ycoorfact = 2.73;
+		output.moveTo(x.get(0)*xcoorfact,y.get(0)*ycoorfact);
+		output.lineTo(x.get(i)*xcoorfact,y.get(i)*ycoorfact);
 		}
 		
 		graph2d.draw(output);

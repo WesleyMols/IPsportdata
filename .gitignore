@@ -5,7 +5,7 @@
 **/target
 **/.gradle
 **/.png
-
+**/Tekeningen
 # Ignore Gradle project-specific cache directory
 .gradle
 node_modules
