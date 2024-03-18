@@ -20,6 +20,9 @@ public class Repository implements IRepository{
     double insertWeigth;
     int size;
     List<String> returnpower = new ArrayList<>();
+    List<Integer> returnRampSpeed = new ArrayList<>();
+    List<Integer> returnRampHeartrate = new ArrayList<>();
+
     private  HashMap<String, IRampAnalyse> MockStorage = new HashMap<String, IRampAnalyse>();
 
     @Override
@@ -83,10 +86,20 @@ public class Repository implements IRepository{
     @Override
     public void RampSave(String key, IRampAnalyse input) {
         MockStorage.put(key, input);
+        returnRampSpeed.add(input.getSpeed());
+        returnRampHeartrate.add(input.getHeartrate());
     }
 
     @Override
     public IRampAnalyse RampGet(String key) {
         return MockStorage.get(key);
-    } 
+    }
+    @Override
+    public List<Integer> getRampSpeed() {
+        return returnRampSpeed;
+    }
+    @Override
+    public List<Integer> getRampHeartrate() {
+        return returnRampHeartrate;
+    }
 }

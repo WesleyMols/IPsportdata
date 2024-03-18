@@ -17,18 +17,14 @@ public class RampAnalysis implements IRampAnalyse {
         this.speed = speed;
         this.heartrate = heartrate;
     }
+    
     @Override
-    public void setX(IRampAnalyse inputXY) {
-        x.add(x.size(), inputXY.getSpeed());
-    }
-    @Override
-    public void setX(List<Integer> x) {
+    public void setX2(List<Integer> x) {
         this.x = x;
     }
     @Override
-    public void setY(IRampAnalyse inputXY) {
-        //y.add(5);
-        y.add( inputXY.getHeartrate());
+    public void setY(List<Integer> y) {
+        this.y = y;
     }
 
     @Override

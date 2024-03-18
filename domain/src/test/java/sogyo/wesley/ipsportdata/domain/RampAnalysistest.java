@@ -17,13 +17,11 @@ public class RampAnalysistest {
     private int heartrate2;
     private int heartrate3;
     private RampAnalysis one;
-    private RampAnalysis two;
-    private RampAnalysis three;
     private double diff;
     List<Integer> x = new ArrayList<>();
     List<Integer> y = new ArrayList<>();
-    List<Integer> xy = new ArrayList<>();
-    HashMap<String, IRampAnalyse> MockStorage = new HashMap<String, IRampAnalyse>();
+    List<Integer> resultTestList;
+    List<Integer> resultTestListHR;
 
     @BeforeEach
     void init() {
@@ -34,20 +32,16 @@ public class RampAnalysistest {
         heartrate2 = 140;
         heartrate3 = 160;
         one = new RampAnalysis(speed1, heartrate1);
-        two = new RampAnalysis(speed2, heartrate2);
-        three = new RampAnalysis(speed3, heartrate3);
         x.add(speed1);
         x.add(speed2);
         x.add(speed3);
-        one.setX(one);
-        one.setX(two);
-        one.setX(three);
+        one.setX2(x);
         y.add(y.size(),heartrate1);
         y.add(y.size(),heartrate2);
         y.add(y.size(),heartrate3);
-        one.setY(one);
-        one.setY(two);
-        one.setY(three);
+        one.setY(y);
+        resultTestList = one.getX();
+        resultTestListHR = one.getY();
     }
 
     @Test
@@ -64,6 +58,18 @@ public class RampAnalysistest {
     }
 
     @Test
+    void fillArrayXRepoTest() {
+        assertEquals(3, resultTestList.size());
+        assertEquals(resultTestList.get(0), 14);
+    }
+
+    @Test
+    void fillArrayYRepoTest() {
+        assertEquals(3, resultTestListHR.size());
+        assertEquals(resultTestListHR.get(2), 160);
+    }
+
+    @Test
     void fillArrayXTest() {
         assertEquals(x, one.getX());
     }
@@ -71,11 +77,5 @@ public class RampAnalysistest {
     void fillArrayYTest() {
         assertEquals(y, one.getY());
     }
-    @Test // be aware that controller setXY()
-    void fillArrayXYTest() {
-        MockStorage.put("key", one);
-        x.add(x.size(), one.getSpeed());
-        one.setX(MockStorage.get("key"));
-        assertEquals(x, one.getX());
-    }
+    
 }
