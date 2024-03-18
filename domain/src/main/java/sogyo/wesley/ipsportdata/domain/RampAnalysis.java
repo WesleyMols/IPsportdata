@@ -12,7 +12,6 @@ public class RampAnalysis implements IRampAnalyse {
     private double diff;
     private double Yintersection;
 
-
     public RampAnalysis(int speed, int heartrate){
         this.speed = speed;
         this.heartrate = heartrate;
@@ -35,11 +34,6 @@ public class RampAnalysis implements IRampAnalyse {
     @Override
     public int getSpeed() {
         return speed;
-    }
-
-    public void setGraph() {
-        DrawingCanvas dc = new DrawingCanvas(700, 700);
-        dc.setX(x);
     }
 
     public double calcDifferenceY() {
