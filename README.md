@@ -21,6 +21,8 @@ Installation guide
     lactate_two decimal(5,2),
     lt_diff decimal(5,2),
     heart_rate int,
+    weight decimal(5,2),
+    size int,
     primary key (input_id)
     );
     ```
@@ -57,6 +59,7 @@ Installation guide
     ``` npm run dev ```
 5. localhost can then be found at port 5173 (default)
 6. Plotly is used to generated the graphs, therefore the following command needs to ben ran in client folder: ```npm install plotly.js-dist```
+7. Cypress is used for automatic web testing. Cypress can be run from the cypress folder with the command: ```npx cypress run```
 
 Usage
 * Any user should first submit an username
