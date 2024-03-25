@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.2",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "classnames": "^2.5.1",
     "icons": "^1.0.0",
     "react": "^18.2.0"

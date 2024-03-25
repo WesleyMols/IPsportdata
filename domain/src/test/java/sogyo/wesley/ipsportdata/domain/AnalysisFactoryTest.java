@@ -2,9 +2,6 @@ package sogyo.wesley.ipsportdata.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,14 +13,14 @@ public class AnalysisFactoryTest {
     private double lactate_two;
     private IAnalyser initMLSS;
     private IRampAnalyse initRamp;
-    private DrawingGraph initGraph;
+    //private DrawingGraph initGraph;
     private int heartrate;
     private int heartrateTwo;
     private int speed;
     private double weigth;
     private int size;
-    private List<Integer> x = new ArrayList<>();
-    private List<Integer> y= new ArrayList<>();
+    //private List<Integer> x = new ArrayList<>();
+    //private List<Integer> y= new ArrayList<>();
     
     @BeforeEach
     //given user when mlss input
