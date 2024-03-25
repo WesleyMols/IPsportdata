@@ -1,6 +1,12 @@
 Feature: navigation to about page
+When a user is on the website, page should not matter,
+ then navigation to the about page via the navigation bar should be possible.
 
 Scenario: Successful navigation to about page
-    Given I am on the home page
-    When I click on about button in navigationbar
-    Then I should be redirected to the about page
+    Given Jack is on a "<page>"
+    When Jack navigates to the about page
+    Then the about page should be loaded
+Examples:
+    |page|
+    | / |
+    | http://localhost:5173/Ramptest |

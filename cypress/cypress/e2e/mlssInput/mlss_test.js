@@ -2,7 +2,7 @@ import {When, Given, Then} from '@badeball/cypress-cucumber-preprocessor'
 
 Given('on mlss page', () => {
         cy.visit('/')
-    })
+})
 
 When('user types {string} and {int}', (name, power) => {
     cy.get('[data-cy="username"]').type(`${name}`)
