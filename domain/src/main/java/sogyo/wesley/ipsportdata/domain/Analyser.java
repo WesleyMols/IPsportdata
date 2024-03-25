@@ -12,7 +12,7 @@ public class Analyser implements IAnalyser {
     private double lactate_one;
     private double lactate_two;
     private double lt_diff;
-    private double weigth;
+    private double weight;
     private int size;
     private boolean isEnd;
     private String outputMessage;
@@ -37,20 +37,20 @@ public class Analyser implements IAnalyser {
     }
 
 
-    public Analyser(String name, int power2, double lactate_one2, double lactate_two2, int heartrate, double weigth, int size) {
+    public Analyser(String name, int power2, double lactate_one2, double lactate_two2, int heartrate, double weight, int size) {
         this.name = name;
         this.power = power2;
         this.lactate_one = lactate_one2;
         this.lactate_two = lactate_two2;
         this.heartrate = heartrate;
-        this.weigth = weigth;
+        this.weight = weight;
         this.size = size;
         getCalcLactateDifference();
     }
 
     @Override
-    public double getWeigth() {
-        return weigth;
+    public double getWeight() {
+        return weight;
     }
 
     @Override
@@ -97,8 +97,8 @@ public class Analyser implements IAnalyser {
     @Override
     public double getWattPerKg() {
         getAverageMLSSPower();
-        if(weigth != 0) {
-        wattPerKg = MLSSPower/weigth;
+        if(weight != 0) {
+        wattPerKg = MLSSPower/weight;
         return wattPerKg;
         } else {
             return 0;

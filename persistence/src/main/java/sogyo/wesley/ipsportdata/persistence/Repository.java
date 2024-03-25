@@ -17,7 +17,7 @@ public class Repository implements IRepository{
     Double insertLt_diff;
     int insertHeartRate;
     String insertName;
-    double insertWeigth;
+    double insertweight;
     int size;
     List<String> returnpower = new ArrayList<>();
     List<Integer> returnRampSpeed = new ArrayList<>();
@@ -38,9 +38,9 @@ public class Repository implements IRepository{
             insertDataLT2 = analyser.getLactate_two();
             insertLt_diff = analyser.getCalcLactateDifference();
             insertHeartRate = analyser.getHeartrate();
-            insertWeigth = analyser.getWeigth();
+            insertweight = analyser.getWeight();
             size = analyser.getSize();
-            String query = "INSERT INTO user_input (username, power, lactate_one, lactate_two, lt_diff, heart_rate, weigth, size) " + "VALUES (?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO user_input (username, power, lactate_one, lactate_two, lt_diff, heart_rate, weight, size) " + "VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement runqueryData = con.prepareStatement(query);
             runqueryData.setString(1, insertName);
             runqueryData.setInt(2, insertDataP);
@@ -48,7 +48,7 @@ public class Repository implements IRepository{
             runqueryData.setDouble(4, insertDataLT2);
             runqueryData.setDouble(5, insertLt_diff);
             runqueryData.setInt(6, insertHeartRate);
-            runqueryData.setDouble(7, insertWeigth);
+            runqueryData.setDouble(7, insertweight);
             runqueryData.setInt(8, size);
             runqueryData.execute();
            

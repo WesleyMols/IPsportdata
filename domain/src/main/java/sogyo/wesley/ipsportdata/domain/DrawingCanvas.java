@@ -68,11 +68,4 @@ public class DrawingCanvas extends JComponent {
 				
 		}
 	}
-	// public void setX(List<Integer> x) {
-    //     x.addAll(x);
-    // }
-  
-    // public void setY(List<Integer> y) {
-    //     y.addAll(y);
-    // }
 }

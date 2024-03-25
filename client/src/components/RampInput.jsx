@@ -32,6 +32,7 @@ function RampInput() {
     />
     
     <button
+    data-cy="submitbutton"
         onClick={() => onsubmitData()}>submit</button>
     <br/><br/>
     <RampOutput speed={speed}/>

@@ -24,7 +24,7 @@ class AnalyserTest {
     private String outputMessage;
     private int heartrate;
     private List<String> resultTestList;
-    private double weigth;
+    private double weight;
     private int size;
     private double speed;
 
@@ -35,10 +35,10 @@ class AnalyserTest {
         lactate_one = 3.3;
         lactate_two = 5.2;
         heartrate = 155;
-        weigth = 50;
-        result = new Analyser(name, power, lactate_one, lactate_two, heartrate, weigth, size);
-        next = new Analyser(name, power, lactate_one, lactate_one, heartrate,weigth, size);
-        secondResult = new Analyser(name, power+100, lactate_one +1, lactate_two+1, heartrate+15, weigth, size);
+        weight = 50;
+        result = new Analyser(name, power, lactate_one, lactate_two, heartrate, weight, size);
+        next = new Analyser(name, power, lactate_one, lactate_one, heartrate,weight, size);
+        secondResult = new Analyser(name, power+100, lactate_one +1, lactate_two+1, heartrate+15, weight, size);
         resultTestList = result.getPowerInputList();
         resultTestList.add(String.valueOf(next.getPower()));
         resultTestList.add(String.valueOf(secondResult.getPower()));
@@ -53,7 +53,7 @@ class AnalyserTest {
 
     @Test
     void calclactateDiffnegativeTest() {
-        Analyser test = new Analyser(name, power, lactate_one, 0, heartrate, weigth, size);
+        Analyser test = new Analyser(name, power, lactate_one, 0, heartrate, weight, size);
         double testDiff = 0 - lactate_one;
         assertEquals(testDiff, test.getCalcLactateDifference());
     }
@@ -112,7 +112,7 @@ class AnalyserTest {
     }
 
     @Test
-    void zeroWeigthTest() {
+    void zeroweightTest() {
         Analyser test = new Analyser(name, power, lactate_one, lactate_two, heartrate, 0, size);
         List<String> listtest = new ArrayList<>();
         listtest.add("200");
@@ -123,7 +123,7 @@ class AnalyserTest {
     }
     @Test
     void calcWattPerKgtest() {
-        double expected = result.getAverageMLSSPower()/result.getWeigth();
+        double expected = result.getAverageMLSSPower()/result.getWeight();
         assertEquals(expected, result.getWattPerKg());
     }
     @Test

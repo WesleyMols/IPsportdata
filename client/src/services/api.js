@@ -1,5 +1,5 @@
 
-export async function analyse(username, power, lactate, lactate_two, heartrate, weigth, size) {
+export async function analyse(username, power, lactate, lactate_two, heartrate, weight, size) {
     const response = await fetch("sogyo/wesley/ipsportdata/app/analyse", {
         method: "POST",
         headers: {
@@ -12,7 +12,7 @@ export async function analyse(username, power, lactate, lactate_two, heartrate, 
             lactate: lactate,
             lactate_two: lactate_two,
             heartrate: heartrate,
-            weigth: weigth,
+            weight: weight,
             size: size
         })
     });

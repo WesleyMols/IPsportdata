@@ -7,7 +7,7 @@ public class InputDTO {
     private double lactate_two;
     private double lt_diff;
     private int heartrate;
-    private double weigth;
+    private double weight;
     private int size;
     
     public int getPower() {
@@ -55,12 +55,12 @@ public class InputDTO {
     public void setHeartrate(int heartrate) {
         this.heartrate = heartrate;
     }
-    public double getWeigth() {
-        return weigth;
+    public double getWeight() {
+        return weight;
     }
 
-    public void setWeigth(double weigth) {
-        this.weigth = weigth;
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
     
     public int getSize() {

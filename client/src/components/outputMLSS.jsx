@@ -11,7 +11,7 @@ function ShowData({returnMessage, outputPower, aerobePower, speed}) {
    </tr>
    <tr>
    <td>{outputPower} </td>
-  <td>{returnMessage} </td>
+  <td data-cy="message" >{returnMessage} </td>
     <td data-cy="aerobepower"> {aerobePower}</td>
     <td> {speed}</td>
     </tr>

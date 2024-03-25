@@ -13,26 +13,26 @@ function MLSS() {
     const [xaxisdata, setXaxis] = useState([]);
     const [yaxisdata, setYaxis] = useState([]);
     const [ydataLTdiff, setydataLTdiff] = useState([]);
-    const [weigth, setWeigth] = useState();
+    const [weight, setWeight] = useState();
     const [size, setSize] = useState();
     const [returnMessage, setReturnMessage] = useState("");
     const [outputPower, setoutputPower] = useState();
     const [aerobePower, setaerobePower] = useState(0);
     const [speed, setSpeed] = useState(0);
-    
+    let key;
     
    
     const onsubmitData = async () => {
-      const data = await analyse(username, power, lactate, lactate_two, heartrate, weigth, size)
-      
+      const data = await analyse(username, power, lactate, lactate_two, heartrate, weight, size)
+      key = key+1;
       setdbUsername(data.username)
       setReturnMessage(data.outputAnalysis)
-      setoutputPower(data.powerInputList.map((item) => <p key={item}> {item}</p>))
+      setoutputPower(data.powerInputList.map((item) => <p key={key}> {item}</p>))
       setaerobePower(data.aerobePower)
       setXaxis([...xaxisdata,power])
       setYaxis([...yaxisdata,heartrate])
       setydataLTdiff([...ydataLTdiff, data.calcLactateDifference])
-      setWeigth(data.weigth)
+      setWeight(data.weight)
       setSize(data.size)
       
       setSpeed(data.speedFromMLSSPower)
@@ -48,12 +48,12 @@ return (
             value={username}
             onChange={e => setUsername(e.target.value)} />
         <input
-            data-cy="weigth"
+            data-cy="weight"
             type="number"
-            id="weigth"
-            placeholder="enter your weigth in kilograms"
-            value={weigth}
-            onChange={e => setWeigth(e.target.value)} />
+            id="weight"
+            placeholder="enter your weight in kilograms"
+            value={weight}
+            onChange={e => setWeight(e.target.value)} />
         <input
             data-cy="size"
             type="number"
