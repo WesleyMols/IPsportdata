@@ -52,17 +52,18 @@ article {
   height: 3cm;
 }
 img{
-  border-radius: 30%;
+  
 }
 .logo {
   overflow: visible;
   position: fixed;
   top: 0;
-  margin-left: 25px;
+  margin-left: 15px;
   display: flex;
   height: 3cm;
   padding:0;
   z-index:-1;
+  
 }
 
 ul {
