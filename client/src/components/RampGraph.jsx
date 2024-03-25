@@ -7,7 +7,9 @@ function RampGraph() {
     }
 
     return(
-        <button onClick={() => onPlot()}>
+        <button
+        data-cy="plotbutton"
+        onClick={() => onPlot()}>
         Create plot
         </button>
     )
