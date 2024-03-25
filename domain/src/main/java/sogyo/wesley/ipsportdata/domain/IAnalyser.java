@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface IAnalyser {
     String getUsername();
-    double getWeigth();
+    double getWeight();
     int getSize();
     int getPower();
     double getLactate_two();

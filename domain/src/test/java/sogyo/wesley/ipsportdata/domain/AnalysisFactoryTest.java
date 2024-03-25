@@ -17,7 +17,7 @@ public class AnalysisFactoryTest {
     private int heartrate;
     private int heartrateTwo;
     private int speed;
-    private double weigth;
+    private double weight;
     private int size;
     //private List<Integer> x = new ArrayList<>();
     //private List<Integer> y= new ArrayList<>();
@@ -30,7 +30,7 @@ public class AnalysisFactoryTest {
         lactate_one = 2.2;
         lactate_two = 3.3;
         heartrate = 142;
-        initMLSS = test.createNewAnalysis(name, power, lactate_one, lactate_two, heartrate, weigth, size);
+        initMLSS = test.createNewAnalysis(name, power, lactate_one, lactate_two, heartrate, weight, size);
     }
     @BeforeEach
     //given user when Ramp data is put in

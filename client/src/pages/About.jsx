@@ -24,7 +24,7 @@ This results in the following business rules:<br/>
     </h2>
     <p>
       You must enter a username which is stored in the database to retrieve your data. <br/>
-    You may enter your weigth. Please enter a number with up to 2 decimals inidcated by a dot. This way your watt/kg value for your FTP is calculated. <br/>
+    You may enter your weight. Please enter a number with up to 2 decimals inidcated by a dot. This way your watt/kg value for your FTP is calculated. <br/>
     We are working on the implementation of a calculator that estimates your cycling speed based on size. However, entering your length does not do anything yet. Please enter a whole number. 
     Please enter your data one row at the time, filling in all the boxes on the second row. <br/>
     Please enter power as a whole number. <br/>
