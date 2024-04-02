@@ -19,24 +19,25 @@ function MLSS() {
     const [outputPower, setoutputPower] = useState();
     const [aerobePower, setaerobePower] = useState(0);
     const [speed, setSpeed] = useState(0);
-    let key;
+    const [index, setKey] = useState(0)
     
    
     const onsubmitData = async () => {
       const data = await analyse(username, power, lactate, lactate_two, heartrate, weight, size)
-      key = key+1;
+      
       setdbUsername(data.username)
       setReturnMessage(data.outputAnalysis)
-      setoutputPower(data.powerInputList.map((item) => <p key={key}> {item}</p>))
+      setoutputPower(data.powerInputList.map((item, index) => <p key={index}> {item}</p>))
       setaerobePower(data.aerobePower)
       setXaxis([...xaxisdata,power])
       setYaxis([...yaxisdata,heartrate])
       setydataLTdiff([...ydataLTdiff, data.calcLactateDifference])
       setWeight(data.weight)
       setSize(data.size)
-      
+      setKey(index+1)
       setSpeed(data.speedFromMLSSPower)
       console.log(data) // alle getters 
+      console.log(index)
     }
 
 return (
